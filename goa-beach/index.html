@@ -27,6 +27,9 @@
   --gold:#C99A52; --ink:#2C2420; --muted:#7A6A5E;
 }
 html{scroll-behavior:smooth}
+/* never allow sideways scrolling on phones */
+html,body{max-width:100%;overflow-x:hidden}
+@supports (overflow:clip){html,body{overflow-x:clip}}
 body{font-family:'Jost',sans-serif;font-weight:300;color:var(--ink);background:var(--sand);line-height:1.7;overflow-x:hidden}
 body.locked{overflow:hidden}
 .script{font-family:'Great Vibes',cursive;font-weight:400}
@@ -68,7 +71,7 @@ h2.title{font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(46px,
 .envelope small{display:block;margin-top:14px;color:var(--muted);font-size:13px}
 
 /* ===== Hero: Goa sunset ===== */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:80px 20px 200px;
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:80px 20px 200px;
   background:linear-gradient(180deg,#8E7BB5 0%,#D99AAE 30%,#F4B08A 55%,#F8CF9B 72%,#F7DDB8 100%)}
 .sun{position:absolute;left:50%;bottom:150px;width:220px;height:220px;margin-left:-110px;border-radius:50%;
   background:radial-gradient(circle,#FFF3D6 0%,#FFD99A 45%,#F8A86E 100%);box-shadow:0 0 90px 30px rgba(255,200,140,.55);

@@ -25,6 +25,9 @@
   --teal:#14A3A3; --teal-dark:#0B6E6E; --navy:#1D3557; --cream:#FFF8EC; --ink:#22303F; --muted:#5B6878;
 }
 html{scroll-behavior:smooth}
+/* never allow sideways scrolling on phones */
+html,body{max-width:100%;overflow-x:hidden}
+@supports (overflow:clip){html,body{overflow-x:clip}}
 body{font-family:'Nunito',sans-serif;color:var(--ink);background:var(--cream);line-height:1.65;overflow-x:hidden}
 body.locked{overflow:hidden}
 .no-js .gate,.no-js .music{display:none!important}
@@ -60,7 +63,7 @@ h2.title{font-family:'Pacifico',cursive;font-weight:400;font-size:clamp(38px,7vw
 .env-body small{display:block;margin-top:14px;color:var(--navy);opacity:.75;font-weight:600}
 
 /* ===== Hero ===== */
-.hero{min-height:100vh;display:flex;align-items:center;padding:60px 20px;overflow:hidden;
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:60px 20px;overflow:hidden;
   background:var(--sun) radial-gradient(circle at 15% 85%,rgba(255,255,255,.35) 0 120px,transparent 121px)}
 .blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.9}
 .blob.b1{width:340px;height:340px;background:var(--teal);right:-120px;top:-110px}
@@ -120,7 +123,7 @@ h2.title{font-family:'Pacifico',cursive;font-weight:400;font-size:clamp(38px,7vw
 .ev.party{background:var(--teal);color:#fff}
 .ev.party::after{content:'🎉';position:absolute;right:20px;top:14px;font-size:64px;transform:rotate(12deg);opacity:.9}
 .ev.cere{background:var(--sun-soft);color:var(--ink)}
-.ev.cere::after{content:'💍';position:absolute;right:20px;top:14px;font-size:54px;transform:rotate(-10deg)}
+.ev.cere::after{content:'';position:absolute;right:14px;top:6px;width:96px;height:96px;transform:rotate(-8deg);filter:drop-shadow(0 2px 2px rgba(0,0,0,.15));background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10 8 C10 50 28 70 50 70 C72 70 90 50 90 8' fill='none' stroke='%23222' stroke-width='7' stroke-dasharray='0.1 8' stroke-linecap='round'/%3E%3Cpath d='M10 8 C10 50 28 70 50 70 C72 70 90 50 90 8' fill='none' stroke='%23D4A017' stroke-width='7.5' stroke-dasharray='0.1 32' stroke-dashoffset='4' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='70' r='4' fill='%23D4A017'/%3E%3Cpath d='M50 74 L50 78' stroke='%23B8860B' stroke-width='2'/%3E%3Ccircle cx='39' cy='87' r='11' fill='%23F2C14E' stroke='%23B8860B' stroke-width='2'/%3E%3Ccircle cx='39' cy='87' r='4' fill='%23C0392B'/%3E%3Ccircle cx='61' cy='87' r='11' fill='%23F2C14E' stroke='%23B8860B' stroke-width='2'/%3E%3Ccircle cx='61' cy='87' r='4' fill='%23C0392B'/%3E%3Cpath d='M50 78 L39 77 M50 78 L61 77' stroke='%23B8860B' stroke-width='2'/%3E%3C/svg%3E") center/contain no-repeat}
 .ev .tag{display:inline-block;font-weight:900;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.22)}
 .ev.cere .tag{background:#fff;color:var(--coral)}
 .ev h3{font-family:'Pacifico',cursive;font-weight:400;font-size:40px;line-height:1.2;margin:14px 0 6px}
@@ -162,6 +165,9 @@ h2.title{font-family:'Pacifico',cursive;font-weight:400;font-size:clamp(38px,7vw
 .map iframe{width:100%;height:100%;min-height:320px;border:0;display:block}
 
 footer{background:var(--navy);color:rgba(255,255,255,.75);text-align:center;padding:46px 20px 36px}
+footer .see-you{font-family:'Caveat',cursive;font-weight:700;font-size:clamp(28px,6vw,36px);color:#fff;margin-bottom:6px}
+footer .see-you .heart{color:var(--coral);display:inline-block;margin-left:6px;animation:beat 1.4s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.25)}30%{transform:scale(1)}}
 footer .sig{font-family:'Pacifico',cursive;font-size:36px;color:var(--sun)}
 footer p{font-weight:600}
 footer small{display:block;margin-top:14px;font-weight:800;letter-spacing:2px;color:var(--teal)}
@@ -346,6 +352,7 @@ footer small{display:block;margin-top:14px;font-weight:800;letter-spacing:2px;co
 </section>
 
 <footer>
+  <div class="see-you">Looking forward to seeing you <span class="heart">❤</span></div>
   <div class="sig">Jeevan &amp; Rashmika</div>
   <p>26 &amp; 27 November 2026 · Bengaluru</p>
   <small>#JeevanWedsRashmika</small>
