@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Weddingle//Jeevan and Rashmika//EN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:reception-jeevan-rashmika-2026@weddingle
+DTSTAMP:20261001T000000Z
+DTSTART:20261126T133000Z
+DTEND:20261126T170000Z
+SUMMARY:Jeevan & Rashmika's Wedding Reception
+LOCATION:SPK Inn & Convention Centre\, Magadi Main Road\, Sunkadakatte\, Bengaluru 560091
+END:VEVENT
+END:VCALENDAR

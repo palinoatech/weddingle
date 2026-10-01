@@ -132,6 +132,10 @@ h2.title{font-family:'Pacifico',cursive;font-weight:400;font-size:clamp(38px,7vw
 .ev p{margin-top:12px;font-weight:600;opacity:.92}
 .ev .btn{margin-top:20px}
 
+.cal-opts{display:none;gap:10px;flex-wrap:wrap;margin-top:12px}
+.cal-opts.show{display:flex}
+.cal-opts a{padding:9px 16px;border-radius:999px;font-weight:800;font-size:14px;text-decoration:none;background:#fff;color:var(--navy);border:2px solid var(--navy)}
+.cal-opts a.rec{background:var(--navy);color:#fff}
 /* ===== Food menu ===== */
 .food{background:var(--cream)}
 .menu-toggle{margin-top:26px;font-size:17px;padding:16px 30px}
@@ -253,8 +257,8 @@ footer small{display:block;margin-top:14px;font-weight:800;letter-spacing:2px;co
 </header>
 
 <div class="ticker" aria-hidden="true"><div>
-  <span>★ Reception party · 26 Nov · 7 PM</span><span>★ SPK Inn, Bengaluru</span><span>★ Good food</span><span>★ Great music</span><span>★ Your dance moves</span>
-  <span>★ Reception party · 26 Nov · 7 PM</span><span>★ SPK Inn, Bengaluru</span><span>★ Good food</span><span>★ Great music</span><span>★ Your dance moves</span>
+  <span>★ Reception party · 26 Nov · 7 PM</span><span>★ SPK Inn, Bengaluru</span><span>★ Good food</span><span>★ Great music</span><span>★ Selfies</span>
+  <span>★ Reception party · 26 Nov · 7 PM</span><span>★ SPK Inn, Bengaluru</span><span>★ Good food</span><span>★ Great music</span><span>★ Selfies</span>
 </div></div>
 
 <!-- COUNTDOWN -->
@@ -280,17 +284,18 @@ footer small{display:block;margin-top:14px;font-weight:800;letter-spacing:2px;co
     </div>
     <div class="ev-grid" style="text-align:left">
       <div class="ev party reveal">
-        <span class="tag">The big party</span>
         <h3>Reception</h3>
         <div class="when">Thursday, 26 November<small>7:00 PM onwards</small></div>
         <p>Dinner, music and plenty of dancing. Bring your best moves (and your appetite)!</p>
         <button class="btn btn-white cal" data-event="reception" type="button">📅 Add to calendar</button>
+        <div class="cal-opts" id="opts-reception"><a class="cal-g" data-event="reception" target="_blank" rel="noopener">Google Calendar</a><a class="cal-a" href="reception.ics">Apple / Outlook</a></div>
       </div>
       <div class="ev cere reveal">
         <h3>Muhurtham</h3>
         <div class="when">Friday, 27 November<small>10:10 – 10:25 AM</small></div>
         <p>The wedding ceremony itself. Early-ish, we know, but we'd love to see you there!</p>
         <button class="btn btn-teal cal" data-event="muhurtham" type="button">📅 Add to calendar</button>
+        <div class="cal-opts" id="opts-muhurtham"><a class="cal-g" data-event="muhurtham" target="_blank" rel="noopener">Google Calendar</a><a class="cal-a" href="muhurtham.ics">Apple / Outlook</a></div>
       </div>
     </div>
   </div>
@@ -497,22 +502,21 @@ const pad2 = n => String(n).padStart(2, '0');
   setTimeout(tick, 1000);
 })();
 
-/* ---------- Add to calendar (.ics) ---------- */
+/* ---------- Add to calendar: Google link, or hosted .ics for Apple/Outlook ---------- */
 const EVENTS = {
-  reception: { title: "Jeevan & Rashmika's Wedding Reception 🎉", start: '20261126T133000Z', end: '20261126T170000Z' },
-  muhurtham: { title: 'Jeevan & Rashmika - Muhurtham 💍', start: '20261127T044000Z', end: '20261127T045500Z' }
+  reception: { title: "Jeevan & Rashmika's Wedding Reception", dates: '20261126T133000Z/20261126T170000Z' },
+  muhurtham: { title: 'Jeevan & Rashmika - Muhurtham', dates: '20261127T044000Z/20261127T045500Z' }
 };
+const isApple = /iPhone|iPad|Macintosh/.test(navigator.userAgent);
+document.querySelectorAll('.cal-g').forEach(a => {
+  const e = EVENTS[a.dataset.event];
+  a.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(e.title) +
+    '&dates=' + e.dates + '&location=' + encodeURIComponent('SPK Inn & Convention Centre, Magadi Main Road, Sunkadakatte, Bengaluru 560091');
+});
 document.querySelectorAll('.cal').forEach(btn => btn.addEventListener('click', () => {
-  const e = EVENTS[btn.dataset.event];
-  const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Weddingle//Jeevan and Rashmika//EN', 'BEGIN:VEVENT',
-    'UID:' + btn.dataset.event + '-friends-jeevan-rashmika-2026@weddingle', 'DTSTAMP:20261001T000000Z',
-    'DTSTART:' + e.start, 'DTEND:' + e.end, 'SUMMARY:' + e.title,
-    'LOCATION:SPK Inn & Convention Centre\\, Magadi Main Road\\, Sunkadakatte\\, Bengaluru 560091',
-    'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
-  a.download = 'Jeevan-Rashmika-' + btn.dataset.event + '.ics';
-  a.click();
+  const opts = document.getElementById('opts-' + btn.dataset.event);
+  opts.classList.toggle('show');
+  opts.querySelector(isApple ? '.cal-a' : '.cal-g').classList.add('rec');   // highlight the one for this phone
 }));
 
 /* ---------- Diagnostics: open with ?debug ---------- */

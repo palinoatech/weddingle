@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Weddingle//Jeevan and Rashmika//EN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:muhurtham-jeevan-rashmika-2026@weddingle
+DTSTAMP:20261001T000000Z
+DTSTART:20261127T044000Z
+DTEND:20261127T045500Z
+SUMMARY:Jeevan & Rashmika - Muhurtham
+LOCATION:SPK Inn & Convention Centre\, Magadi Main Road\, Sunkadakatte\, Bengaluru 560091
+END:VEVENT
+END:VCALENDAR
