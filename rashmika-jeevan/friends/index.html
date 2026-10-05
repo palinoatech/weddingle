@@ -370,139 +370,19 @@ footer small{display:block;margin-top:14px;font-weight:800;letter-spacing:2px;co
    A bouncy ukulele-style strum, plucky melody, bass and soft claps, in a sunny major key.
    No audio file needed; starts only after the guest taps "Open me!". */
 const Music = (() => {
-  let ctx, master, bus, playing = false, next = 0, step = 0, prev = 0;
-  // Kannada light music (sugama sangeetha): bansuri melody in raga Hamsadhwani
-  // (S R G P N), harmonium chords, soft tanpura, tabla in Dadra (6 beats).
-  const M = 0.27;                                  // one matra (beat of the 6-beat cycle)
-  const SA = 293.66;                               // Sa = D4
-  const R = { S: 1, R: 9/8, G: 5/4, P: 3/2, N: 15/8 };
-  // One token per matra, 6 per cycle; '-' holds the previous note; ' = upper octave
-  const TUNE = ("G - P N - S' N - P G - - " +
-                "R G P - G R S - - - - - " +
-                "P - N S' - R' S' - N P - - " +
-                "G P N - P G R - S - - - ").trim().split(/\s+/);
-  const CHORD = { I: [1, 5/4, 3/2], V: [3/4, 15/16, 9/8] };   // harmonium voicings around Sa
-  const PROG = ['I', 'I', 'V', 'I', 'V', 'I', 'I', 'I'];      // one chord per cycle
-  const THEKA = ['Dha', 'Dhi', 'Na', 'Dha', 'Tu', 'Na'];      // Dadra
-  const freq = tok => SA * R[tok.replace("'", '')] * (tok.endsWith("'") ? 2 : 1);
-
-  function impulse(seconds, decay) {
-    const len = ctx.sampleRate * seconds, buf = ctx.createBuffer(2, len, ctx.sampleRate);
-    for (let c = 0; c < 2; c++) { const d = buf.getChannelData(c); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, decay); }
-    return buf;
-  }
-  function drone() {
-    // Faint tanpura: Pa, Sa, low Sa with slow swells
-    [[SA * 0.75, 0.014], [SA, 0.012], [SA / 2, 0.018]].forEach(([f, v], i) => {
-      const o = ctx.createOscillator(), g = ctx.createGain(), flt = ctx.createBiquadFilter();
-      o.type = 'sawtooth'; o.frequency.value = f; flt.type = 'lowpass'; flt.frequency.value = 1000;
-      g.gain.value = v;
-      const lfo = ctx.createOscillator(), lg = ctx.createGain();
-      lfo.frequency.value = 0.2 + i * 0.07; lg.gain.value = v * 0.6; lfo.connect(lg); lg.connect(g.gain);
-      o.connect(flt); flt.connect(g); g.connect(bus); o.start(); lfo.start();
-    });
-  }
-  function harmonium(chord, t, dur) {
-    // Reedy pad: two slightly detuned reeds per note, gentle bellows swell
-    CHORD[chord].forEach(r => [0, 1.6].forEach(det => {
-      const o = ctx.createOscillator(), g = ctx.createGain(), flt = ctx.createBiquadFilter();
-      o.type = det ? 'square' : 'sawtooth'; o.frequency.value = SA * r + det;
-      flt.type = 'lowpass'; flt.frequency.value = 1700;
-      g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.011, t + 0.12);
-      g.gain.setValueAtTime(0.011, t + dur - 0.1); g.gain.linearRampToValueAtTime(0.0001, t + dur + 0.05);
-      o.connect(flt); flt.connect(g); g.connect(bus); o.start(t); o.stop(t + dur + 0.1);
-    }));
-  }
-  function flute(f, from, t, dur) {
-    // Bansuri: soft sine with a breathy edge; small intervals glide (meend),
-    // long notes bloom into vibrato.
-    const o = ctx.createOscillator(), h = ctx.createOscillator(), hg = ctx.createGain(), g = ctx.createGain();
-    const glide = from && Math.abs(Math.log2(f / from)) < 0.35;
-    o.frequency.setValueAtTime(glide ? from : f, t); o.frequency.exponentialRampToValueAtTime(f, t + (glide ? 0.09 : 0.01));
-    h.type = 'triangle'; h.frequency.value = f * 2; hg.gain.value = 0.12;
-    if (dur > 0.5) {
-      const lfo = ctx.createOscillator(), lg = ctx.createGain();
-      lfo.frequency.value = 5; lg.gain.value = 0; lg.gain.setValueAtTime(0, t + 0.25); lg.gain.linearRampToValueAtTime(f * 0.012, t + dur);
-      lfo.connect(lg); lg.connect(o.frequency); lfo.start(t); lfo.stop(t + dur + 0.2);
-    }
-    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.085, t + 0.06);
-    g.gain.setValueAtTime(0.075, t + dur - 0.05); g.gain.exponentialRampToValueAtTime(0.0001, t + dur + 0.2);
-    o.connect(g); h.connect(hg); hg.connect(g); g.connect(bus);
-    // breath noise on the attack
-    const len = ctx.sampleRate * 0.15, nb = ctx.createBuffer(1, len, ctx.sampleRate), d = nb.getChannelData(0);
-    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len);
-    const n = ctx.createBufferSource(), nf = ctx.createBiquadFilter(), ng = ctx.createGain();
-    n.buffer = nb; nf.type = 'bandpass'; nf.frequency.value = f * 3; ng.gain.value = 0.02;
-    n.connect(nf); nf.connect(ng); ng.connect(bus);
-    [o, h].forEach(x => { x.start(t); x.stop(t + dur + 0.25); }); n.start(t);
-  }
-  function tabla(bol, t) {
-    const ring = (f, v, decay) => {                // dayan: tuned ringing head
-      [[1, 1], [2, 0.35], [3, 0.15]].forEach(([m, k]) => {
-        const o = ctx.createOscillator(), g = ctx.createGain();
-        o.frequency.value = f * m;
-        g.gain.setValueAtTime(v * k, t); g.gain.exponentialRampToValueAtTime(0.0001, t + decay / m);
-        o.connect(g); g.connect(bus); o.start(t); o.stop(t + decay + 0.05);
-      });
-    };
-    const ghe = v => {                             // bayan: bass with the palm's pitch bend
-      const o = ctx.createOscillator(), g = ctx.createGain();
-      o.frequency.setValueAtTime(80, t); o.frequency.linearRampToValueAtTime(105, t + 0.18);
-      g.gain.setValueAtTime(v, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.45);
-      o.connect(g); g.connect(bus); o.start(t); o.stop(t + 0.5);
-    };
-    if (bol === 'Dha') { ghe(0.28); ring(SA, 0.09, 0.35); }
-    if (bol === 'Dhi') { ghe(0.18); ring(SA, 0.06, 0.6); }
-    if (bol === 'Na') ring(SA * 2, 0.07, 0.25);
-    if (bol === 'Tu') ring(SA, 0.09, 0.7);
-    if (bol === 'ti') ring(SA * 2, 0.03, 0.12);
-  }
-  function schedule() {
-    while (next < ctx.currentTime + 0.5) {
-      const s = step % 6, cycle = Math.floor(step / 6), t = next;
-      tabla(THEKA[s], t);
-      if (cycle % 4 === 3 && (s === 2 || s === 5)) tabla('ti', t + M / 2);   // small fill every 4th cycle
-      if (s === 0) harmonium(PROG[cycle % PROG.length], t, M * 6);
-      if (step >= 12) {                            // flute joins after two cycles
-        const tok = TUNE[(step - 12) % TUNE.length];
-        if (tok !== '-') {
-          let len = 1; while (TUNE[(step - 12 + len) % TUNE.length] === '-') len++;
-          const f = freq(tok); flute(f, prev, t, M * len); prev = f;
-        }
-      }
-      next += M; step++;
-    }
-  }
-  function unlockIOS() {   // iPhone silent switch: route audio through the media channel
-    const rate = 8000, n = rate / 2, buf = new ArrayBuffer(44 + n), v = new DataView(buf);
-    const w = (o, str) => [...str].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
-    w(0, 'RIFF'); v.setUint32(4, 36 + n, true); w(8, 'WAVEfmt '); v.setUint32(16, 16, true);
-    v.setUint16(20, 1, true); v.setUint16(22, 1, true); v.setUint32(24, rate, true); v.setUint32(28, rate, true);
-    v.setUint16(32, 1, true); v.setUint16(34, 8, true); w(36, 'data'); v.setUint32(40, n, true);
-    for (let i = 0; i < n; i++) v.setUint8(44 + i, 128);
-    const el = new Audio(URL.createObjectURL(new Blob([buf], { type: 'audio/wav' })));
-    el.loop = true; el.setAttribute('playsinline', ''); el.play().catch(() => {});
-  }
+  // The couple's song (../music.mp3), looped; starts on the envelope tap with a short fade-in.
+  // A plain <audio> element plays on the media channel, so the iPhone silent switch doesn't mute it.
+  const el = new Audio('../music.mp3');
+  el.loop = true; el.preload = 'auto'; el.setAttribute('playsinline', '');
+  let playing = false, fade;
   function start() {
-    if (ctx) return resume();
-    unlockIOS();
-    ctx = new (window.AudioContext || window.webkitAudioContext)();
-    if (ctx.state !== 'running') ctx.resume();
-    const blip = ctx.createBufferSource(); blip.buffer = ctx.createBuffer(1, 1, 22050); blip.connect(ctx.destination); blip.start(0);
-    const revive = () => { if (playing && ctx.state !== 'running') ctx.resume(); };
-    document.addEventListener('touchend', revive); document.addEventListener('click', revive);
-    master = ctx.createGain(); master.connect(ctx.destination);
-    master.gain.setValueAtTime(0, ctx.currentTime); master.gain.linearRampToValueAtTime(0.7, ctx.currentTime + 2);
-    bus = ctx.createGain(); bus.connect(master);
-    const verb = ctx.createConvolver(), wet = ctx.createGain();  // room reverb
-    verb.buffer = impulse(2.0, 3); wet.gain.value = 0.3; bus.connect(verb); verb.connect(wet); wet.connect(master);
-    drone();
-    next = ctx.currentTime + 0.2; schedule(); setInterval(schedule, 100);
+    el.volume = 0; el.play().catch(() => {});
+    clearInterval(fade);
+    fade = setInterval(() => { el.volume = Math.min(1, el.volume + 0.05); if (el.volume >= 1) clearInterval(fade); }, 75);
     playing = true;
   }
-  function resume() { ctx.resume(); playing = true; }
-  function pause() { if (ctx) ctx.suspend(); playing = false; }
-  function state() { return ctx ? ctx.state + ' @ ' + ctx.sampleRate + 'Hz, t=' + ctx.currentTime.toFixed(1) + 's' : 'not started'; }
+  function pause() { clearInterval(fade); el.pause(); playing = false; }
+  function state() { return (playing ? 'playing' : 'paused') + ' @ ' + el.currentTime.toFixed(1) + 's, readyState=' + el.readyState; }
   return { start, state, toggle: () => (playing ? pause() : start(), playing), get playing() { return playing; } };
 })();
 
