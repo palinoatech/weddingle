@@ -373,6 +373,12 @@ footer{padding-bottom:84px}
   .chips-lead{transform:rotate(-2deg);transform-origin:center}
   .chips{justify-content:center}
 }
+
+/* Image logo (header + footer) */
+.logo-img{display:inline-block;line-height:0}
+.logo-img img{height:52px;width:auto;display:block}
+footer .logo-img img{height:40px;margin:0 auto 8px}
+@media (max-width:420px){.logo-img img{height:42px}}
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
@@ -381,7 +387,7 @@ footer{padding-bottom:84px}
 <header class="hero"><span class="pop-deco d1"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6z"/></svg></span><span class="pop-deco d2"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6z"/></svg></span>
   <div class="wrap">
     <nav class="nav">
-      <a class="logo" href="/">Invitashion</a>
+      <a class="logo logo-img" href="/"><img src="logo.png" alt="Invitashion" width="560" height="174"></a>
       <a class="ig" href="https://www.instagram.com/invitashion.online/" target="_blank" rel="noopener">Instagram ↗</a>
     </nav>
     <div class="hero-grid">
@@ -691,7 +697,7 @@ footer{padding-bottom:84px}
 </a>
 
 <footer>
-  <div class="logo">Invitashion</div>
+  <div class="logo logo-img"><img src="logo-light.png" alt="Invitashion" width="560" height="174"></div>
   <div>Digital invitations · Bengaluru · © 2026</div>
 </footer>
 
