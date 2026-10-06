@@ -279,6 +279,9 @@ h2,.row h3,.occ-card h4,.hero h1{font-weight:400}
 (function(){
   var s=document.getElementById('screen'),f=s.querySelector('iframe');
   function fit(){var k=s.clientWidth/375;f.style.transform='scale('+k+')';f.style.height=(s.clientHeight/k)+'px';}
+  // Hide the demo's scrollbar so the full 375px phone width shows (same-origin iframe)
+  function noBar(){try{var st=f.contentDocument.createElement('style');st.textContent='html{scrollbar-width:none}::-webkit-scrollbar{display:none}';f.contentDocument.head.appendChild(st);}catch(e){}}
+  f.addEventListener('load',noBar);noBar();
   fit();addEventListener('resize',fit);
 })();
 // Reveal on scroll
