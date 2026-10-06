@@ -155,8 +155,8 @@ h2{color:var(--ink)}
   background-image:none}
 .hero .logo,.logo{font-family:'Caveat';font-weight:700;font-size:38px;color:var(--pink)}
 .nav a.ig{color:var(--ink);font-weight:800}
-.hero h1{font-size:clamp(44px,9vw,76px);line-height:1;color:var(--ink)}
-.hero h1 em{font-family:'Caveat';font-weight:700;color:var(--pink);display:inline-block;transform:rotate(-4deg);position:relative;font-size:1.25em}
+.hero h1{font-size:clamp(32px,7.6vw,54px);line-height:1.05;color:var(--ink)}
+.hero h1 em{font-family:'Caveat';font-weight:700;color:var(--pink);display:inline-block;transform:rotate(-4deg);position:relative;font-size:1.2em}
 .hero h1 em::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:12px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12'%3E%3Cpath d='M2 8 Q 15 0 30 7 T 60 7 T 90 7 T 118 6' fill='none' stroke='%2300B3A4' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}
 .hero p.sub{color:var(--muted);font-weight:500;font-size:clamp(17px,4.4vw,24px);line-height:1.5;margin-top:26px}
 .hero p.sub{font-family:'Fredoka',sans-serif;font-weight:400}.hero p.sub b{font-weight:600;color:var(--pink)}
@@ -326,6 +326,41 @@ footer .logo{color:var(--sun)}
 @keyframes cta-nudge{0%,88%,100%{transform:none}90%{transform:rotate(-5deg) scale(1.05)}92%{transform:rotate(5deg) scale(1.05)}94%{transform:rotate(-3deg)}96%{transform:rotate(2deg)}}
 footer{padding-bottom:84px}
 @media (prefers-reduced-motion:reduce){.sticky-cta{animation:none}}
+
+/* Hero points as sticky notes */
+.notes{list-style:none;display:flex;gap:14px;margin:30px 0 30px;padding:0;max-width:540px}
+.note{position:relative;flex:1 1 0;min-width:0;padding:20px 12px 14px;font:500 clamp(14px,3.8vw,17px)/1.3 'Fredoka',sans-serif;color:var(--ink);
+  border:2.5px solid var(--ink);border-radius:6px 6px 16px 6px;box-shadow:4px 4px 0 var(--ink);transition:transform .25s}
+.note b{font-weight:600;color:var(--pink)}
+.note .ico{display:block;font-size:22px;line-height:1;margin-bottom:6px}
+.note::before{content:'';position:absolute;top:-11px;left:50%;width:48px;height:18px;transform:translateX(-50%) rotate(-4deg);
+  background:rgba(255,255,255,.75);border:1.5px solid rgba(36,22,74,.25);border-radius:2px}
+.note:nth-child(1){background:#FFF3C4;transform:rotate(-3deg)}
+.note:nth-child(2){background:#D9F7F3;transform:rotate(2deg) translateY(6px)}
+.note:nth-child(3){background:#E7E1F6;transform:rotate(-1.5deg)}
+.note:hover{transform:rotate(0) scale(1.05)}
+@media (max-width:420px){.notes{gap:10px}.note{padding:18px 8px 12px}}
+@media (prefers-reduced-motion:reduce){.note{transition:none}}
+
+/* Hero points as chat bubbles (overrides the sticky-note look) */
+.notes{flex-direction:column;align-items:flex-start;gap:16px;margin:28px 0 32px}
+.note{flex:none;display:inline-flex;align-items:center;gap:9px;padding:10px 18px 10px 14px;border-radius:22px 22px 22px 6px;
+  font-size:clamp(15px,3.9vw,18px);box-shadow:3px 3px 0 var(--ink);animation:bub-in .45s cubic-bezier(.3,1.5,.6,1) backwards}
+.note .ico{display:inline;font-size:19px;margin:0}
+.note::before{top:auto;bottom:-8px;left:16px;width:13px;height:13px;transform:rotate(45deg);background:inherit;border:none;
+  border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);border-radius:0 0 3px 0}
+.note:nth-child(1){background:#32127A;color:#fff;transform:none;animation-delay:.3s}
+.note:nth-child(1) b{color:#FFD23F}
+.note:nth-child(2){background:#D9F7F3;transform:translateX(52px);animation-delay:.9s}
+.note:nth-child(3){background:#FFF3C4;transform:translateX(10px);animation-delay:1.5s}
+.note:hover{transform:scale(1.04)}
+.note:nth-child(2):hover{transform:translateX(52px) scale(1.04)}.note:nth-child(3):hover{transform:translateX(10px) scale(1.04)}
+@keyframes bub-in{from{opacity:0;scale:.6;translate:0 10px}to{opacity:1;scale:1;translate:0 0}}
+@media (max-width:420px){.note{padding:9px 14px 9px 12px}}
+@media (prefers-reduced-motion:reduce){.note{animation:none}}
+
+.chips-lead{font:700 24px/1 'Caveat',cursive;color:var(--pink);margin:0 0 -14px;transform:rotate(-2deg);transform-origin:left}
+.chips-lead::after{content:' ↓';font-family:'Fredoka',sans-serif;font-size:18px}
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
@@ -339,15 +374,12 @@ footer{padding-bottom:84px}
     </nav>
     <div class="hero-grid">
       <div>
-        <h1>Invites that your guests <em>love</em></h1>
-        <p class="sub">Send an <b>interactive</b> invite.<br>No boring PDFs.<br>No separate hunting for the venue.</p>
-        <div class="ctas">
-          <a class="btn btn-wa" href="https://wa.me/918095622944?text=Hi%20Invitashion!%20I%27d%20like%20a%20digital%20invite." target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
-            Chat on WhatsApp
-          </a>
-          <a class="btn btn-ghost" href="/goa-beach/" target="_blank" rel="noopener">See a live demo</a>
-        </div>
+        <h1>Interactive invites that your guests <em>love</em></h1>
+        <ul class="notes">
+          <li class="note"><span class="ico" aria-hidden="true">📄</span><span>No boring PDFs</span></li>
+          <li class="note"><span class="ico" aria-hidden="true">📍</span><span>No hunting on Maps for the venue</span></li>
+        </ul>
+        <p class="chips-lead">Get invitations with</p>
         <div class="chips"><span>Music</span><span>Maps</span><span>Countdown</span><span>Calendar</span><span>Photos</span></div>
       </div>
       <div class="phone-col">
@@ -614,7 +646,7 @@ footer{padding-bottom:84px}
     <div class="wrap">
       <div class="center reveal">
         <div class="kicker">How it works</div>
-        <h2>Ready in a few days</h2>
+        <h2>Ready in hours, not days</h2>
         <div class="orn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 5.8L20 10l-5.8 2.2L12 18l-2.2-5.8L4 10l5.8-2.2z"/></svg></div>
       </div>
       <div class="steps reveal">
