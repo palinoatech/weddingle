@@ -361,6 +361,18 @@ footer{padding-bottom:84px}
 
 .chips-lead{font:700 24px/1 'Caveat',cursive;color:var(--pink);margin:0 0 -14px;transform:rotate(-2deg);transform-origin:left}
 .chips-lead::after{content:' ↓';font-family:'Fredoka',sans-serif;font-size:18px}
+
+/* hero spacing + centred mobile layout */
+.chips-lead{margin-top:46px}
+@media (max-width:759px){
+  .hero-grid > div:first-child{text-align:center}
+  .notes{align-items:center}
+  .note:nth-child(1){transform:translateX(-22px)}
+  .note:nth-child(2){transform:translateX(22px)}
+  .note:nth-child(1):hover{transform:translateX(-22px) scale(1.04)}.note:nth-child(2):hover{transform:translateX(22px) scale(1.04)}
+  .chips-lead{transform:rotate(-2deg);transform-origin:center}
+  .chips{justify-content:center}
+}
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
@@ -374,7 +386,7 @@ footer{padding-bottom:84px}
     </nav>
     <div class="hero-grid">
       <div>
-        <h1>Interactive invites that your guests <em>love</em></h1>
+        <h1>Interactive invites<br>that your guests <em>love</em></h1>
         <ul class="notes">
           <li class="note"><span class="ico" aria-hidden="true">📄</span><span>No boring PDFs</span></li>
           <li class="note"><span class="ico" aria-hidden="true">📍</span><span>No hunting on Maps for the venue</span></li>
