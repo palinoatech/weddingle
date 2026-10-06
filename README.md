@@ -1,6 +1,6 @@
 # Weddingle — digital wedding invitations
 
-Published with GitHub Pages: https://palinoatech.github.io/weddingle/
+Published with GitHub Pages: https://invitashion.online/
 
 - `goa-beach/` — Goa sunset beach invitation (demo couple: Isha & Aarav, 1 Nov 2026)
 
