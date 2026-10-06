@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Invitashion — Digital Invites, Shared on WhatsApp</title>
-<meta name="description" content="Beautiful digital invitations for weddings, housewarmings, naming ceremonies and birthdays. Music, maps, countdown and calendar — all in one WhatsApp link. Made in Bengaluru.">
+<meta name="description" content="Beautiful digital invitations for weddings, engagements, baby showers, birthdays, housewarmings and any joyful event. Music, maps, countdown and calendar — all in one WhatsApp link. Made in Bengaluru.">
 <!-- WhatsApp / social link preview -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Invitashion — Invites that are in fashion">
@@ -200,13 +200,19 @@ h2{color:var(--ink)}
 .occ{background:var(--purple);background-image:none}
 .occ h2{color:#fff}.occ .lead{color:#E9DDF7}.occ .kicker{color:var(--sun)}
 .occ-card{border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);border-radius:22px;transition:transform .25s}
-.occ-card:nth-child(1){background:#E7E1F6;transform:rotate(-2deg)}
-.occ-card:nth-child(2){background:#D9F7F3;transform:rotate(1.5deg)}
-.occ-card:nth-child(3){background:#FFF3C4;transform:rotate(-1deg)}
-.occ-card:nth-child(4){background:#FFE4D1;transform:rotate(2deg)}
-.occ-card:hover{transform:rotate(0) scale(1.04)}
-.occ-card .ico{font-size:42px}
-.occ-card p{font-weight:500}
+.occ-card:nth-child(4n+1){background:#E7E1F6;transform:rotate(-2deg)}
+.occ-card:nth-child(4n+2){background:#D9F7F3;transform:rotate(1.5deg)}
+.occ-card:nth-child(4n+3){background:#FFF3C4;transform:rotate(-1deg)}
+.occ-card:nth-child(4n+4){background:#FFE4D1;transform:rotate(2deg)}
+.occ-card:hover{transform:rotate(0) scale(1.06)}
+.occ-grid{grid-template-columns:repeat(3,1fr);gap:12px}
+.occ-card{padding:14px 6px 12px;border-width:2.5px;box-shadow:4px 4px 0 var(--ink);border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.occ-card .ico{font-size:26px}
+.occ-card h4{font-size:15px;margin-top:6px;line-height:1.15}
+.occ-card p{font-weight:500;font-size:11.5px;margin-top:2px;line-height:1.3}
+.occ-card.occ-any{grid-column:1/-1;flex-direction:row;gap:10px;background:#32127A;color:#fff;transform:rotate(-1deg)}
+.occ-any h4{color:#fff;margin-top:0}.occ-any p{color:#E7E1F6;margin:0}
+@media (min-width:760px){.occ-card.occ-any{grid-column:auto;flex-direction:column;gap:0}.occ-any h4{margin-top:6px}.occ-grid{grid-template-columns:repeat(5,1fr);gap:16px}.occ-card{padding:18px 8px 14px}.occ-card .ico{font-size:30px}.occ-card h4{font-size:17px}}
 
 /* steps */
 .step{border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);border-radius:22px}
@@ -254,6 +260,60 @@ footer .logo{color:var(--sun)}
 @keyframes m-sway{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
 @keyframes m-float{0%{transform:translate(0,0);opacity:0}15%{opacity:1}80%{opacity:.9}100%{transform:translate(12px,-58px) rotate(10deg);opacity:0}}
 @media (prefers-reduced-motion:reduce){.m-heada,.m-bow,.m-b,.m-stickl,.m-stickr,.m-c,.m-note{animation:none}.m-note{opacity:1}}
+
+/* Maps tile: auto-rickshaw to the venue */
+.m-pin{animation:m-drop 6s ease-out infinite}
+.m-auto{animation:m-rattle .25s linear infinite alternate}
+.m-spark{opacity:0;transform-origin:346px 104px;animation:m-arrive 6s ease-out infinite}
+@keyframes m-drop{0%{transform:translateY(-70px);opacity:0}8%{transform:translateY(0);opacity:1}12%{transform:translateY(-12px)}16%{transform:translateY(0)}72%{transform:translateY(0)}76%{transform:translateY(-8px)}80%,100%{transform:translateY(0);opacity:1}}
+@keyframes m-rattle{from{translate:0 0}to{translate:0 -1.5px}}
+@keyframes m-arrive{0%,74%{opacity:0;transform:scale(.6)}80%{opacity:1;transform:scale(1.1)}92%{opacity:1;transform:scale(1)}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.m-pin,.m-auto,.m-spark{animation:none}}
+
+/* Calendar tile: tear-off countdown */
+.c-p3,.c-p2,.c-p1{transform-origin:280px 108px}
+.c-p3{animation:c-tear3 8s ease-in infinite}
+.c-p2{animation:c-tear2 8s ease-in infinite}
+.c-p1{animation:c-tear1 8s ease-in infinite}
+@keyframes c-tear3{0%,14%{transform:none;opacity:1}22%{transform:rotate(24deg) translate(40px,60px);opacity:0}99.9%{opacity:0}100%{transform:none;opacity:1}}
+@keyframes c-tear2{0%,30%{transform:none;opacity:1}38%{transform:rotate(-20deg) translate(-30px,70px);opacity:0}99.9%{opacity:0}100%{transform:none;opacity:1}}
+@keyframes c-tear1{0%,46%{transform:none;opacity:1}54%{transform:rotate(22deg) translate(40px,70px);opacity:0}99.9%{opacity:0}100%{transform:none;opacity:1}}
+.c-heart{transform-origin:200px 190px;animation:c-beat 8s ease-in-out infinite}
+@keyframes c-beat{0%,54%{transform:scale(.6)}60%{transform:scale(1.12)}64%{transform:scale(.95)}68%{transform:scale(1.08)}72%,100%{transform:scale(1)}}
+.c-bit{opacity:0;transform-box:fill-box;transform-origin:center;animation:c-burst 8s ease-out infinite}
+@keyframes c-burst{0%,54%{transform:translate(0,0);opacity:0}56%{opacity:1}72%{transform:translate(var(--dx),var(--dy)) rotate(160deg);opacity:1}82%,100%{transform:translate(var(--dx),calc(var(--dy) + 30px)) rotate(220deg);opacity:0}}
+.c-clock{transform-origin:345px 230px;animation:c-shake 8s linear infinite}
+@keyframes c-shake{0%,56%{transform:none}58%{transform:rotate(-9deg)}60%{transform:rotate(9deg)}62%{transform:rotate(-9deg)}64%{transform:rotate(9deg)}66%{transform:rotate(-6deg)}68%{transform:rotate(6deg)}70%,100%{transform:none}}
+.c-ring{opacity:0;animation:c-ringfx 8s linear infinite}
+@keyframes c-ringfx{0%,56%{opacity:0}58%,68%{opacity:1}70%,100%{opacity:0}}
+.c-pill{transform-origin:74px 139px;animation:c-pop 8s ease-out infinite}
+@keyframes c-pop{0%,70%{transform:scale(0);opacity:0}76%{transform:scale(1.12);opacity:1}80%,94%{transform:scale(1);opacity:1}100%{transform:scale(1);opacity:0}}
+
+/* WhatsApp tile: link shared in the family group */
+.w-plane{animation:w-fly 8s ease-in-out infinite}
+@keyframes w-fly{0%{transform:translate(-30px,20px);opacity:0}4%{opacity:1}16%{transform:translate(50px,-40px) scale(.8);opacity:1}20%,100%{transform:translate(70px,-52px) scale(.5);opacity:0}}
+.w-trail{opacity:0;animation:w-trailfx 8s linear infinite}
+@keyframes w-trailfx{0%,3%{opacity:0}8%,16%{opacity:.8}22%,100%{opacity:0}}
+.w-b1,.w-b2,.w-b3,.w-b4{opacity:0}
+.w-b1{animation:w-in1 8s ease-out infinite}
+.w-b2{transform-origin:272px 208px;animation:w-in2 8s ease-out infinite}
+.w-b3{animation:w-in3 8s ease-out infinite}
+.w-b4{animation:w-in4 8s ease-out infinite}
+@keyframes w-in1{0%,2%{opacity:0;transform:translateY(8px)}6%,94%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes w-in2{0%,20%{opacity:0;transform:translateY(14px) scale(.9)}26%,94%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes w-in3{0%,50%{opacity:0;transform:translateY(8px)}55%,94%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes w-in4{0%,62%{opacity:0;transform:translateY(8px)}67%,94%{opacity:1;transform:none}100%{opacity:0}}
+.w-grey{stroke:#8A9AA0}
+.w-blue{stroke:#34B7F1;opacity:0;animation:w-read 8s linear infinite}
+@keyframes w-read{0%,40%{opacity:0}42%,94%{opacity:1}100%{opacity:0}}
+.w-h{opacity:0;animation:w-heart 8s ease-out infinite}
+.h2{animation-delay:.25s}.h3{animation-delay:.5s}
+@keyframes w-heart{0%,56%{transform:translateY(0) scale(.4);opacity:0}60%{opacity:1;transform:translateY(-6px) scale(1.1)}84%{transform:translateY(-46px) scale(1);opacity:.9}90%,100%{transform:translateY(-56px);opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  .c-p3,.c-p2,.c-p1,.c-bit,.c-clock,.c-ring,.c-pill,.w-plane,.w-trail,.w-h{animation:none}
+  .c-p3,.c-p2,.c-p1,.c-bit,.c-ring,.w-plane,.w-trail,.w-h{opacity:0}.c-heart{animation:none}.c-pill{opacity:1}
+  .w-b1,.w-b2,.w-b3,.w-b4,.w-blue{animation:none;opacity:1}
+}
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
@@ -367,7 +427,51 @@ footer .logo{color:var(--sun)}
           </div>
         </div>
         <div class="row reveal">
-          <div class="art a2"><svg class="big" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M12 22s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <div class="art a2"><svg class="scene" viewBox="0 0 420 290" role="img" aria-label="An auto-rickshaw driving along a winding road to the wedding venue, with a map pin dropping on it">
+<g stroke="#24164A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+  <!-- scenery -->
+  <g transform="translate(40 120)"><rect x="0" y="0" width="44" height="34" fill="#FFF8EC"/><path d="M-6 2L22 -22L50 2Z" fill="#FF7A1A"/><rect x="16" y="14" width="12" height="20" fill="#FFD23F"/></g>
+  <g transform="translate(108 92)"><rect x="0" y="0" width="34" height="28" fill="#FFF8EC"/><path d="M-5 2L17 -18L39 2Z" fill="#32127A"/><rect x="11" y="12" width="12" height="16" fill="#FFD23F"/></g>
+  <g transform="translate(26 210) scale(1)"><path d="M0 0V-16" fill="none" stroke-width="4"/><circle cx="0" cy="-26" r="13" fill="#2FA35B"/></g><g transform="translate(160 160) scale(0.85)"><path d="M0 0V-16" fill="none" stroke-width="4"/><circle cx="0" cy="-26" r="13" fill="#2FA35B"/></g><g transform="translate(250 270) scale(0.9)"><path d="M0 0V-16" fill="none" stroke-width="4"/><circle cx="0" cy="-26" r="13" fill="#2FA35B"/></g><g transform="translate(400 250) scale(1)"><path d="M0 0V-16" fill="none" stroke-width="4"/><circle cx="0" cy="-26" r="13" fill="#2FA35B"/></g><g transform="translate(232 150) scale(0.7)"><path d="M0 0V-16" fill="none" stroke-width="4"/><circle cx="0" cy="-26" r="13" fill="#2FA35B"/></g>
+
+  <!-- road -->
+  <path d="M18 262C110 266 96 204 186 204S250 184 292 184" fill="none" stroke-width="32"/>
+  <path d="M18 262C110 266 96 204 186 204S250 184 292 184" fill="none" stroke="#FFF8EC" stroke-width="25"/>
+  <path id="m-road" d="M18 262C110 266 96 204 186 204S250 184 292 184" fill="none" stroke-width="2.5" stroke-dasharray="10 10"/>
+
+  <!-- mandap (venue) -->
+  <g class="m-venue">
+    <path d="M286 176Q278 140 292 120Q300 150 296 176Z" fill="#2FA35B"/><path d="M406 176Q414 140 400 120Q392 150 396 176Z" fill="#2FA35B"/>
+    <rect x="296" y="166" width="100" height="12" rx="3" fill="#FFF8EC"/>
+    <rect x="304" y="120" width="9" height="46" fill="#FFD23F"/><rect x="379" y="120" width="9" height="46" fill="#FFD23F"/>
+    <path d="M292 124Q346 80 400 124Z" fill="#FF7A1A"/>
+    <circle cx="346" cy="92" r="5" fill="#FFD23F"/>
+    <path d="M310 130Q346 154 382 130" fill="none" stroke="#FFD23F" stroke-width="5" stroke-dasharray=".5 7"/>
+  </g>
+  <g class="m-spark" fill="#FFF8EC" stroke="none">
+    <path d="M290 96l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/><path d="M404 92l2.4 6 6 2.4-6 2.4-2.4 6-2.4-6-6-2.4 6-2.4z"/>
+  </g>
+
+  <!-- map pin -->
+  <g class="m-pin">
+    <path d="M346 78C331 60 326 52 326 42A20 20 0 1 1 366 42C366 52 361 60 346 78Z" fill="#32127A"/>
+    <circle cx="346" cy="42" r="7.5" fill="#FFF8EC"/>
+  </g>
+
+  <!-- auto-rickshaw, driven along the road -->
+  <g>
+    <animateMotion dur="6s" repeatCount="indefinite" rotate="auto" calcMode="linear" keyPoints="0;1;1" keyTimes="0;.75;1"><mpath href="#m-road"/></animateMotion>
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;.05;.93;1"/>
+    <g class="m-auto" transform="translate(0 -4)">
+      <path d="M-22 -14L22 -14Q27 -8 25 -1L-22 -1Z" fill="#24164A"/>
+      <path d="M-20 -14Q-20 -34 -2 -34L8 -34Q20 -33 21 -14Z" fill="#FFD23F"/>
+      <path d="M11 -29L18 -16L11 -16Z" fill="#BFEFFF" stroke-width="2"/>
+      <circle cx="25" cy="-7" r="2.5" fill="#FFD23F" stroke-width="1.5"/>
+      <circle cx="-13" cy="0" r="5.5" fill="#24164A"/><circle cx="-13" cy="0" r="2" fill="#FFF8EC" stroke="none"/>
+      <circle cx="16" cy="0" r="5.5" fill="#24164A"/><circle cx="16" cy="0" r="2" fill="#FFF8EC" stroke="none"/>
+    </g>
+  </g>
+</g></svg></div>
           <div>
             <div class="num">02</div>
             <h3>No more “where is the venue?” calls</h3>
@@ -375,15 +479,93 @@ footer .logo{color:var(--sun)}
           </div>
         </div>
         <div class="row reveal">
-          <div class="art a3"><svg class="big" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/><path d="M8.5 14.5l2.3 2.3 4.7-4.6"/></svg></div>
+          <div class="art a3"><svg class="scene" viewBox="0 0 420 290" role="img" aria-label="A tear-off calendar counting down 3, 2, 1 to the wedding day, with an alarm clock ringing and the date added to the calendar">
+<g stroke="#24164A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+  <!-- calendar -->
+  <rect x="114" y="66" width="172" height="192" rx="12" fill="#24164A" transform="translate(6 6)"/>
+  <rect x="114" y="66" width="172" height="192" rx="12" fill="#FFF8EC"/>
+  <path d="M114 106V78A12 12 0 0 1 126 66H274A12 12 0 0 1 286 78V106Z" fill="#32127A"/>
+  <text x="200" y="96" text-anchor="middle" font-size="22" fill="#FFF8EC" stroke="none" letter-spacing="3" font-family="'Baloo 2',sans-serif" font-weight="800">NOVEMBER</text>
+  <g fill="#FFD23F"><rect x="140" y="56" width="10" height="20" rx="5"/><rect x="175" y="56" width="10" height="20" rx="5"/><rect x="215" y="56" width="10" height="20" rx="5"/><rect x="250" y="56" width="10" height="20" rx="5"/></g>
+  <!-- the big day (bottom page) -->
+  <g>
+    <rect x="120" y="108" width="160" height="142" rx="6" fill="#FFF8EC" stroke="none"/>
+    <g class="c-heart"><path d="M200 214S166 194 166 170A17 17 0 0 1 200 162A17 17 0 0 1 234 170C234 194 200 214 200 214Z" fill="#FF7A1A"/></g>
+    <text x="200" y="240" text-anchor="middle" font-size="17" fill="#24164A" stroke="none" font-family="Nunito,sans-serif" font-weight="800">It's today!</text>
+  </g>
+  <g class="c-p1"><rect x="120" y="108" width="160" height="142" rx="6" fill="#FFF8EC"/><text x="200" y="208" text-anchor="middle" font-size="86" fill="#24164A" stroke="none" font-family="'Baloo 2',sans-serif" font-weight="800">1</text><text x="200" y="236" text-anchor="middle" font-size="15" fill="#4F4570" stroke="none" font-family="Nunito,sans-serif" font-weight="800">days to go</text></g><g class="c-p2"><rect x="120" y="108" width="160" height="142" rx="6" fill="#FFF8EC"/><text x="200" y="208" text-anchor="middle" font-size="86" fill="#24164A" stroke="none" font-family="'Baloo 2',sans-serif" font-weight="800">2</text><text x="200" y="236" text-anchor="middle" font-size="15" fill="#4F4570" stroke="none" font-family="Nunito,sans-serif" font-weight="800">days to go</text></g><g class="c-p3"><rect x="120" y="108" width="160" height="142" rx="6" fill="#FFF8EC"/><text x="200" y="208" text-anchor="middle" font-size="86" fill="#24164A" stroke="none" font-family="'Baloo 2',sans-serif" font-weight="800">3</text><text x="200" y="236" text-anchor="middle" font-size="15" fill="#4F4570" stroke="none" font-family="Nunito,sans-serif" font-weight="800">days to go</text></g>
+  <g class="c-bit" style="--dx:-110px;--dy:-70px;animation-delay:0.00s" fill="#FFD23F" stroke-width="2"><circle cx="200" cy="170" r="5"/></g><g class="c-bit" style="--dx:-80px;--dy:-110px;animation-delay:0.03s" fill="#00B3A4" stroke-width="2"><rect x="196" y="164" width="9" height="12" rx="2"/></g><g class="c-bit" style="--dx:-20px;--dy:-125px;animation-delay:0.06s" fill="#FF7A1A" stroke-width="2"><circle cx="200" cy="170" r="5"/></g><g class="c-bit" style="--dx:40px;--dy:-120px;animation-delay:0.09s" fill="#FFF8EC" stroke-width="2"><rect x="196" y="164" width="9" height="12" rx="2"/></g><g class="c-bit" style="--dx:100px;--dy:-95px;animation-delay:0.12s" fill="#FFD23F" stroke-width="2"><rect x="196" y="164" width="9" height="12" rx="2"/></g><g class="c-bit" style="--dx:120px;--dy:-40px;animation-delay:0.15s" fill="#00B3A4" stroke-width="2"><circle cx="200" cy="170" r="5"/></g><g class="c-bit" style="--dx:-125px;--dy:-20px;animation-delay:0.18s" fill="#FF7A1A" stroke-width="2"><rect x="196" y="164" width="9" height="12" rx="2"/></g><g class="c-bit" style="--dx:80px;--dy:-130px;animation-delay:0.21s" fill="#00B3A4" stroke-width="2"><circle cx="200" cy="170" r="5"/></g>
+
+  <!-- alarm clock -->
+  <g class="c-clock">
+    <path d="M318 222L308 240M372 222L382 240" fill="none" stroke-width="5"/>
+    <circle cx="322" cy="152" r="13" fill="#FFD23F"/><circle cx="368" cy="152" r="13" fill="#FFD23F"/>
+    <circle cx="345" cy="190" r="40" fill="#FF7A1A"/><circle cx="345" cy="190" r="30" fill="#FFF8EC"/>
+    <path d="M345 190V170M345 190L358 198" fill="none" stroke-width="4"/>
+    <circle cx="345" cy="190" r="3.5" fill="#24164A"/>
+  </g>
+  <g class="c-ring" fill="none" stroke="#FFF8EC" stroke-width="3"><path d="M300 140q-8 -8 -4 -20M392 140q8 -8 4 -20"/></g>
+
+  <!-- added to calendar -->
+  <g class="c-pill">
+    <rect x="14" y="120" width="120" height="38" rx="19" fill="#00B3A4"/>
+    <circle cx="36" cy="139" r="11" fill="#FFF8EC"/><path d="M30 139l4.5 4.5L42 135" fill="none" stroke-width="3"/>
+    <text x="54" y="145" font-size="15" fill="#FFF8EC" stroke="none" font-family="Nunito,sans-serif" font-weight="800">Added!</text>
+  </g>
+</g></svg></div>
           <div>
             <div class="num">03</div>
             <h3>Countdown &amp; calendar reminders</h3>
-            <p>A live countdown builds excitement, and “Add to Calendar” makes sure nobody forgets the muhurtham.</p>
+            <p>A live countdown builds excitement, and “Add to Calendar” makes sure nobody forgets the big day.</p>
           </div>
         </div>
         <div class="row reveal">
-          <div class="art a4"><svg class="big" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="6.5" y="2" width="11" height="20" rx="2.2"/><path d="M10.5 18.5h3"/></svg></div>
+          <div class="art a4"><svg class="scene" viewBox="0 0 420 290" role="img" aria-label="An invitation link shared in a WhatsApp family group, showing a photo preview card, blue ticks and happy replies">
+<g stroke="#24164A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+  <!-- paper plane -->
+  <g class="w-plane"><path d="M40 210L104 186L76 226L70 206Z" fill="#FFF8EC"/><path d="M70 206L104 186" fill="none" stroke-width="2"/></g>
+  <path class="w-trail" d="M24 238Q60 236 66 222" fill="none" stroke="#FFF8EC" stroke-width="2.5" stroke-dasharray="4 7"/>
+
+  <!-- phone -->
+  <rect x="146" y="10" width="140" height="270" rx="22" fill="#24164A" transform="translate(6 6)"/>
+  <rect x="146" y="10" width="140" height="270" rx="22" fill="#24164A"/>
+  <rect x="154" y="22" width="124" height="246" rx="13" fill="#EFE7DC" stroke="none"/>
+  <path d="M154 54V35A13 13 0 0 1 167 22H265A13 13 0 0 1 278 35V54Z" fill="#075E54" stroke="none"/>
+  <circle cx="172" cy="38" r="8" fill="#FFD23F" stroke-width="1.5"/>
+  <text x="186" y="36" font-size="10" fill="#fff" stroke="none" font-family="Nunito,sans-serif" font-weight="800">Family Group</text>
+  <text x="186" y="47" font-size="7" fill="#CDE7E2" stroke="none" font-family="Nunito,sans-serif">Mom, Dad, +48</text>
+
+  <!-- incoming: "Big news!!" -->
+  <g class="w-b1"><rect x="160" y="62" width="70" height="20" rx="7" fill="#fff" stroke-width="1.5"/>
+    <text x="167" y="76" font-size="9" fill="#24164A" stroke="none" font-family="Nunito,sans-serif" font-weight="800">Big news!! 🎉</text></g>
+
+  <!-- outgoing: link preview card -->
+  <g class="w-b2">
+    <rect x="186" y="90" width="86" height="118" rx="8" fill="#DCF8C6" stroke-width="1.5"/>
+    <rect x="191" y="95" width="76" height="50" rx="5" fill="#1F6F7A" stroke="none"/>
+    <circle cx="229" cy="117" r="13" fill="#E58C6E" stroke="#F7EBDD" stroke-width="1.5"/>
+    <text x="229" y="121" text-anchor="middle" font-size="9" fill="#F7EBDD" stroke="none" font-family="Georgia,serif" font-style="italic">I &amp; A</text>
+    <path d="M191 140h76" stroke="#F8C79B" stroke-width="3"/>
+    <text x="192" y="158" font-size="7.6" fill="#24164A" stroke="none" font-family="Nunito,sans-serif" font-weight="800">Isha &amp; Aarav are</text>
+    <text x="192" y="168" font-size="7.6" fill="#24164A" stroke="none" font-family="Nunito,sans-serif" font-weight="800">getting married 💍</text>
+    <text x="192" y="181" font-size="6.4" fill="#4F4570" stroke="none" font-family="Nunito,sans-serif">Tap to open your invite</text>
+    <text x="192" y="192" font-size="6.4" fill="#128C7E" stroke="none" font-family="Nunito,sans-serif" font-weight="700">invitashion.online</text>
+    <g class="w-grey" fill="none" stroke-width="2"><path d="M232 199l3 3 6-6M237 199l3 3 6-6"/></g><g class="w-blue" fill="none" stroke-width="2"><path d="M232 199l3 3 6-6M237 199l3 3 6-6"/></g>
+  </g>
+
+  <!-- incoming replies -->
+  <g class="w-b3"><rect x="160" y="216" width="78" height="20" rx="7" fill="#fff" stroke-width="1.5"/>
+    <text x="167" y="230" font-size="9" fill="#24164A" stroke="none" font-family="Nunito,sans-serif" font-weight="800">So pretty!! 😍</text></g>
+  <g class="w-b4"><rect x="160" y="242" width="76" height="20" rx="7" fill="#fff" stroke-width="1.5"/>
+    <text x="167" y="256" font-size="9" fill="#24164A" stroke="none" font-family="Nunito,sans-serif" font-weight="800">Will be there!</text></g>
+
+  <!-- hearts -->
+  <g fill="#32127A" stroke="#FFF8EC" stroke-width="2">
+    <g transform="translate(318 200)"><path class="w-h h1" d="M0 10S-12 3-12-4A6 6 0 0 1 0-7A6 6 0 0 1 12-4C12 3 0 10 0 10Z"/></g>
+    <g transform="translate(350 170)"><path class="w-h h2" d="M0 10S-12 3-12-4A6 6 0 0 1 0-7A6 6 0 0 1 12-4C12 3 0 10 0 10Z" fill="#FFD23F"/></g>
+    <g transform="translate(330 120)"><path class="w-h h3" d="M0 10S-12 3-12-4A6 6 0 0 1 0-7A6 6 0 0 1 12-4C12 3 0 10 0 10Z"/></g>
+  </g>
+</g></svg></div>
           <div>
             <div class="num">04</div>
             <h3>One link, a beautiful WhatsApp preview</h3>
@@ -402,10 +584,16 @@ footer .logo{color:var(--sun)}
         <p class="lead">Every invite is designed for your occasion, your colours and your language.</p>
       </div>
       <div class="occ-grid reveal">
-        <div class="occ-card"><div class="ico">💍</div><h4>Weddings &amp; Receptions</h4><p>Muhurtham, sangeet, reception</p></div>
-        <div class="occ-card"><div class="ico">🏡</div><h4>Housewarming</h4><p>Gruhapravesha</p></div>
-        <div class="occ-card"><div class="ico">👶</div><h4>Naming Ceremony</h4><p>Namakarana, cradle ceremony</p></div>
-        <div class="occ-card"><div class="ico">🎂</div><h4>Birthdays</h4><p>1st birthdays &amp; milestones</p></div>
+        <div class="occ-card"><div class="ico" aria-hidden="true">💍</div><h4>Engagement</h4></div>
+        <div class="occ-card"><div class="ico" aria-hidden="true">💒</div><h4>Wedding</h4></div>
+        <div class="occ-card"><div class="ico" aria-hidden="true">🥂</div><h4>Reception</h4></div>
+        <div class="occ-card"><div class="ico" aria-hidden="true">🤰</div><h4>Baby Shower</h4></div>
+        <div class="occ-card"><div class="ico" aria-hidden="true">🎀</div><h4>Gender Reveal</h4></div>
+        <div class="occ-card"><div class="ico" aria-hidden="true">👶</div><h4>Naming Ceremony</h4></div>
+        <div class="occ-card"><div class="ico" aria-hidden="true">🎂</div><h4>Birthdays</h4><p>1st &amp; milestones</p></div>
+        <div class="occ-card"><div class="ico" aria-hidden="true">🏡</div><h4>Housewarming</h4></div>
+        <div class="occ-card"><div class="ico" aria-hidden="true">💐</div><h4>Anniversary</h4></div>
+        <div class="occ-card occ-any"><div class="ico" aria-hidden="true">🎉</div><h4>Any joyful event</h4><p>You name it, we invite</p></div>
       </div>
     </div>
   </section>
@@ -456,6 +644,9 @@ footer .logo{color:var(--sun)}
   f.addEventListener('load',noBar);noBar();
   fit();addEventListener('resize',fit);
 })();
+// Reduced motion: freeze the SMIL animations (the auto-rickshaw) mid-route
+if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)
+  document.querySelectorAll('svg.scene').forEach(function(s){ if (s.pauseAnimations) { s.setCurrentTime(2.5); s.pauseAnimations(); } });
 // Reveal on scroll
 (function(){
   var els=document.querySelectorAll('.reveal');

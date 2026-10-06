@@ -425,7 +425,9 @@ footer small{display:block;margin-top:22px;font-size:12px;letter-spacing:2px;tex
    trimmed of edge silence. Starts only after the guest taps "Open Invitation". */
 const Music = (() => {
   let ctx, master, src, buffer, playing = false;
-  const file = fetch('isha-aarav-music.mp3').then(r => r.arrayBuffer()); // download early, decode after the tap
+  const load = () => fetch('isha-aarav-music.mp3').then(r => r.arrayBuffer());
+  // Download early so it's ready at the tap, except inside the homepage preview frame (load on tap there)
+  let file = window.self === window.top ? load() : null;
 
   // iPhones mute Web Audio when the ringer switch is on silent; playing a looping
   // silent <audio> element on the tap moves sound to the media channel instead.
@@ -469,7 +471,7 @@ const Music = (() => {
     master = ctx.createGain(); master.connect(ctx.destination);
     master.gain.setValueAtTime(0, ctx.currentTime);
     playing = true;
-    file.then(decode).then(buf => {
+    (file = file || load()).then(decode).then(buf => {
       buffer = buf;
       const [s, e] = edges(buf);
       src = ctx.createBufferSource(); src.buffer = buf;
