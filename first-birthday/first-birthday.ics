@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Aarya First Birthday//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:aarya-first-birthday-20270220@invitashion.online
+DTSTAMP:20261007T000000Z
+DTSTART:20270220T130000Z
+DTEND:20270220T160000Z
+SUMMARY:Aarya's 1st Birthday Party
+LOCATION:The Balloon Loft\, 24th Main Road\, JP Nagar 2nd Phase\, Bengaluru
+DESCRIPTION:Cake\, games and dinner. Invitation: https://invitashion.online/first-birthday/
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Aarya's 1st birthday party tomorrow at 6:30 PM
+END:VALARM
+END:VEVENT
+END:VCALENDAR
