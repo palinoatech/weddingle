@@ -166,12 +166,12 @@ h2{color:var(--ink)}
 .btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
 .btn-wa{background:#25D366;color:var(--ink)}
 .hero .btn-ghost,.btn-ghost{background:#fff;color:var(--ink);border-color:var(--ink)}
-.chips span{border:2px solid var(--ink);color:var(--ink);font-weight:800;background:#fff}
-.chips span:nth-child(1){background:var(--pink);color:#fff;transform:rotate(-3deg)}
-.chips span:nth-child(2){background:var(--teal);color:#fff;transform:rotate(2deg)}
-.chips span:nth-child(3){background:#fff;transform:rotate(-1deg)}
-.chips span:nth-child(4){background:var(--purple);color:#fff;transform:rotate(3deg)}
-.chips span:nth-child(5){background:var(--brand);color:#fff;transform:rotate(-2deg)}
+.chips span{border:1.5px solid rgba(36,22,74,.18);color:var(--ink);font-weight:800;background:#fff;box-shadow:none}
+.chips span:nth-child(1){background:#ECE4FA;transform:rotate(-3deg)}
+.chips span:nth-child(2){background:#D9F2EF;transform:rotate(2deg)}
+.chips span:nth-child(3){background:#FFF3D6;transform:rotate(-1deg)}
+.chips span:nth-child(4){background:#FBE6EF;transform:rotate(3deg)}
+.chips span:nth-child(5){background:#E3EBFA;transform:rotate(-2deg)}
 .pop-deco{position:absolute;pointer-events:none;color:var(--pink)}
 .pop-deco svg{width:100%;height:100%}
 .d1{width:34px;height:34px;top:120px;left:46%;color:var(--teal);animation:spin 9s linear infinite}
@@ -408,7 +408,8 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
 .hero .notes{align-items:center;margin-left:auto;margin-right:auto}
 .hero .chips{justify-content:center}
 .chips-lead{transform-origin:center}
-.hero-cta{margin-top:30px}
+.hero-cta{margin-top:44px}
+.cta-note{margin-top:12px;font:700 14px 'Nunito',sans-serif;color:var(--muted)}
 @media (min-width:760px){.d1{top:auto;bottom:30%;left:auto;right:9%}}
 /* "View Designs" band */
 .dz{background:linear-gradient(120deg,#ECE4FA 0%,#E6E9FA 50%,#D9F2EF 100%);padding:64px 0;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
@@ -451,6 +452,7 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
         <p class="chips-lead">Get invitations with</p>
         <div class="chips"><span>Music</span><span>Maps</span><span>Countdown</span><span>Calendar</span><span>Photos</span></div>
         <a class="btn-designs hero-cta" href="/designs/">View Designs <span aria-hidden="true">→</span></a>
+        <p class="cta-note">Live designs to pick the one you love</p>
       </div>
     </div>
   </div>
