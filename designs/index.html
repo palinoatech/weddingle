@@ -52,25 +52,26 @@ h1{font-family:'Baloo 2',sans-serif;font-weight:800;letter-spacing:-.5px;font-si
 .chips a:hover{transform:translate(-1px,-1px)}
 .chips a.on{background:var(--brand);color:#fff}
 @media (max-width:480px){.chips .wrap{justify-content:flex-start}}
-/* Category sections */
-.cat{padding:40px 0 30px}
-.cat-head{display:flex;align-items:center;gap:14px;margin-bottom:24px}
-.cat-ico{font-size:30px;line-height:1;width:58px;height:58px;flex:none;display:grid;place-items:center;border:2.5px solid var(--ink);border-radius:18px;box-shadow:3px 3px 0 var(--ink);transform:rotate(-4deg)}
-.cat:nth-of-type(3n+1) .cat-ico{background:#E7E1F6}.cat:nth-of-type(3n+2) .cat-ico{background:#D9F7F3}.cat:nth-of-type(3n+3) .cat-ico{background:#E1E6FA}
+/* Category sections: full-width tinted bands with a scalloped top edge */
+.cat{--band:#F1EBFC;position:relative;background:var(--band);padding:44px 0 52px;margin-top:14px}
+.cat::before{content:'';position:absolute;left:0;right:0;top:-14px;height:14px;background:radial-gradient(circle at 14px 14px,var(--band) 13.5px,transparent 14px) repeat-x;background-size:28px 28px}
+#weddings{--band:#F1EBFC}#baby-shower{--band:#E3F5F1}#birthdays{--band:#FBEAF1}#housewarming{--band:#E7EEFB}#festivals{--band:#F6EFE1}
+.cat-head{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.cat-ico{font-size:30px;line-height:1;width:58px;height:58px;flex:none;display:grid;place-items:center;background:#fff;border:2.5px solid var(--ink);border-radius:18px;box-shadow:3px 3px 0 var(--ink);transform:rotate(-4deg)}
 .cat h2{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(26px,5vw,34px);line-height:1.1;letter-spacing:-.3px}
 .cat-head p{color:var(--muted);font-size:15px}
-/* Design cards: each design shown on a phone */
-.tpl-grid{display:grid;grid-template-columns:1fr;gap:40px 26px}
-@media (min-width:560px){.tpl-grid{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:900px){.tpl-grid{grid-template-columns:repeat(3,1fr)}}
-.tpl{display:flex;flex-direction:column;align-items:center;text-align:center}
-.tpl-phone{display:block;position:relative;width:min(240px,72%);aspect-ratio:360/740;padding:8px;background:var(--ink);border-radius:34px;box-shadow:7px 7px 0 rgba(36,22,74,.22);transform:rotate(-2deg);transition:transform .25s}
+/* Design cards: a white panel holding the phone, name and button; rows are centred */
+.tpl-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:28px}
+.tpl{flex:0 1 300px;display:flex;flex-direction:column;align-items:center;text-align:center;background:#fff;border:2px solid rgba(36,22,74,.12);border-radius:28px;
+  padding:26px 18px 22px;box-shadow:0 10px 26px rgba(36,22,74,.08)}
+@media (max-width:559px){.tpl{flex-basis:100%;max-width:360px}}
+.tpl-phone{display:block;position:relative;width:min(220px,74%);aspect-ratio:360/740;padding:8px;background:var(--ink);border-radius:34px;box-shadow:7px 7px 0 rgba(36,22,74,.18);transform:rotate(-2deg);transition:transform .25s}
 .tpl:nth-child(even) .tpl-phone{transform:rotate(2deg)}
 .tpl-phone:hover,.tpl:nth-child(even) .tpl-phone:hover{transform:rotate(0) translateY(-6px)}
 .tpl-phone::before{content:'';position:absolute;top:14px;left:50%;width:30%;height:12px;margin-left:-15%;background:var(--ink);border-radius:999px;z-index:1}
 .tpl-phone img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;border-radius:26px;background:#E7E1F6}
-.tpl-body{padding-top:20px;display:flex;flex-direction:column;align-items:center;flex:1;width:100%;max-width:330px}
-.tpl h3{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;line-height:1.2}
+.tpl-body{padding-top:20px;display:flex;flex-direction:column;align-items:center;flex:1;width:100%}
+.tpl h3{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:21px;line-height:1.2}
 .tpl p{font-size:14.5px;color:var(--muted);margin-top:4px;flex:1}
 .tpl-actions{display:flex;margin-top:14px;width:100%;max-width:240px}
 .tpl-actions a{flex:1;text-align:center;text-decoration:none;font:600 15px 'Fredoka',sans-serif;padding:10px 12px;border:2.5px solid var(--ink);border-radius:999px;box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
@@ -79,23 +80,12 @@ h1{font-family:'Baloo 2',sans-serif;font-weight:800;letter-spacing:-.5px;font-si
   font:600 15px 'Fredoka',sans-serif;color:var(--ink);background:#fff;padding:9px 18px;border:2.5px solid var(--ink);border-radius:999px;box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
 .tpl-phone:hover .tpl-view{transform:translateX(-50%) translateY(-2px);box-shadow:4px 5px 0 var(--ink)}
 .tpl-pick{background:var(--brand);color:#fff}
-.tpl-ask{text-decoration:none;align-self:start}
-.tpl-ask .tpl-phone{background:transparent;border:3px dashed var(--ink);box-shadow:none;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px 16px}
-.tpl-ask .tpl-phone::before{display:none}
-.tpl-ask .plus{font:800 34px/1 'Baloo 2',sans-serif;width:56px;height:56px;display:grid;place-items:center;border:2.5px solid var(--ink);border-radius:50%;background:var(--brand);color:#fff;margin-bottom:12px}
-.tpl-ask h3{font-size:20px}
-.tpl-ask p{flex:none;font-size:14px}
-.ask-cta{margin-top:12px;font:600 15px 'Fredoka',sans-serif;color:var(--pink)}
-@media (max-width:559px){.tpl-ask .tpl-phone{aspect-ratio:auto;width:100%;max-width:330px;border-radius:22px;transform:none}}
-/* When the "different look" card starts a new row on its own (3-column grid), show it as a short full-width strip */
-@media (min-width:900px){
-  .tpl-ask:nth-child(3n+1){grid-column:1/-1;align-self:stretch}
-  .tpl-ask:nth-child(3n+1) .tpl-phone{aspect-ratio:auto;width:100%;max-width:none;border-radius:22px;transform:none;flex-direction:row;flex-wrap:wrap;gap:6px 16px;padding:18px 24px}
-  .tpl-ask:nth-child(3n+1) .plus{width:44px;height:44px;font-size:28px;margin:0}
-  .tpl-ask:nth-child(3n+1) .ask-cta{margin:0}
-}
+/* One slim "different look" line per section */
+.ask-line{text-align:center;margin-top:26px;font-size:15px;color:var(--muted);font-weight:600}
+.ask-line a{color:var(--pink);font-weight:800;text-decoration:none;border-bottom:2px solid rgba(50,18,122,.3)}
+.ask-line a:hover{border-bottom-color:var(--pink)}
 /* Closing note */
-.more{text-align:center;padding:30px 0 70px}
+.more{text-align:center;padding:44px 16px 70px}
 .more h2{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px}
 .more p{color:var(--muted);margin-top:4px}
 .more a{color:var(--pink);font-weight:800}
@@ -113,7 +103,7 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
 .ft-made a{color:#FFD23F;font-weight:800;text-decoration:none;border-bottom:2px solid rgba(255,210,63,.4)}
 .ft-copy{font-size:12.5px;color:#9F95BD;margin-top:6px}
 @media (max-width:420px){.logo-img img{height:42px}.nav-links{gap:12px}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tpl,.tpl-actions a,.chips a,.sticky-cta{transition:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tpl,.tpl-actions a,.chips a,.sticky-cta,.tpl-phone{transition:none}}
 </style>
 </head>
 <body>
@@ -136,8 +126,7 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
 <nav class="chips" id="chips" aria-label="Design categories"><div class="wrap"><a href="#weddings"><span aria-hidden="true">💍</span> Weddings</a><a href="#baby-shower"><span aria-hidden="true">🍼</span> Baby</a><a href="#birthdays"><span aria-hidden="true">🎂</span> Birthdays</a><a href="#housewarming"><span aria-hidden="true">🏡</span> Housewarming</a><a href="#festivals"><span aria-hidden="true">🪔</span> Festivals</a></div></nav>
 
 <main>
-  <div class="wrap">
-    <section class="cat" id="weddings">
+    <section class="cat" id="weddings"><div class="wrap">
       <div class="cat-head"><span class="cat-ico" aria-hidden="true">💍</span><div><h2>Weddings</h2><p>Engagements, weddings and receptions</p></div></div>
       <div class="tpl-grid">
         <article class="tpl">
@@ -180,17 +169,10 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
             </div>
           </div>
         </article>
-        <a class="tpl tpl-ask" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20a%20custom%20wedding%20invite%20design." target="_blank" rel="noopener">
-          <span class="tpl-phone">
-            <span class="plus" aria-hidden="true">+</span>
-            <h3>Want a different look?</h3>
-            <p>Tell us your theme and colours. We'll design a new wedding invite just for you.</p>
-            <span class="ask-cta">Ask on WhatsApp →</span>
-          </span>
-        </a>
       </div>
-    </section>
-    <section class="cat" id="baby-shower">
+      <p class="ask-line">Want a different look? <a href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20a%20custom%20wedding%20invite%20design." target="_blank" rel="noopener">Tell us your theme and we'll design a new wedding invite →</a></p>
+    </div></section>
+    <section class="cat" id="baby-shower"><div class="wrap">
       <div class="cat-head"><span class="cat-ico" aria-hidden="true">🍼</span><div><h2>Baby Celebrations</h2><p>Baby showers, gender reveals and naming ceremonies</p></div></div>
       <div class="tpl-grid">
         <article class="tpl">
@@ -213,17 +195,10 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
             </div>
           </div>
         </article>
-        <a class="tpl tpl-ask" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20a%20custom%20baby%20celebration%20invite%20design." target="_blank" rel="noopener">
-          <span class="tpl-phone">
-            <span class="plus" aria-hidden="true">+</span>
-            <h3>Want a different look?</h3>
-            <p>Tell us your theme and colours. We'll design a new baby celebration invite just for you.</p>
-            <span class="ask-cta">Ask on WhatsApp →</span>
-          </span>
-        </a>
       </div>
-    </section>
-    <section class="cat" id="birthdays">
+      <p class="ask-line">Want a different look? <a href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20a%20custom%20baby%20celebration%20invite%20design." target="_blank" rel="noopener">Tell us your theme and we'll design a new baby celebration invite →</a></p>
+    </div></section>
+    <section class="cat" id="birthdays"><div class="wrap">
       <div class="cat-head"><span class="cat-ico" aria-hidden="true">🎂</span><div><h2>Birthdays</h2><p>First birthdays, kids' parties and milestone celebrations</p></div></div>
       <div class="tpl-grid">
         <article class="tpl">
@@ -236,17 +211,10 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
             </div>
           </div>
         </article>
-        <a class="tpl tpl-ask" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20a%20custom%20birthday%20invite%20design." target="_blank" rel="noopener">
-          <span class="tpl-phone">
-            <span class="plus" aria-hidden="true">+</span>
-            <h3>Want a different look?</h3>
-            <p>Tell us your theme and colours. We'll design a new birthday invite just for you.</p>
-            <span class="ask-cta">Ask on WhatsApp →</span>
-          </span>
-        </a>
       </div>
-    </section>
-    <section class="cat" id="housewarming">
+      <p class="ask-line">Want a different look? <a href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20a%20custom%20birthday%20invite%20design." target="_blank" rel="noopener">Tell us your theme and we'll design a new birthday invite →</a></p>
+    </div></section>
+    <section class="cat" id="housewarming"><div class="wrap">
       <div class="cat-head"><span class="cat-ico" aria-hidden="true">🏡</span><div><h2>Housewarming</h2><p>New homes, griha pravesh and moving-in parties</p></div></div>
       <div class="tpl-grid">
         <article class="tpl">
@@ -259,17 +227,10 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
             </div>
           </div>
         </article>
-        <a class="tpl tpl-ask" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20a%20custom%20housewarming%20invite%20design." target="_blank" rel="noopener">
-          <span class="tpl-phone">
-            <span class="plus" aria-hidden="true">+</span>
-            <h3>Want a different look?</h3>
-            <p>Tell us your theme and colours. We'll design a new housewarming invite just for you.</p>
-            <span class="ask-cta">Ask on WhatsApp →</span>
-          </span>
-        </a>
       </div>
-    </section>
-    <section class="cat" id="festivals">
+      <p class="ask-line">Want a different look? <a href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20a%20custom%20housewarming%20invite%20design." target="_blank" rel="noopener">Tell us your theme and we'll design a new housewarming invite →</a></p>
+    </div></section>
+    <section class="cat" id="festivals"><div class="wrap">
       <div class="cat-head"><span class="cat-ico" aria-hidden="true">🪔</span><div><h2>Festivals</h2><p>Navratri, Diwali, Eid, Christmas and more</p></div></div>
       <div class="tpl-grid">
         <article class="tpl">
@@ -282,21 +243,13 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
             </div>
           </div>
         </article>
-        <a class="tpl tpl-ask" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20a%20custom%20festival%20invite%20design." target="_blank" rel="noopener">
-          <span class="tpl-phone">
-            <span class="plus" aria-hidden="true">+</span>
-            <h3>Want a different look?</h3>
-            <p>Tell us your theme and colours. We'll design a new festival invite just for you.</p>
-            <span class="ask-cta">Ask on WhatsApp →</span>
-          </span>
-        </a>
       </div>
-    </section>
-    <div class="more">
+      <p class="ask-line">Want a different look? <a href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20a%20custom%20festival%20invite%20design." target="_blank" rel="noopener">Tell us your theme and we'll design a new festival invite →</a></p>
+    </div></section>
+    <div class="wrap more">
       <h2>Celebrating something else?</h2>
       <p>Anniversaries, retirements, graduations and more. <a href="https://ig.me/m/invitashion.online" target="_blank" rel="noopener">Tell us your idea</a> and we'll design it from scratch.</p>
     </div>
-  </div>
 </main>
 
 <a class="sticky-cta" href="https://ig.me/m/invitashion.online" target="_blank" rel="noopener" aria-label="Get yours now: message us on Instagram">
