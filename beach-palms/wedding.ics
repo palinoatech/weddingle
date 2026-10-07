@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Diya and Kabir//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:diya-kabir-wedding-20261206@invitashion.online
+DTSTAMP:20261007T000000Z
+DTSTART:20261206T110000Z
+DTEND:20261206T180000Z
+SUMMARY:Diya & Kabir's Wedding
+LOCATION:Palm Cove Beach Resort\, Palolem Beach Road\, Canacona\, South Goa
+DESCRIPTION:Invitation: https://invitashion.online/beach-palms/
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Diya & Kabir's wedding tomorrow at 4:30 PM
+END:VALARM
+END:VEVENT
+END:VCALENDAR

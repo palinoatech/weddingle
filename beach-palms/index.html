@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Diya &amp; Kabir — A Beach Wedding in Goa</title>
+<meta name="description" content="Diya and Kabir invite you to their beach wedding on Sunday, 6 December 2026 at Palm Cove, South Goa.">
+<!-- WhatsApp / social link preview -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Invitashion">
+<meta property="og:title" content="Diya &amp; Kabir are getting married 🌴">
+<meta property="og:description" content="A beach wedding · Sun, 6 Dec 2026 · South Goa. Tap to open your invitation.">
+<meta property="og:url" content="https://invitashion.online/beach-palms/">
+<meta property="og:image" content="https://invitashion.online/beach-palms/og.jpg">
+<meta property="og:image:secure_url" content="https://invitashion.online/beach-palms/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0E6E8C">
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Great+Vibes&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#0F3A47;--sea:#0E6E8C;--aqua:#2FB3C9;--sand:#F6E9D3;--sand-2:#EAD3AE;--coral:#F08A6C;--cream:#FFFBF4;--muted:#557178}
+html{scroll-behavior:smooth}
+html,body{max-width:100%;overflow-x:hidden}
+@supports (overflow:clip){html,body{overflow-x:clip}}
+body{font-family:'Poppins',sans-serif;color:var(--ink);background:var(--sand);line-height:1.6}
+body.locked{overflow:hidden}
+[hidden]{display:none!important}
+.no-js .gate,.no-js .music{display:none!important}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+section{padding:64px 0;text-align:center;position:relative}
+.kick{font:500 11px 'Poppins';letter-spacing:4px;text-transform:uppercase;color:var(--sea)}
+h2{font:600 clamp(32px,8.5vw,44px)/1.1 'Cormorant Garamond';color:var(--ink);margin:6px 0 10px}
+.lead{font:italic 500 19px/1.45 'Cormorant Garamond';color:var(--muted);max-width:520px;margin:0 auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font:500 12px 'Poppins';letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;cursor:pointer;
+  color:#fff;background:var(--sea);border:0;padding:12px 20px;border-radius:999px;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--sea);border:1.5px solid var(--sea)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ===== Gate: the photo, blurred, with an invitation card ===== */
+.gate{position:fixed;inset:0;z-index:50;display:grid;place-items:center;transition:opacity .9s ease .5s}
+.gate .bg{position:absolute;inset:-30px;background:url(beach.jpg) 28% 50%/cover;filter:blur(14px) saturate(1.1);transform:scale(1.08);transition:filter 1.2s ease,transform 1.4s ease}
+.gate::after{content:'';position:absolute;inset:0;background:rgba(8,45,70,.25)}
+.gate.open{opacity:0;pointer-events:none}
+.gate.open .bg{filter:blur(0);transform:scale(1)}
+.gate.gone{display:none}
+.gcard{position:relative;z-index:2;width:min(320px,86vw);text-align:center;color:#fff;padding:34px 22px 28px;border-radius:26px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 20px 50px rgba(0,30,60,.3);
+  transition:opacity .5s,transform .7s}
+.gate.open .gcard{opacity:0;transform:translateY(-20px) scale(.96)}
+.gcard small{font:500 10.5px 'Poppins';letter-spacing:4px;text-transform:uppercase}
+.gcard h1{font:400 56px/1 'Great Vibes',cursive;margin:12px 0 4px;text-shadow:0 2px 14px rgba(0,30,60,.35)}
+.gcard p{font:italic 500 19px 'Cormorant Garamond'}
+.open-btn{margin-top:22px;font:500 12.5px 'Poppins';letter-spacing:2.5px;text-transform:uppercase;color:var(--ink);background:#fff;border:0;border-radius:999px;padding:14px 26px;cursor:pointer;
+  box-shadow:0 0 0 5px rgba(255,255,255,.25);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 11px rgba(255,255,255,.08)}}
+.gcard em{display:block;font:400 11.5px 'Poppins';font-style:normal;opacity:.85;margin-top:10px}
+
+/* ===== Hero: the photo fills the screen ===== */
+.hero{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;padding:0}
+.photo{position:absolute;inset:0;background:url(beach.jpg) 28% 50%/cover no-repeat}
+.in-view .photo{animation:kb 16s ease-out both}
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
+.hero::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(8,45,85,.4) 0%,rgba(8,45,85,.12) 34%,rgba(8,45,85,0) 50%,rgba(246,233,211,0) 80%,rgba(246,233,211,.7) 100%)}
+.glare{position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,240,.85),rgba(255,255,240,0) 65%);animation:glow 6s ease-in-out infinite;z-index:1;pointer-events:none}
+@keyframes glow{50%{opacity:.55;transform:scale(1.1)}}
+.sky{position:absolute;left:0;right:0;top:max(44px,7vh);z-index:3;text-align:left;padding:0 22px;color:#fff;text-shadow:0 2px 14px rgba(0,30,60,.45)}
+.sky>*{opacity:0}
+.in-view .sky>*{animation:up .9s forwards}
+.in-view .sky .k{animation-delay:.2s}.in-view .sky h1{animation-delay:.45s}.in-view .sky p{animation-delay:.8s}.in-view .sky .when{animation-delay:1.1s}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.sky .k{font:500 10.5px 'Poppins';letter-spacing:4px;text-transform:uppercase;color:#E6F7FF}
+.sky h1{font:400 clamp(50px,14vw,84px)/1 'Great Vibes',cursive;margin:10px 0 6px}
+.sky h1 span{display:block;font:italic 500 .32em 'Cormorant Garamond';color:#FFE7B8;margin:2px 0 2px 10px}
+.sky p{font:italic 500 20px/1.35 'Cormorant Garamond';max-width:230px}
+.sky .when{display:inline-block;margin-top:14px;font:500 12px 'Poppins';letter-spacing:2px;text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,.92);
+  padding:8px 14px;border-radius:999px;text-shadow:none}
+/* names traced into the sand, below the loungers */
+.sandtxt{position:absolute;left:50%;bottom:max(14px,2vh);width:320px;margin-left:-160px;z-index:2;text-align:center;
+  transform:perspective(380px) rotateX(42deg) rotate(-4deg);transform-origin:50% 100%;white-space:nowrap}
+.sandtxt span{display:inline-block;font:700 40px/1 'Caveat',cursive;color:rgba(125,92,52,.62);mix-blend-mode:multiply;
+  text-shadow:1.5px 2px 0 rgba(255,246,228,.75),-1px -1.5px 0 rgba(90,60,25,.35);clip-path:inset(-10% 100% -10% 0)}
+.in-view .sandtxt span{animation:write 1.6s ease-in-out forwards}
+.in-view .sandtxt .s1{animation-delay:1.6s}.in-view .sandtxt .s2{animation-delay:3.2s;animation-duration:.4s;margin:0 8px}.in-view .sandtxt .s3{animation-delay:3.6s}
+@keyframes write{to{clip-path:inset(-10% 0 -10% 0)}}
+.sandtxt svg{display:inline-block;vertical-align:middle;width:30px;margin-left:8px}
+.sandtxt svg path{stroke:rgba(125,92,52,.62);stroke-dasharray:70;stroke-dashoffset:70}
+.in-view .sandtxt svg path{animation:draw 1.2s 5.2s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hint{position:absolute;right:14px;top:52%;z-index:3;font:500 10px 'Poppins';letter-spacing:3px;text-transform:uppercase;color:#fff;writing-mode:vertical-rl;opacity:0;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+.in-view .hint{animation:fadein .8s 6.4s forwards}
+@keyframes fadein{to{opacity:1}}
+@media (min-width:700px){.photo{background-position:50% 100%}.sky p{max-width:none}}
+
+/* wave divider */
+.wave{display:block;width:100%;height:40px;margin-bottom:-1px}
+
+/* ===== Brush away the sand to find the date ===== */
+.find{background:linear-gradient(180deg,var(--sand),#F1DFC2)}
+.dig{position:relative;width:min(320px,86vw);aspect-ratio:4/3;margin:24px auto 0;border-radius:22px;overflow:hidden;box-shadow:inset 0 2px 10px rgba(90,60,25,.25),0 10px 24px rgba(90,60,25,.15);
+  background:radial-gradient(ellipse at 50% 60%,#E9D2AA,#D9BB8A);user-select:none;-webkit-user-select:none}
+.plaque{position:absolute;inset:14% 9%;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 3px,transparent 3px 9px),linear-gradient(180deg,#A47450,#7E5434);
+  box-shadow:inset 0 0 0 3px rgba(255,236,205,.25),0 6px 14px rgba(60,35,15,.35);color:#FFF3DC}
+.plaque small{font:500 10px 'Poppins';letter-spacing:3px;text-transform:uppercase;opacity:.85}
+.plaque b{display:block;font:600 34px/1.05 'Cormorant Garamond';margin:4px 0;letter-spacing:1px}
+.plaque span{font:italic 500 16px 'Cormorant Garamond';opacity:.95}
+.plaque .shell{position:absolute;font-size:20px}
+.plaque .sh1{left:-8px;top:-10px;transform:rotate(-20deg)}.plaque .sh2{right:-8px;bottom:-10px;transform:rotate(20deg)}
+.dig canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab;transition:opacity .9s ease}
+.dig.done canvas{opacity:0;pointer-events:none}
+.dig .hand{position:absolute;left:30%;top:58%;width:28px;height:28px;margin:-14px;border-radius:50%;background:rgba(255,255,255,.55);border:2px solid #fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.25);opacity:0;pointer-events:none}
+.dig.hinting .hand{animation:brush 1.8s ease-in-out infinite}
+@keyframes brush{0%{opacity:1;transform:translate(0,0)}15%{opacity:1}50%{transform:translate(110px,-12px)}85%{opacity:1;transform:translate(10px,6px)}100%{opacity:0;transform:translate(0,0)}}
+.dig-hint{margin-top:12px;font:500 13px 'Poppins';color:var(--muted)}
+.dig-skip{background:none;border:0;font:500 12px 'Poppins';color:var(--sea);text-decoration:underline;cursor:pointer;margin-left:6px}
+.found .dig-hint{display:none}
+.shellpop{position:fixed;z-index:60;pointer-events:none;font-size:20px;animation:pop 1.3s cubic-bezier(.2,.6,.4,1) forwards}
+@keyframes pop{to{transform:translate(var(--dx),var(--dy)) rotate(var(--r));opacity:0}}
+.after{max-height:0;opacity:0;overflow:hidden;transition:max-height 1s ease,opacity .8s ease .3s}
+.found .after,.no-js .after{max-height:400px;opacity:1}
+.after h3{font:600 26px/1.2 'Cormorant Garamond';margin-top:26px}
+.count{display:flex;justify-content:center;gap:10px;margin-top:14px}
+.u{width:74px;padding:12px 4px 8px;border-radius:16px;background:rgba(255,255,255,.7);border:1px solid rgba(14,110,140,.18)}
+.u b{display:block;font:600 30px/1 'Cormorant Garamond';color:var(--sea)}
+.u small{font:500 10px 'Poppins';letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+@media (max-width:360px){.u{width:66px}.u b{font-size:26px}}
+.no-js .dig canvas,.no-js .dig-hint{display:none}
+
+/* ===== Note ===== */
+.note{background:var(--cream)}
+.note .sig{display:block;margin-top:12px;font:700 26px/1 'Caveat',cursive;color:var(--coral)}
+
+/* ===== Events: a shoreline timeline ===== */
+.events{background:linear-gradient(180deg,var(--cream),#EAF6F7)}
+.line{position:relative;max-width:520px;margin:30px auto 0;padding-left:30px;text-align:left}
+.line::before{content:'';position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:repeating-linear-gradient(var(--aqua) 0 6px,transparent 6px 12px)}
+.ev{position:relative;background:#fff;border-radius:20px;padding:18px 18px 16px;margin-bottom:18px;box-shadow:0 10px 26px rgba(15,58,71,.08)}
+.ev::before{content:'';position:absolute;left:-28px;top:20px;width:16px;height:16px;border-radius:50%;background:var(--sand);border:3px solid var(--aqua)}
+.ev .t{font:500 11px 'Poppins';letter-spacing:2px;text-transform:uppercase;color:var(--sea)}
+.ev h3{font:600 25px/1.15 'Cormorant Garamond';margin-top:2px}
+.ev p{font-size:14.5px;color:var(--muted);margin-top:4px}
+.ev .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ev .btns a{padding:9px 14px;font-size:11px}
+
+/* ===== Venue + dress code ===== */
+.venue{background:#EAF6F7}
+.vcard{max-width:520px;margin:26px auto 0;background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 12px 30px rgba(15,58,71,.1);text-align:left}
+.vcard .pic{height:150px;background:url(beach.jpg) 50% 72%/cover}
+.vcard .in{padding:18px}
+.vcard h3{font:600 26px/1.1 'Cormorant Garamond'}
+.vcard p{color:var(--muted);font-size:14.5px;margin-top:4px}
+.vcard .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tips{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:520px;margin:18px auto 0;text-align:left}
+.tip{background:rgba(255,255,255,.75);border-radius:16px;padding:14px}
+.tip b{display:block;font:600 19px 'Cormorant Garamond'}
+.tip span{font-size:13px;color:var(--muted)}
+.swatch i{display:inline-block;width:14px;height:14px;border-radius:50%;margin:6px 4px 0 0;border:1px solid rgba(0,0,0,.08)}
+
+/* ===== RSVP: a message in a bottle ===== */
+.rsvp{background:linear-gradient(180deg,#EAF6F7,var(--sand))}
+.rsvp form,.thanks{max-width:440px;margin:26px auto 0;background:#fff;border-radius:22px;padding:22px 20px;text-align:left;box-shadow:0 12px 30px rgba(15,58,71,.1)}
+.rsvp label{display:block;font:500 13px 'Poppins';margin:14px 0 6px;color:var(--ink)}
+.rsvp label:first-child{margin-top:0}
+.rsvp input[type=text],.rsvp select,.rsvp textarea{width:100%;font:400 16px 'Poppins';color:var(--ink);padding:11px 14px;border:1.5px solid #D7E8EA;border-radius:12px;background:#FAFDFD}
+.rsvp input[type=text]:focus,.rsvp select:focus,.rsvp textarea:focus{outline:none;border-color:var(--aqua)}
+.choice{display:flex;gap:10px}
+.choice label{flex:1;margin:0;cursor:pointer}
+.choice input{position:absolute;opacity:0}
+.choice span{display:block;text-align:center;padding:10px;border:1.5px solid #D7E8EA;border-radius:12px;font:500 14px 'Poppins'}
+.choice input:checked + span{background:var(--sea);border-color:var(--sea);color:#fff}
+.choice input:focus-visible + span{outline:2px dashed var(--sea);outline-offset:2px}
+.rsvp .btn{width:100%;margin-top:20px;padding:14px}
+.thanks{display:none;text-align:center}
+.thanks h3{font:600 28px/1.2 'Cormorant Garamond'}
+.thanks p{color:var(--muted);margin-top:6px}
+.bottle{display:none;position:relative;width:250px;margin:24px auto 6px;animation:sway 3s ease-in-out infinite}
+.bottle svg{display:block;width:100%;height:auto}
+.bottle .msg{position:absolute;left:62px;right:34px;top:42px;bottom:30px;display:flex;align-items:center;justify-content:center;text-align:center;
+  font:700 17px/1.2 'Caveat',cursive;color:#6A4A2A;overflow:hidden}
+@keyframes sway{50%{transform:rotate(-3deg) translateY(-4px)}}
+
+footer{background:var(--ink);color:#CFE6EA;text-align:center;padding:40px 18px 36px}
+footer .n{font:400 46px/1.1 'Great Vibes',cursive;color:#FFE7B8}
+footer p{margin-top:6px;font:italic 500 18px 'Cormorant Garamond'}
+footer small{display:block;margin-top:8px;color:var(--aqua);letter-spacing:2px}
+
+/* Music toggle */
+.music{position:fixed;right:16px;bottom:16px;z-index:40;width:52px;height:52px;border-radius:50%;border:0;background:var(--sea);box-shadow:0 8px 20px rgba(0,0,0,.25);
+  display:none;align-items:center;justify-content:center;gap:3px;cursor:pointer}
+.music.show{display:flex}
+.music i{display:block;width:4px;height:8px;border-radius:2px;background:#fff}
+.music.playing i{animation:eq 1s ease-in-out infinite}
+.music.playing i:nth-child(2){animation-delay:.15s}.music.playing i:nth-child(3){animation-delay:.3s}.music.playing i:nth-child(4){animation-delay:.45s}
+@keyframes eq{0%,100%{height:8px}50%{height:22px}}
+.music:not(.playing)::after{content:'';position:absolute;width:28px;height:2px;background:#fff;transform:rotate(-45deg)}
+
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .in-view .photo,.glare,.open-btn,.bottle{animation:none}
+  .sky>*,.sandtxt span,.sandtxt svg path,.hint{animation-duration:.01s!important;animation-delay:0s!important}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- GATE (a tap is needed before browsers allow audio) -->
+<div class="gate" id="gate">
+  <div class="bg"></div>
+  <div class="gcard">
+    <small>You're invited</small>
+    <h1>Diya &amp; Kabir</h1>
+    <p>are getting married by the sea</p>
+    <button class="open-btn" id="openBtn">Open Invitation &#9835;</button>
+    <em>Best enjoyed with sound on</em>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="photo" role="img" aria-label="Two leaning palms over a tropical beach"></div>
+  <div class="glare" aria-hidden="true"></div>
+  <div class="sky">
+    <div class="k">Together with their families</div>
+    <h1>Diya <span>&amp;</span> Kabir</h1>
+    <p>invite you to celebrate their wedding by the sea</p>
+  </div>
+  <div class="sandtxt" aria-hidden="true"><span class="s1">Diya</span><span class="s2">+</span><span class="s3">Kabir</span><svg viewBox="0 0 24 22"><path d="M12 20S2 13.5 2 7a5 5 0 0 1 10-1.5A5 5 0 0 1 22 7c0 6.5-10 13-10 13z" fill="none" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+  <div class="hint" aria-hidden="true">Scroll ↓</div>
+</header>
+
+<!-- FIND THE DATE: brush away the sand -->
+<section class="find" id="find">
+  <div class="wrap">
+    <div class="kick reveal">Save the date</div>
+    <h2 class="reveal">We've hidden it in the sand</h2>
+    <div class="dig reveal" id="dig">
+      <div class="plaque">
+        <span class="shell sh1" aria-hidden="true">🐚</span><span class="shell sh2" aria-hidden="true">🐚</span>
+        <small>Save the date</small>
+        <b>Sunday<br>6 · 12 · 2026</b>
+        <span>4:30 PM · South Goa</span>
+      </div>
+      <canvas id="sandCanvas" aria-label="Sand covering the wedding date. Rub to brush it away." role="img"></canvas>
+      <div class="hand" aria-hidden="true"></div>
+    </div>
+    <p class="dig-hint">Brush away the sand with your finger 🐚 <button class="dig-skip" id="digSkip" type="button">Just show me</button></p>
+    <div class="after">
+      <h3>Counting down to the big day</h3>
+      <div class="count" id="countdown">
+        <div class="u"><b id="cd-d">--</b><small>Days</small></div><div class="u"><b id="cd-h">--</b><small>Hours</small></div>
+        <div class="u"><b id="cd-m">--</b><small>Mins</small></div><div class="u"><b id="cd-s">--</b><small>Secs</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTE -->
+<section class="note">
+  <div class="wrap reveal">
+    <div class="kick">A note from us</div>
+    <h2>Barefoot &amp; happy</h2>
+    <p class="lead">We met on a beach, so it only felt right to marry on one. Come for the sunset, stay for the dancing, and leave your shoes at the door.</p>
+    <span class="sig">— Diya &amp; Kabir</span>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events" id="events">
+  <div class="wrap">
+    <div class="kick reveal">The celebrations</div>
+    <h2 class="reveal">Two days by the sea</h2>
+    <div class="line">
+      <div class="ev reveal"><div class="t">Sat · 5 Dec · 5:30 PM</div><h3>Sundowner welcome</h3><p>Cocktails, mocktails and a barefoot welcome as the sun sets.</p>
+        <div class="btns"><a class="btn ghost" data-cal="welcome" target="_blank" rel="noopener">Google Calendar</a></div></div>
+      <div class="ev reveal"><div class="t">Sun · 6 Dec · 4:30 PM</div><h3>The wedding</h3><p>Our vows under the palms, with the sea as our witness.</p>
+        <div class="btns"><a class="btn ghost" data-cal="wedding" target="_blank" rel="noopener">Google Calendar</a><a class="btn ghost" href="wedding.ics" download>Apple / Outlook</a></div></div>
+      <div class="ev reveal"><div class="t">Sun · 6 Dec · 8:00 PM</div><h3>Beach party</h3><p>Dinner, music and dancing on the sand, late into the night.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VENUE -->
+<section class="venue" id="venue">
+  <div class="wrap">
+    <div class="kick reveal">Where</div>
+    <h2 class="reveal">Palm Cove, South Goa</h2>
+    <div class="vcard reveal">
+      <div class="pic" role="img" aria-label="The beach"></div>
+      <div class="in">
+        <h3>Palm Cove Beach Resort</h3>
+        <p>Palolem Beach Road, Canacona, South Goa. About an hour from Goa airport.</p>
+        <div class="btns"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Palolem+Beach+Goa" target="_blank" rel="noopener">📍 Directions</a></div>
+      </div>
+    </div>
+    <div class="tips">
+      <div class="tip reveal"><b>Dress code</b><span>Breezy beach wear in pastels and whites. Leave the heels at home!</span><div class="swatch"><i style="background:#F6E9D3"></i><i style="background:#9ED8E0"></i><i style="background:#F7C5B4"></i><i style="background:#fff"></i></div></div>
+      <div class="tip reveal"><b>Good to know</b><span>Sunscreen and sunglasses recommended. Rooms are held for guests until 15 Nov.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="rsvp" id="rsvp">
+  <div class="wrap">
+    <div class="kick reveal">Will you join us?</div>
+    <h2 class="reveal">Send a message in a bottle</h2>
+    <p class="lead reveal">Kindly reply by 15 November.</p>
+    <form id="rsvpForm" class="reveal">
+      <label for="gName">Your name</label>
+      <input type="text" id="gName" required placeholder="Full name" autocomplete="name">
+      <label>Will you come?</label>
+      <div class="choice">
+        <label><input type="radio" name="attend" value="yes" checked><span>Yes, see you there!</span></label>
+        <label><input type="radio" name="attend" value="no"><span>Can't make it</span></label>
+      </div>
+      <label for="gCount">How many of you?</label>
+      <select id="gCount"><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+      <label for="gWish">A message for the couple</label>
+      <textarea id="gWish" rows="3" placeholder="Wishing you a lifetime of sunsets together…"></textarea>
+      <button class="btn" type="submit">Send RSVP 🍾</button>
+    </form>
+    <div class="thanks" id="thanks">
+      <h3>Message received!</h3>
+      <p id="thanksMsg">We can't wait to celebrate with you.</p>
+      <div class="bottle" id="bottle">
+        <svg viewBox="0 0 250 120" aria-hidden="true">
+          <defs><linearGradient id="gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BFE9EE" stop-opacity=".9"/><stop offset="1" stop-color="#6CC3CF" stop-opacity=".85"/></linearGradient></defs>
+          <rect x="196" y="48" width="38" height="24" rx="6" fill="#B07A4A"/>
+          <path d="M30 22H170Q186 22 196 40V80Q186 98 170 98H30Q8 98 8 60Q8 22 30 22Z" fill="url(#gl)" stroke="#5AAFBB" stroke-width="2"/>
+          <rect x="56" y="34" width="118" height="52" rx="6" fill="#F8EBD3" transform="rotate(-3 115 60)"/>
+          <path d="M22 34Q30 28 44 28" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7" fill="none"/>
+        </svg>
+        <div class="msg" id="wishText"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="n">Diya &amp; Kabir</div>
+  <p>6 December 2026 · South Goa</p>
+  <small>#DiyaKabirByTheSea</small>
+</footer>
+
+<button class="music" id="musicBtn" aria-label="Pause music" title="Music"><i></i><i></i><i></i><i></i></button>
+
+<script>
+/* ---------- Music: beachside Bollywood lo-fi (bansuri, tabla, ocean waves), generated live with the Web Audio API ---------- */
+const Music = (() => {
+  let ctx, master, warm, verb, playing = false, next = 0, step = 0, timer, prevFreq = 0;
+  const BPM = 82, S16 = 60 / BPM / 4;
+  const mf = m => 440 * Math.pow(2, (m - 69) / 12);
+  const CHORDS = [[57, 60, 64, 67], [53, 57, 60, 64], [55, 60, 64, 67], [55, 59, 62, 67]];
+  const ROOTS = [45, 41, 48, 43];
+  // Flute line, one token per beat over 8 bars: number = new note, '-' = hold, 0 = rest
+  const TUNE = [76, '-', 74, 72,  74, '-', '-', 0,  72, 74, 76, 79,  76, '-', '-', 0,
+                81, 79, 76, 74,  76, '-', 72, 74,  72, 69, 72, 74,  69, '-', '-', 0];
+
+  function keys(m, t, dur, vol) {
+    const f = mf(m), car = ctx.createOscillator(), mod = ctx.createOscillator(), mg = ctx.createGain(), g = ctx.createGain();
+    car.type = 'sine'; mod.type = 'sine'; car.frequency.value = f; mod.frequency.value = f;
+    mg.gain.setValueAtTime(f * 1.2, t); mg.gain.exponentialRampToValueAtTime(f * 0.12, t + 0.6);
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + 0.008);
+    g.gain.exponentialRampToValueAtTime(vol * 0.35, t + 1); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    mod.connect(mg); mg.connect(car.frequency); car.connect(g); g.connect(warm);
+    car.start(t); mod.start(t); car.stop(t + dur + 0.05); mod.stop(t + dur + 0.05);
+  }
+  function bass(m, t, dur) {
+    const o = ctx.createOscillator(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+    o.type = 'triangle'; o.frequency.value = mf(m); f.type = 'lowpass'; f.frequency.value = 500;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.34, t + 0.02); g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+    o.connect(f); f.connect(g); g.connect(warm); o.start(t); o.stop(t + dur);
+  }
+  // tabla-style strokes: na (ringing treble), dha (na + low bayan sweep), ge (bayan alone)
+  function na(t, vol = 0.16) {
+    const o = ctx.createOscillator(), o2 = ctx.createOscillator(), g = ctx.createGain();
+    o.type = 'sine'; o2.type = 'sine'; o.frequency.value = 660; o2.frequency.value = 660 * 2.7;
+    const g2 = ctx.createGain(); g2.gain.value = 0.25;
+    g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.35);
+    o.connect(g); o2.connect(g2); g2.connect(g); g.connect(warm); o.start(t); o2.start(t); o.stop(t + 0.4); o2.stop(t + 0.4);
+  }
+  function ge(t, vol = 0.38) {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.frequency.setValueAtTime(95, t); o.frequency.linearRampToValueAtTime(140, t + 0.08); o.frequency.exponentialRampToValueAtTime(80, t + 0.45);
+    g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.5);
+    o.connect(g); g.connect(warm); o.start(t); o.stop(t + 0.55);
+  }
+  function noiseBuf(sec) {
+    const len = Math.floor(ctx.sampleRate * sec), b = ctx.createBuffer(1, len, ctx.sampleRate), d = b.getChannelData(0);
+    for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+    return b;
+  }
+  let shakerBuf;
+  function shaker(t, vol) {
+    const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+    s.buffer = shakerBuf; f.type = 'highpass'; f.frequency.value = 6500;
+    g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.06);
+    s.connect(f); f.connect(g); g.connect(warm); s.start(t, Math.random() * 0.5, 0.08);
+  }
+  // bansuri-style flute: breathy, soft vibrato, glides (meend) into each note
+  function flute(m, t, dur) {
+    const f = mf(m), o = ctx.createOscillator(), o2 = ctx.createOscillator(), g = ctx.createGain(), lp = ctx.createBiquadFilter();
+    o.type = 'sine'; o2.type = 'triangle';
+    const from = prevFreq && Math.abs(prevFreq - f) < f * 0.5 ? prevFreq : f;
+    [o, o2].forEach(x => { x.frequency.setValueAtTime(from, t); x.frequency.exponentialRampToValueAtTime(f, t + Math.min(0.14, dur * 0.3)); });
+    o2.detune.value = 4;
+    const vib = ctx.createOscillator(), vg = ctx.createGain(); vib.frequency.value = 5.2; vg.gain.setValueAtTime(0, t); vg.gain.linearRampToValueAtTime(f * 0.012, t + 0.35);
+    vib.connect(vg); vg.connect(o.frequency); vg.connect(o2.frequency);
+    lp.type = 'lowpass'; lp.frequency.value = 3200;
+    const o2g = ctx.createGain(); o2g.gain.value = 0.18;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.13, t + 0.09); g.gain.setValueAtTime(0.13, t + dur * 0.75); g.gain.linearRampToValueAtTime(0, t + dur);
+    o.connect(lp); o2.connect(o2g); o2g.connect(lp); lp.connect(g); g.connect(warm); g.connect(verb);
+    const br = ctx.createBufferSource(), bf = ctx.createBiquadFilter(), bg = ctx.createGain();   // breath
+    br.buffer = shakerBuf; bf.type = 'bandpass'; bf.frequency.value = f * 2; bf.Q.value = 2;
+    bg.gain.setValueAtTime(0, t); bg.gain.linearRampToValueAtTime(0.05, t + 0.05); bg.gain.linearRampToValueAtTime(0.012, t + 0.3); bg.gain.linearRampToValueAtTime(0, t + dur);
+    br.connect(bf); bf.connect(bg); bg.connect(warm);
+    [o, o2, vib].forEach(x => { x.start(t); x.stop(t + dur + 0.05); }); br.start(t, Math.random() * 0.4, dur + 0.05);
+    prevFreq = f;
+  }
+  function waves() {   // ocean: filtered noise whose level and brightness swell every ~7 s
+    const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+    s.buffer = noiseBuf(8); s.loop = true; f.type = 'lowpass'; f.frequency.value = 700; g.gain.value = 0.06;
+    const l1 = ctx.createOscillator(), l1g = ctx.createGain(); l1.frequency.value = 1 / 7; l1g.gain.value = 0.05;
+    const l2 = ctx.createOscillator(), l2g = ctx.createGain(); l2.frequency.value = 1 / 7; l2g.gain.value = 450;
+    l1.connect(l1g); l1g.connect(g.gain); l2.connect(l2g); l2g.connect(f.frequency);
+    s.connect(f); f.connect(g); g.connect(master); s.start(); l1.start(); l2.start();
+  }
+  function crackle() {
+    const len = ctx.sampleRate * 4, b = ctx.createBuffer(1, len, ctx.sampleRate), d = b.getChannelData(0);
+    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * 0.015 + (Math.random() < 0.0003 ? (Math.random() * 2 - 1) * 0.5 : 0);
+    const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+    s.buffer = b; s.loop = true; f.type = 'bandpass'; f.frequency.value = 3000; g.gain.value = 0.2;
+    s.connect(f); f.connect(g); g.connect(master); s.start();
+  }
+  function impulse(seconds, decay) {
+    const len = ctx.sampleRate * seconds, b = ctx.createBuffer(2, len, ctx.sampleRate);
+    for (let c = 0; c < 2; c++) { const d = b.getChannelData(c); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, decay); }
+    return b;
+  }
+  function schedule() {
+    while (next < ctx.currentTime + 0.25) {
+      const s = step % 16, barN = Math.floor(step / 16), bar = barN % 4;
+      const t = next + (s % 2 ? S16 * 0.2 : 0);           // lazy swing
+      if (s === 0) { CHORDS[bar].forEach(m => keys(m, t, S16 * 12, 0.04)); bass(ROOTS[bar], t, S16 * 7); }
+      if (s === 8) { CHORDS[bar].forEach(m => keys(m + 12, t, S16 * 6, 0.018)); bass(ROOTS[bar] + 7, t, S16 * 5); }
+      if (barN >= 1) {                                   // tabla groove (keherwa feel): dha . na . | na . dha . | ge . na . | dha . na na
+        if (s === 0 || s === 10) { ge(t); na(t, 0.12); }
+        if (s === 4 || s === 6 || s === 14 || s === 15) na(t, s === 15 ? 0.08 : 0.13);
+        if (s === 8) ge(t, 0.3);
+        if (s % 2 === 0) shaker(t, s % 4 === 2 ? 0.1 : 0.05);
+      }
+      if (barN >= 2 && s % 4 === 0) {                    // flute joins on bar 3
+        const i = (step - 32) / 4 % TUNE.length, tok = TUNE[i];
+        if (typeof tok === 'number' && tok) {
+          let beats = 1; while (TUNE[(i + beats) % TUNE.length] === '-') beats++;
+          flute(tok, t, beats * 4 * S16 * 0.96);
+        }
+      }
+      next += S16; step++;
+    }
+  }
+  function unlockIOS() {   // iPhone silent switch: route audio through the media channel
+    const rate = 8000, n = rate / 2, buf = new ArrayBuffer(44 + n), v = new DataView(buf);
+    const w = (o, str) => [...str].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+    w(0, 'RIFF'); v.setUint32(4, 36 + n, true); w(8, 'WAVEfmt '); v.setUint32(16, 16, true);
+    v.setUint16(20, 1, true); v.setUint16(22, 1, true); v.setUint32(24, rate, true); v.setUint32(28, rate, true);
+    v.setUint16(32, 1, true); v.setUint16(34, 8, true); w(36, 'data'); v.setUint32(40, n, true);
+    for (let i = 0; i < n; i++) v.setUint8(44 + i, 128);
+    const el = new Audio(URL.createObjectURL(new Blob([buf], { type: 'audio/wav' })));
+    el.loop = true; el.setAttribute('playsinline', ''); el.volume = 0.01; el.play().catch(() => {});
+  }
+  function start() {
+    if (ctx) return resume();
+    unlockIOS();
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    if (ctx.state !== 'running') ctx.resume();
+    const blip = ctx.createBufferSource(); blip.buffer = ctx.createBuffer(1, 1, 22050); blip.connect(ctx.destination); blip.start(0);
+    const revive = () => { if (playing && ctx.state !== 'running') ctx.resume(); };
+    document.addEventListener('touchend', revive); document.addEventListener('click', revive);
+    master = ctx.createGain(); master.connect(ctx.destination);
+    master.gain.setValueAtTime(0, ctx.currentTime); master.gain.linearRampToValueAtTime(0.9, ctx.currentTime + 2.5);
+    warm = ctx.createBiquadFilter(); warm.type = 'lowpass'; warm.frequency.value = 4200; warm.Q.value = 0.4; warm.connect(master);
+    verb = ctx.createConvolver(); verb.buffer = impulse(2.4, 2.6);
+    const wet = ctx.createGain(); wet.gain.value = 0.35; verb.connect(wet); wet.connect(master);
+    shakerBuf = noiseBuf(1);
+    waves(); crackle();
+    next = ctx.currentTime + 0.2; step = 0; schedule(); timer = setInterval(schedule, 60);
+    playing = true;
+  }
+  function resume() { ctx.resume(); playing = true; }
+  function pause() { if (ctx) ctx.suspend(); playing = false; }
+  function state() { return ctx ? ctx.state + ' @ ' + ctx.sampleRate + 'Hz, t=' + ctx.currentTime.toFixed(1) + 's' : 'not started'; }
+  return { start, state, toggle: () => (playing ? pause() : start(), playing), get playing() { return playing; } };
+})();
+
+/* ---------- Gate + music button ---------- */
+const gate = document.getElementById('gate'), musicBtn = document.getElementById('musicBtn'), hero = document.getElementById('top');
+document.getElementById('openBtn').addEventListener('click', () => {
+  if (gate.classList.contains('open')) return;
+  Music.start();
+  gate.classList.add('open');
+  document.body.classList.remove('locked');
+  musicBtn.classList.add('show', 'playing');
+  hero.classList.add('in-view');
+  setTimeout(() => gate.classList.add('gone'), 1500);
+});
+if (document.documentElement.classList.contains('no-js')) hero.classList.add('in-view');
+musicBtn.addEventListener('click', () => {
+  const on = Music.toggle();
+  musicBtn.classList.toggle('playing', on);
+  musicBtn.setAttribute('aria-label', on ? 'Pause music' : 'Play music');
+});
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && Music.playing) { Music.toggle(); musicBtn.classList.remove('playing'); }
+});
+
+/* ---------- Brush away the sand to find the date ---------- */
+(() => {
+  const dig = document.getElementById('dig'), cv = document.getElementById('sandCanvas'), sec = document.getElementById('find');
+  const ctx = cv.getContext('2d');
+  let W, H, dpr, last = null, strokes = 0, done = false, touched = false, actx = null, lastSwish = 0;
+  function paintSand() {
+    const r = cv.getBoundingClientRect(); dpr = Math.min(2, devicePixelRatio || 1);
+    W = cv.width = Math.round(r.width * dpr); H = cv.height = Math.round(r.height * dpr);
+    const g = ctx.createLinearGradient(0, 0, W, H); g.addColorStop(0, '#EED9B4'); g.addColorStop(.5, '#E4C99C'); g.addColorStop(1, '#D8B987');
+    ctx.globalCompositeOperation = 'source-over'; ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    for (let i = 0; i < W * H / 22; i++) {                  // grains
+      const v = Math.random();
+      ctx.fillStyle = v < .5 ? 'rgba(150,110,60,.28)' : v < .85 ? 'rgba(255,245,225,.4)' : 'rgba(110,80,45,.35)';
+      ctx.fillRect(Math.random() * W, Math.random() * H, dpr * (v > .95 ? 2 : 1), dpr * (v > .95 ? 2 : 1));
+    }
+    ctx.strokeStyle = 'rgba(160,120,70,.18)'; ctx.lineWidth = 2 * dpr;   // wind ripples
+    for (let y = H * .1; y < H; y += H / 9) { ctx.beginPath(); for (let x = 0; x <= W; x += 8) ctx.lineTo(x, y + Math.sin(x / (22 * dpr) + y) * 4 * dpr); ctx.stroke(); }
+  }
+  function swish() {
+    const now = performance.now(); if (now - lastSwish < 90) return; lastSwish = now;
+    try {
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state !== 'running') actx.resume();
+      const len = Math.floor(actx.sampleRate * .12), b = actx.createBuffer(1, len, actx.sampleRate), d = b.getChannelData(0);
+      for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.sin(Math.PI * i / len);
+      const s = actx.createBufferSource(), f = actx.createBiquadFilter(), g = actx.createGain();
+      s.buffer = b; f.type = 'bandpass'; f.frequency.value = 2200 + Math.random() * 1200; f.Q.value = .8; g.gain.value = .12;
+      s.connect(f); f.connect(g); g.connect(actx.destination); s.start();
+    } catch (e) {}
+  }
+  function brush(x, y) {
+    ctx.globalCompositeOperation = 'destination-out';
+    const R = 18 * dpr;
+    for (let i = 0; i < 14; i++) {                          // grainy edge: many small soft dabs
+      const a = Math.random() * Math.PI * 2, d = Math.random() * R;
+      ctx.beginPath(); ctx.arc(x + Math.cos(a) * d, y + Math.sin(a) * d, (4 + Math.random() * 7) * dpr, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.beginPath(); ctx.arc(x, y, R * .7, 0, Math.PI * 2); ctx.fill();
+  }
+  function cleared() {
+    const img = ctx.getImageData(0, 0, W, H).data; let clear = 0, n = 0;
+    for (let i = 3; i < img.length; i += 4 * 37) { n++; if (img[i] < 40) clear++; }
+    return clear / n;
+  }
+  function reveal() {
+    if (done) return; done = true;
+    dig.classList.add('done'); dig.classList.remove('hinting'); sec.classList.add('found');
+    const r = dig.getBoundingClientRect();
+    for (let i = 0; i < 14; i++) {
+      const e = document.createElement('span'), a = Math.random() * Math.PI * 2, d = 60 + Math.random() * 110;
+      e.className = 'shellpop'; e.textContent = ['🐚', '✨', '🌊', '⭐'][i % 4];
+      e.style.left = r.left + r.width / 2 + 'px'; e.style.top = r.top + r.height / 2 + 'px';
+      e.style.setProperty('--dx', Math.cos(a) * d + 'px'); e.style.setProperty('--dy', Math.sin(a) * d - 30 + 'px'); e.style.setProperty('--r', (Math.random() * 360 - 180) + 'deg');
+      document.body.appendChild(e); setTimeout(() => e.remove(), 1400);
+    }
+    startCountdown();
+  }
+  const pos = e => { const r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * dpr, (e.clientY - r.top) * dpr]; };
+  cv.addEventListener('pointerdown', e => { touched = true; dig.classList.remove('hinting'); cv.setPointerCapture(e.pointerId); last = pos(e); brush(...last); swish(); });
+  cv.addEventListener('pointermove', e => {
+    if (!last || done) return;
+    const p = pos(e), dx = p[0] - last[0], dy = p[1] - last[1], steps = Math.max(1, Math.hypot(dx, dy) / (8 * dpr));
+    for (let i = 1; i <= steps; i++) brush(last[0] + dx * i / steps, last[1] + dy * i / steps);
+    last = p; swish();
+    if (++strokes % 8 === 0 && cleared() > .55) reveal();
+  });
+  const up = () => { last = null; if (!done && cleared() > .55) reveal(); };
+  cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up);
+  document.getElementById('digSkip').addEventListener('click', reveal);
+  paintSand();
+  addEventListener('resize', () => { if (!done && !touched) paintSand(); });
+  // a gentle "brush here" hint if nobody touches it
+  new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) setTimeout(() => { if (!touched && !done) dig.classList.add('hinting'); }, 500); }), { threshold: .35 }).observe(dig);
+})();
+
+/* ---------- Countdown to the wedding: 6 Dec 2026, 4:30 PM IST (starts once the date is found) ---------- */
+const target = new Date('2026-12-06T16:30:00+05:30').getTime(), pad2 = n => String(n).padStart(2, '0');
+function startCountdown() { (function tick() {
+  const s = Math.max(0, Math.floor((target - Date.now()) / 1000));
+  if (s === 0) { document.getElementById('countdown').innerHTML = '<p class="lead">Today is the day! 🌴</p>'; return; }
+  document.getElementById('cd-d').textContent = Math.floor(s / 86400);
+  document.getElementById('cd-h').textContent = pad2(Math.floor(s % 86400 / 3600));
+  document.getElementById('cd-m').textContent = pad2(Math.floor(s % 3600 / 60));
+  document.getElementById('cd-s').textContent = pad2(s % 60);
+  setTimeout(tick, 1000);
+})(); }
+
+/* ---------- Calendar links ---------- */
+const LOC = 'Palm Cove Beach Resort, Palolem Beach Road, Canacona, South Goa';
+const CAL = {
+  welcome: ["Diya & Kabir - Sundowner welcome", '20261205T120000Z/20261205T150000Z'],
+  wedding: ["Diya & Kabir's Wedding", '20261206T110000Z/20261206T180000Z'],
+};
+document.querySelectorAll('[data-cal]').forEach(a => {
+  const [t, d] = CAL[a.dataset.cal];
+  a.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(t) + '&dates=' + d +
+    '&details=' + encodeURIComponent('Invitation: https://invitashion.online/beach-palms/') + '&location=' + encodeURIComponent(LOC);
+});
+
+/* ---------- RSVP (demo: no backend, shows a thank-you and their wish in a bottle) ---------- */
+document.getElementById('rsvpForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('gName').value.trim().split(' ')[0];
+  const yes = document.querySelector('input[name=attend]:checked').value === 'yes';
+  const wish = document.getElementById('gWish').value.trim();
+  document.getElementById('thanksMsg').textContent = yes
+    ? `Thank you, ${name}! We can't wait to see you on the beach.`
+    : `Thank you, ${name}. We'll miss you, and we'll raise a toast to you at sunset.`;
+  if (wish) {
+    document.getElementById('wishText').textContent = '“' + wish + '”';
+    document.getElementById('bottle').style.display = 'block';
+  }
+  e.target.style.display = 'none';
+  document.getElementById('thanks').style.display = 'block';
+});
+
+/* ---------- Diagnostics: open the page with ?debug to see the audio state on screen ---------- */
+if (/[?&]debug/.test(location.search)) {
+  const box = document.createElement('pre');
+  box.style.cssText = 'position:fixed;left:8px;top:8px;right:8px;z-index:99;background:rgba(0,0,0,.8);color:#7CFC9A;font:12px/1.4 monospace;padding:8px;border-radius:8px;white-space:pre-wrap;pointer-events:none';
+  document.body.appendChild(box);
+  const errs = [];
+  window.addEventListener('error', e => errs.push(e.message));
+  setInterval(() => { box.textContent = ['audio: ' + Music.state(), 'playing flag: ' + Music.playing, 'errors: ' + (errs.join(' | ') || 'none'), navigator.userAgent].join(String.fromCharCode(10)); }, 500);
+}
+
+/* ---------- Reveal on scroll ---------- */
+const io = new IntersectionObserver(entries => entries.forEach(en => {
+  if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+}), { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+<!-- INVITASHION DEMO CTA: remove this block when cloning a demo for a real client -->
+<style>
+.ivx{position:relative;z-index:46;overflow:visible!important;background:linear-gradient(120deg,#ECE4FA 0%,#E6E9FA 50%,#D9F2EF 100%);color:#24164A;text-align:center;padding:40px 18px 96px;
+  border-top:6px solid transparent;border-image:linear-gradient(110deg,#32127A 0%,#5A2A9A 50%,#00A0A0 100%) 1;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+.ivx *{box-sizing:border-box;margin:0;padding:0}
+.ivx h2{font:800 clamp(24px,6vw,30px)/1.2 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#24164A;letter-spacing:-.3px}
+.ivx p{font-size:15px;color:#4F4570;margin:6px auto 0;max-width:420px}
+.ivx-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:22px}
+.ivx a.ivx-b{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-width:210px;padding:13px 22px;border-radius:999px;text-decoration:none;
+  font:700 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#fff;border:2.5px solid #24164A;box-shadow:3px 3px 0 #24164A;transition:transform .15s}
+.ivx a.ivx-b:hover{transform:translateY(-2px)}
+.ivx a.ivx-b svg{width:20px;height:20px;flex:none}
+.ivx .ivx-wa{background:#1FAF55}
+.ivx .ivx-ig{background:linear-gradient(110deg,#32127A 0%,#5A2A9A 50%,#00A0A0 100%)}
+.ivx .ivx-all{display:inline-block;margin-top:18px;color:#32127A;font-size:14px;font-weight:800;text-decoration:none;border-bottom:2px solid rgba(50,18,122,.35)}
+#musicBtn{z-index:48}
+@media (prefers-reduced-motion:reduce){.ivx a.ivx-b{transition:none}}
+</style>
+<section class="ivx" aria-label="Get this design from Invitashion">
+  <h2>Love this design?</h2>
+  <p>This is a demo. Get the Palm Beach Wedding invite with your own names, photos, colours and music.</p>
+  <div class="ivx-btns">
+    <a class="ivx-b ivx-wa" href="https://wa.me/919043624116?text=Hi%20Invitashion%21%20I%27d%20like%20the%20Palm%20Beach%20Wedding%20design%20for%20my%20invite." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>Reach us on WhatsApp</a>
+    <a class="ivx-b ivx-ig" href="https://ig.me/m/invitashion.online" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>Reach us on Instagram</a>
+  </div>
+  <a class="ivx-all" href="/designs/#weddings">See all designs</a>
+</section>
+<!-- /INVITASHION DEMO CTA -->
+</body>
+</html>
