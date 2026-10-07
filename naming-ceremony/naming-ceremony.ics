@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Vihaan Naming Ceremony//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:vihaan-naming-20270321@invitashion.online
+DTSTAMP:20261007T000000Z
+DTSTART:20270321T050000Z
+DTEND:20270321T090000Z
+SUMMARY:Naming Ceremony - Shruti & Aditya's baby
+LOCATION:Tulsi Gardens\, 11th Main Road\, 4th Block\, Jayanagar\, Bengaluru
+DESCRIPTION:Naming ceremony at 10:30 AM\, lunch at 12:30 PM. Invitation: https://invitashion.online/naming-ceremony/
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Naming ceremony tomorrow at 10:30 AM
+END:VALARM
+END:VEVENT
+END:VCALENDAR
