@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Tanvi and Rohan Engagement//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:tanvi-rohan-engagement-20270410@invitashion.online
+DTSTAMP:20261007T000000Z
+DTSTART:20270410T123000Z
+DTEND:20270410T163000Z
+SUMMARY:Tanvi & Rohan's Engagement
+LOCATION:The Ivory Terrace\, Sankey Road\, Sadashivanagar\, Bengaluru
+DESCRIPTION:Ring ceremony at 7 PM\, dinner & dance after. Invitation: https://invitashion.online/engagement/
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Tanvi & Rohan's engagement tomorrow at 6 PM
+END:VALARM
+END:VEVENT
+END:VCALENDAR
