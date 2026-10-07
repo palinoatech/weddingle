@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Divya and Sameer Housewarming//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:kulkarni-housewarming-20270307@invitashion.online
+DTSTAMP:20261007T000000Z
+DTSTART:20270307T040000Z
+DTEND:20270307T090000Z
+SUMMARY:Divya & Sameer's Housewarming
+LOCATION:Flat 1204\, Sky Orchard\, Varthur Road\, Whitefield\, Bengaluru
+DESCRIPTION:Griha Pravesh puja at 9:30 AM\, lunch at 12:30 PM. Invitation: https://invitashion.online/housewarming/
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Divya & Sameer's housewarming tomorrow at 9:30 AM
+END:VALARM
+END:VEVENT
+END:VCALENDAR
