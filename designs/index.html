@@ -59,28 +59,32 @@ h1{font-family:'Baloo 2',sans-serif;font-weight:800;letter-spacing:-.5px;font-si
 .cat:nth-of-type(3n+1) .cat-ico{background:#E7E1F6}.cat:nth-of-type(3n+2) .cat-ico{background:#D9F7F3}.cat:nth-of-type(3n+3) .cat-ico{background:#FFE4D1}
 .cat h2{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(26px,5vw,34px);line-height:1.1;letter-spacing:-.3px}
 .cat-head p{color:var(--muted);font-size:15px}
-/* Design cards */
-.tpl-grid{display:grid;grid-template-columns:1fr;gap:26px}
-@media (min-width:640px){.tpl-grid{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:960px){.tpl-grid{grid-template-columns:repeat(3,1fr)}}
-.tpl{background:#fff;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s;transform:rotate(-.8deg)}
-.tpl:nth-child(even){transform:rotate(.8deg)}
-.tpl:hover{transform:rotate(0) translateY(-4px)}
-.tpl-img{display:block;aspect-ratio:1200/630;border-bottom:3px solid var(--ink);background:#E7E1F6}
-.tpl-img img{width:100%;height:100%;object-fit:cover;display:block}
-.tpl-body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+/* Design cards: each design shown on a phone */
+.tpl-grid{display:grid;grid-template-columns:1fr;gap:40px 26px}
+@media (min-width:560px){.tpl-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:900px){.tpl-grid{grid-template-columns:repeat(3,1fr)}}
+.tpl{display:flex;flex-direction:column;align-items:center;text-align:center}
+.tpl-phone{display:block;position:relative;width:min(240px,72%);aspect-ratio:360/740;padding:8px;background:var(--ink);border-radius:34px;box-shadow:7px 7px 0 rgba(36,22,74,.22);transform:rotate(-2deg);transition:transform .25s}
+.tpl:nth-child(even) .tpl-phone{transform:rotate(2deg)}
+.tpl-phone:hover,.tpl:nth-child(even) .tpl-phone:hover{transform:rotate(0) translateY(-6px)}
+.tpl-phone::before{content:'';position:absolute;top:14px;left:50%;width:30%;height:12px;margin-left:-15%;background:var(--ink);border-radius:999px;z-index:1}
+.tpl-phone img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;border-radius:26px;background:#E7E1F6}
+.tpl-body{padding-top:20px;display:flex;flex-direction:column;align-items:center;flex:1;width:100%;max-width:330px}
 .tpl h3{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;line-height:1.2}
 .tpl p{font-size:14.5px;color:var(--muted);margin-top:4px;flex:1}
-.tpl-actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
-.tpl-actions a{flex:1;min-width:120px;text-align:center;text-decoration:none;font:600 15px 'Fredoka',sans-serif;padding:10px 14px;border:2.5px solid var(--ink);border-radius:999px;box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.tpl-actions{display:flex;gap:10px;margin-top:14px;width:100%}
+.tpl-actions a{flex:1;text-align:center;text-decoration:none;font:600 15px 'Fredoka',sans-serif;padding:10px 12px;border:2.5px solid var(--ink);border-radius:999px;box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
 .tpl-actions a:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
 .tpl-view{background:#fff}
 .tpl-pick{background:var(--pink);color:#fff}
-.tpl-ask{text-decoration:none;border-style:dashed;box-shadow:none;background:transparent;align-items:center;justify-content:center;text-align:center;padding:28px 22px;min-height:220px}
+.tpl-ask{text-decoration:none;align-self:start}
+.tpl-ask .tpl-phone{background:transparent;border:3px dashed var(--ink);box-shadow:none;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px 16px}
+.tpl-ask .tpl-phone::before{display:none}
 .tpl-ask .plus{font:800 34px/1 'Baloo 2',sans-serif;width:56px;height:56px;display:grid;place-items:center;border:2.5px solid var(--ink);border-radius:50%;background:var(--sun);margin-bottom:12px}
-.tpl-ask p{flex:none;max-width:260px}
+.tpl-ask h3{font-size:20px}
+.tpl-ask p{flex:none;font-size:14px}
 .ask-cta{margin-top:12px;font:600 15px 'Fredoka',sans-serif;color:var(--pink)}
-@media (max-width:639px){.tpl-ask{min-height:0}}
+@media (max-width:559px){.tpl-ask .tpl-phone{aspect-ratio:auto;width:100%;max-width:330px;border-radius:22px;transform:none}}
 /* Closing note */
 .more{text-align:center;padding:30px 0 70px}
 .more h2{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px}
@@ -128,7 +132,7 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
       <div class="cat-head"><span class="cat-ico" aria-hidden="true">💍</span><div><h2>Weddings</h2><p>Engagements, weddings and receptions</p></div></div>
       <div class="tpl-grid">
         <article class="tpl">
-          <a class="tpl-img" href="../goa-beach/" target="_blank" rel="noopener" aria-label="Open the Sunset Beach Wedding demo"><img src="../goa-beach/og.jpg" alt="Sunset Beach Wedding invitation preview" width="1200" height="630" loading="lazy"></a>
+          <a class="tpl-phone" href="../goa-beach/" target="_blank" rel="noopener" aria-label="Open the Sunset Beach Wedding demo"><img src="../goa-beach/preview.jpg" alt="Sunset Beach Wedding invitation on a phone" width="540" height="1110" loading="lazy"></a>
           <div class="tpl-body">
             <h3>Sunset Beach Wedding</h3>
             <p>Golden-hour beach vibes, an envelope to open, music and a live countdown.</p>
@@ -139,10 +143,12 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
           </div>
         </article>
         <a class="tpl tpl-ask" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20a%20custom%20wedding%20invite%20design." target="_blank" rel="noopener">
-          <span class="plus" aria-hidden="true">+</span>
-          <h3>Want a different look?</h3>
-          <p>Tell us your theme and colours. We'll design a new wedding invite just for you.</p>
-          <span class="ask-cta">Ask on WhatsApp →</span>
+          <span class="tpl-phone">
+            <span class="plus" aria-hidden="true">+</span>
+            <h3>Want a different look?</h3>
+            <p>Tell us your theme and colours. We'll design a new wedding invite just for you.</p>
+            <span class="ask-cta">Ask on WhatsApp →</span>
+          </span>
         </a>
       </div>
     </section>
@@ -150,7 +156,7 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
       <div class="cat-head"><span class="cat-ico" aria-hidden="true">🍼</span><div><h2>Baby Shower</h2><p>Baby showers, gender reveals and naming ceremonies</p></div></div>
       <div class="tpl-grid">
         <article class="tpl">
-          <a class="tpl-img" href="../baby-shower/" target="_blank" rel="noopener" aria-label="Open the Woodland Baby Shower demo"><img src="../baby-shower/og.jpg" alt="Woodland Baby Shower invitation preview" width="1200" height="630" loading="lazy"></a>
+          <a class="tpl-phone" href="../baby-shower/" target="_blank" rel="noopener" aria-label="Open the Woodland Baby Shower demo"><img src="../baby-shower/preview.jpg" alt="Woodland Baby Shower invitation on a phone" width="540" height="1110" loading="lazy"></a>
           <div class="tpl-body">
             <h3>Woodland Baby Shower</h3>
             <p>Watercolour forest friends, a lullaby music box and a fun baby-predictions poll.</p>
@@ -161,10 +167,12 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
           </div>
         </article>
         <a class="tpl tpl-ask" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20a%20custom%20baby%20shower%20invite%20design." target="_blank" rel="noopener">
-          <span class="plus" aria-hidden="true">+</span>
-          <h3>Want a different look?</h3>
-          <p>Tell us your theme and colours. We'll design a new baby shower invite just for you.</p>
-          <span class="ask-cta">Ask on WhatsApp →</span>
+          <span class="tpl-phone">
+            <span class="plus" aria-hidden="true">+</span>
+            <h3>Want a different look?</h3>
+            <p>Tell us your theme and colours. We'll design a new baby shower invite just for you.</p>
+            <span class="ask-cta">Ask on WhatsApp →</span>
+          </span>
         </a>
       </div>
     </section>
@@ -172,7 +180,7 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
       <div class="cat-head"><span class="cat-ico" aria-hidden="true">🪔</span><div><h2>Festivals</h2><p>Navratri, Diwali, Eid, Christmas and more</p></div></div>
       <div class="tpl-grid">
         <article class="tpl">
-          <a class="tpl-img" href="../navratri/" target="_blank" rel="noopener" aria-label="Open the Garba Night demo"><img src="../navratri/og.jpg" alt="Garba Night invitation preview" width="1200" height="630" loading="lazy"></a>
+          <a class="tpl-phone" href="../navratri/" target="_blank" rel="noopener" aria-label="Open the Garba Night demo"><img src="../navratri/preview.jpg" alt="Garba Night invitation on a phone" width="540" height="1110" loading="lazy"></a>
           <div class="tpl-body">
             <h3>Garba Night</h3>
             <p>String lights, twirling dancers and a dhol groove your guests can speed up.</p>
@@ -183,10 +191,12 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
           </div>
         </article>
         <a class="tpl tpl-ask" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20a%20custom%20festival%20invite%20design." target="_blank" rel="noopener">
-          <span class="plus" aria-hidden="true">+</span>
-          <h3>Want a different look?</h3>
-          <p>Tell us your theme and colours. We'll design a new festival invite just for you.</p>
-          <span class="ask-cta">Ask on WhatsApp →</span>
+          <span class="tpl-phone">
+            <span class="plus" aria-hidden="true">+</span>
+            <h3>Want a different look?</h3>
+            <p>Tell us your theme and colours. We'll design a new festival invite just for you.</p>
+            <span class="ask-cta">Ask on WhatsApp →</span>
+          </span>
         </a>
       </div>
     </section>

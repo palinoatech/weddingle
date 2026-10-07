@@ -75,13 +75,6 @@ h2{font-family:'Baloo 2',serif;font-weight:600;font-size:clamp(32px,6vw,48px);li
 .chips span{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;border:1px solid rgba(242,180,65,.35);border-radius:999px;color:var(--gold-light)}
 
 /* Phone mockup with the live demo */
-.phone-col{display:flex;justify-content:center}
-.phone{--w:270px;width:var(--w);height:calc(var(--w)*2.05);border-radius:40px;background:#2A0A10;padding:11px;box-shadow:0 40px 80px rgba(0,0,0,.5),inset 0 0 0 2px #4a1f26;position:relative;margin-bottom:-60px}
-.phone::before{content:'';position:absolute;top:18px;left:50%;transform:translateX(-50%);width:76px;height:20px;border-radius:12px;background:#2A0A10;z-index:2}
-.screen{width:100%;height:100%;border-radius:30px;overflow:hidden;position:relative;background:#0F3F47}
-.screen iframe{border:0;width:375px;height:770px;transform-origin:0 0;position:absolute;top:0;left:0}
-.phone-tag{position:absolute;bottom:76px;left:-26px;background:var(--ivory);color:var(--plum);font-size:13px;font-weight:500;padding:8px 14px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.25);z-index:3;transform:rotate(-4deg)}
-.phone-tag b{color:var(--rose)}
 
 /* Scalloped edge out of hero */
 .scallop{height:28px;background:radial-gradient(circle at 14px 0,transparent 14px,var(--ivory) 15px) repeat-x;background-size:28px 28px;margin-top:-1px}
@@ -133,7 +126,6 @@ footer .logo{font-size:26px}
 
 @media (min-width:760px){
   .hero-grid{grid-template-columns:1.15fr .85fr;padding-top:64px}
-  .phone{--w:300px}
   .row{grid-template-columns:1fr 1fr;gap:56px}
   .art{aspect-ratio:4/3}.art svg.big{width:38%}
   .row:nth-child(even) .art{order:2}
@@ -180,9 +172,6 @@ h2{color:var(--ink)}
 .chips span:nth-child(3){background:#fff;transform:rotate(-1deg)}
 .chips span:nth-child(4){background:var(--purple);color:#fff;transform:rotate(3deg)}
 .chips span:nth-child(5){background:var(--orange);color:#fff;transform:rotate(-2deg)}
-.phone{transform:rotate(3deg);box-shadow:10px 10px 0 var(--ink),0 30px 60px rgba(36,22,74,.25);border:3px solid var(--ink)}
-.phone-tag{background:var(--pink);color:#fff;border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);font-weight:800}
-.phone-tag b{color:var(--sun)}
 .pop-deco{position:absolute;pointer-events:none;color:var(--pink)}
 .pop-deco svg{width:100%;height:100%}
 .d1{width:34px;height:34px;top:120px;left:46%;color:var(--teal);animation:spin 9s linear infinite}
@@ -406,14 +395,6 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
 
 /* Hero: lead-in size, clickable demo tag, swipe-up thumb */
 .chips-lead{font-size:32px}
-.phone-tag{cursor:pointer;font-family:inherit;transition:opacity .4s,transform .2s}
-.phone-tag:hover{transform:rotate(-4deg) scale(1.05)}
-.phone-tag.gone{opacity:0;pointer-events:none}
-.thumb{position:absolute;left:50%;bottom:14%;width:46px;margin-left:-23px;z-index:3;pointer-events:none;opacity:0}
-.thumb svg{width:100%;display:block;filter:drop-shadow(0 4px 6px rgba(0,0,0,.35))}
-.thumb.swipe{animation:thumb-up 1.3s ease-in-out}
-@keyframes thumb-up{0%{opacity:0;transform:translateY(30px)}20%{opacity:1}75%{opacity:1;transform:translateY(-110px)}100%{opacity:0;transform:translateY(-130px)}}
-@media (prefers-reduced-motion:reduce){.thumb{display:none}}
 
 /* Footer credit line */
 .ft-made{margin-top:22px;font-size:15px;color:#E7E1F6;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px}
@@ -421,22 +402,30 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
 .ft-made a{color:#FFD23F;font-weight:800;text-decoration:none;border-bottom:2px solid rgba(255,210,63,.4)}
 .ft-made a:hover{border-bottom-color:#FFD23F}
 .ft-copy{font-size:12.5px;color:#9F95BD;margin-top:6px}
+/* Hero without the demo phone: one centred column */
+.hero-grid,.hero-grid > div:first-child{text-align:center}
+@media (min-width:760px){.hero-grid{grid-template-columns:1fr}.hero h1{font-size:clamp(44px,6vw,64px)}}
+.hero .notes{align-items:center;margin-left:auto;margin-right:auto}
+.hero .chips{justify-content:center}
+.chips-lead{transform-origin:center}
+.hero-cta{margin-top:30px}
+@media (min-width:760px){.d1{top:auto;bottom:30%;left:auto;right:9%}}
 /* "View Designs" band */
 .dz{background:var(--sun);padding:64px 0;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
 .dz-grid{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;text-align:center}
 .dz h2{color:var(--ink);margin-top:4px}
 .dz p{font-weight:600;color:var(--muted);font-size:17px;max-width:420px;margin:0 auto}
-.dz-fan{position:relative;height:150px;max-width:360px;width:100%;margin:0 auto}
-.dz-fan img{position:absolute;top:24px;left:50%;width:62%;height:auto;aspect-ratio:1200/630;object-fit:cover;border:3px solid var(--ink);border-radius:14px;box-shadow:4px 4px 0 var(--ink);background:#fff;transition:transform .3s}
-.dz-fan img:nth-child(1){transform:translateX(-92%) rotate(-10deg)}
-.dz-fan img:nth-child(2){transform:translateX(-8%) rotate(9deg)}
-.dz-fan img:nth-child(3){transform:translateX(-50%) translateY(-18px) rotate(-2deg);z-index:1}
-.dz-fan:hover img:nth-child(1){transform:translateX(-100%) rotate(-14deg)}
-.dz-fan:hover img:nth-child(2){transform:translateX(0) rotate(13deg)}
+.dz-fan{position:relative;display:block;height:300px;max-width:340px;width:100%;margin:0 auto}
+.dz-fan img{position:absolute;top:10px;left:50%;width:132px;height:auto;aspect-ratio:360/740;object-fit:cover;object-position:top;border:6px solid var(--ink);border-radius:24px;box-shadow:5px 5px 0 rgba(36,22,74,.3);background:#fff;transition:transform .3s}
+.dz-fan img:nth-child(1){transform:translateX(-118%) translateY(18px) rotate(-10deg)}
+.dz-fan img:nth-child(2){transform:translateX(18%) translateY(18px) rotate(10deg)}
+.dz-fan img:nth-child(3){transform:translateX(-50%) rotate(-1deg);z-index:1}
+.dz-fan:hover img:nth-child(1){transform:translateX(-128%) translateY(14px) rotate(-14deg)}
+.dz-fan:hover img:nth-child(2){transform:translateX(28%) translateY(14px) rotate(14deg)}
 .btn-designs{display:inline-flex;align-items:center;gap:10px;margin-top:22px;text-decoration:none;font:600 20px 'Fredoka',sans-serif;color:#fff;background:var(--pink);padding:15px 32px;border:3px solid var(--ink);border-radius:999px;box-shadow:5px 5px 0 var(--ink);transition:transform .15s,box-shadow .15s}
 .btn-designs:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
 .btn-designs span{transition:transform .15s}.btn-designs:hover span{transform:translateX(4px)}
-@media (min-width:760px){.dz-grid{grid-template-columns:1fr 1fr;text-align:left}.dz p{margin:0}.dz-fan{height:230px;max-width:440px}}
+@media (min-width:760px){.dz-grid{grid-template-columns:1fr 1fr;text-align:left}.dz p{margin:0}.dz-fan{height:340px;max-width:420px}.dz-fan img{width:150px}}
 .nav-links{display:flex;gap:18px;align-items:center}
 @media (max-width:420px){.nav-links{gap:12px}}
 @media (prefers-reduced-motion:reduce){.btn-designs,.btn-designs span,.dz-fan img{transition:none}}
@@ -461,15 +450,7 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
         </ul>
         <p class="chips-lead">Get invitations with</p>
         <div class="chips"><span>Music</span><span>Maps</span><span>Countdown</span><span>Calendar</span><span>Photos</span></div>
-      </div>
-      <div class="phone-col">
-        <div class="phone">
-          <div class="screen" id="screen">
-            <div class="thumb" id="thumb" aria-hidden="true"><svg viewBox="0 0 48 64"><path d="M20 30V9a5 5 0 0 1 10 0v17l11 2.4a6 6 0 0 1 4.7 6.9L43 52a9 9 0 0 1-8.9 7.4H24a9 9 0 0 1-7-3.4L5.5 41.8a4.5 4.5 0 0 1 6.6-6.1L20 42Z" fill="#FFF8EC" stroke="#24164A" stroke-width="3" stroke-linejoin="round"/></svg></div>
-            <iframe src="/goa-beach/" title="Live demo invitation: Isha and Aarav, Goa beach wedding" loading="lazy"></iframe>
-          </div>
-          <button type="button" class="phone-tag" id="demoTag">Tap the envelope — <b>it's live!</b></button>
-        </div>
+        <a class="btn-designs hero-cta" href="/designs/">View Designs <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </div>
@@ -726,9 +707,9 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
   <section class="dz" id="designs">
     <div class="wrap dz-grid reveal">
       <a class="dz-fan" href="/designs/" aria-label="View designs">
-        <img src="baby-shower/og.jpg" alt="" width="1200" height="630" loading="lazy">
-        <img src="navratri/og.jpg" alt="" width="1200" height="630" loading="lazy">
-        <img src="goa-beach/og.jpg" alt="" width="1200" height="630" loading="lazy">
+        <img src="baby-shower/preview.jpg" alt="" width="540" height="1110" loading="lazy">
+        <img src="navratri/preview.jpg" alt="" width="540" height="1110" loading="lazy">
+        <img src="goa-beach/preview.jpg" alt="" width="540" height="1110" loading="lazy">
       </a>
       <div>
         <div class="kicker">Pick your design</div>
@@ -782,46 +763,6 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
 </footer>
 
 <script>
-// Scale the live demo to fit the phone frame
-(function(){
-  var s=document.getElementById('screen'),f=s.querySelector('iframe');
-  function fit(){var k=s.clientWidth/375;f.style.transform='scale('+k+')';f.style.height=(s.clientHeight/k)+'px';}
-  // Hide the demo's scrollbar so the full 375px phone width shows (same-origin iframe)
-  function noBar(){try{var st=f.contentDocument.createElement('style');st.textContent='html{scrollbar-width:none}::-webkit-scrollbar{display:none}';f.contentDocument.head.appendChild(st);}catch(e){}}
-  f.addEventListener('load',noBar);noBar();
-  // "Tap the envelope" tag opens the demo, then a thumb hints at scrolling while the demo auto-scrolls a little
-  var tag=document.getElementById('demoTag'),thumb=document.getElementById('thumb'),tour=null,stopped=false;
-  function doc(){try{return f.contentDocument}catch(e){return null}}
-  function startTour(){
-    tag.classList.add('gone');
-    if(tour||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-    var w=f.contentWindow,d=doc(),steps=0;
-    ['wheel','touchstart','pointerdown','keydown'].forEach(function(ev){d.addEventListener(ev,function(e){if(e.target.id!=='openBtn')stopTour()},{passive:true})});
-    setTimeout(function step(){
-      if(stopped)return;
-      var max=d.documentElement.scrollHeight-w.innerHeight;
-      if(w.scrollY>=max-4||steps++>14){stopTour();return}
-      thumb.classList.remove('swipe');void thumb.offsetWidth;thumb.classList.add('swipe');
-      setTimeout(function(){if(!stopped)w.scrollBy({top:w.innerHeight*0.55,behavior:'smooth'})},450);
-      tour=setTimeout(step,2600);
-    },1900);
-    tour=1;
-  }
-  function stopTour(){stopped=true;clearTimeout(tour);thumb.classList.remove('swipe')}
-  function hook(){var d=doc();if(!d)return;var b=d.getElementById('openBtn');if(b&&!b._hooked){b._hooked=1;b.addEventListener('click',startTour)}}
-  f.addEventListener('load',hook);hook();
-  tag.addEventListener('click',function(){var d=doc(),b=d&&d.getElementById('openBtn');if(b)b.click()});
-  // Pause the demo's music when the phone scrolls out of view (or the tab is hidden); resume if we paused it
-  var pausedByUs=false;
-  function musicBtn(){var d=doc();return d&&d.getElementById('musicBtn')}
-  function setPlaying(on){var m=musicBtn();if(!m||!m.classList.contains('show'))return;var playing=m.classList.contains('playing');if(playing!==on)m.click()}
-  if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){
-    var m=musicBtn();if(!m||!m.classList.contains('show'))return;
-    if(!e.isIntersecting&&m.classList.contains('playing')){setPlaying(false);pausedByUs=true;stopTour()}
-    else if(e.isIntersecting&&pausedByUs&&!document.hidden){setPlaying(true);pausedByUs=false}
-  })},{threshold:0.35}).observe(s.parentNode);
-  fit();addEventListener('resize',fit);
-})();
 // Reduced motion: freeze the SMIL animations (the auto-rickshaw) mid-route
 if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)
   document.querySelectorAll('svg.scene').forEach(function(s){ if (s.pauseAnimations) { s.setCurrentTime(2.5); s.pauseAnimations(); } });
