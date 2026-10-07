@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Navratri Garba Night//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:patel-garba-20261017@invitashion.online
+DTSTAMP:20261006T000000Z
+DTSTART:20261017T140000Z
+DTEND:20261017T183000Z
+SUMMARY:Navratri Garba Night with Riya & Kunal
+LOCATION:Sapphire Lawns\, 80 Feet Road\, Koramangala\, Bengaluru
+DESCRIPTION:Aarti 7:30 PM\, Garba 8 PM\, Dandiya Raas 9:30 PM\, dinner 10:30 PM. Invitation: https://invitashion.online/navratri/
+BEGIN:VALARM
+TRIGGER:-PT3H
+ACTION:DISPLAY
+DESCRIPTION:Garba Night tonight at 7:30 PM!
+END:VALARM
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Maya and Arjun Baby Shower//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:maya-arjun-babyshower-20261213@invitashion.online
+DTSTAMP:20261006T000000Z
+DTSTART:20261213T053000Z
+DTEND:20261213T083000Z
+SUMMARY:Maya & Arjun's Baby Shower
+LOCATION:Willow & Moss Garden Café\, 12th Main Road\, Indiranagar\, Bengaluru
+DESCRIPTION:A woodland baby shower brunch. Invitation: https://invitashion.online/baby-shower/
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Maya & Arjun's Baby Shower tomorrow at 11 AM
+END:VALARM
+END:VEVENT
+END:VCALENDAR
