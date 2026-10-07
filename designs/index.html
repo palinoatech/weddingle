@@ -72,10 +72,12 @@ h1{font-family:'Baloo 2',sans-serif;font-weight:800;letter-spacing:-.5px;font-si
 .tpl-body{padding-top:20px;display:flex;flex-direction:column;align-items:center;flex:1;width:100%;max-width:330px}
 .tpl h3{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;line-height:1.2}
 .tpl p{font-size:14.5px;color:var(--muted);margin-top:4px;flex:1}
-.tpl-actions{display:flex;gap:10px;margin-top:14px;width:100%}
+.tpl-actions{display:flex;margin-top:14px;width:100%;max-width:240px}
 .tpl-actions a{flex:1;text-align:center;text-decoration:none;font:600 15px 'Fredoka',sans-serif;padding:10px 12px;border:2.5px solid var(--ink);border-radius:999px;box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
 .tpl-actions a:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
-.tpl-view{background:#fff}
+.tpl-phone .tpl-view{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);z-index:2;white-space:nowrap;
+  font:600 15px 'Fredoka',sans-serif;color:var(--ink);background:#fff;padding:9px 18px;border:2.5px solid var(--ink);border-radius:999px;box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.tpl-phone:hover .tpl-view{transform:translateX(-50%) translateY(-2px);box-shadow:4px 5px 0 var(--ink)}
 .tpl-pick{background:var(--pink);color:#fff}
 .tpl-ask{text-decoration:none;align-self:start}
 .tpl-ask .tpl-phone{background:transparent;border:3px dashed var(--ink);box-shadow:none;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px 16px}
@@ -139,35 +141,32 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
       <div class="cat-head"><span class="cat-ico" aria-hidden="true">💍</span><div><h2>Weddings</h2><p>Engagements, weddings and receptions</p></div></div>
       <div class="tpl-grid">
         <article class="tpl">
-          <a class="tpl-phone" href="../goa-beach/" target="_blank" rel="noopener" aria-label="Open the Sunset Beach Wedding demo"><img src="../goa-beach/preview.jpg" alt="Sunset Beach Wedding invitation on a phone" width="540" height="1110" loading="lazy"></a>
+          <a class="tpl-phone" href="../goa-beach/" target="_blank" rel="noopener" aria-label="Open the Sunset Beach Wedding demo"><img src="../goa-beach/preview.jpg" alt="Sunset Beach Wedding invitation on a phone" width="540" height="1110" loading="lazy"><span class="tpl-view">▶ View</span></a>
           <div class="tpl-body">
             <h3>Sunset Beach Wedding</h3>
             <p>Golden-hour beach vibes, an envelope to open, music and a live countdown.</p>
             <div class="tpl-actions">
-              <a class="tpl-view" href="../goa-beach/" target="_blank" rel="noopener">View live</a>
-              <a class="tpl-pick" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20the%20Sunset%20Beach%20Wedding%20design%20for%20my%20invite." target="_blank" rel="noopener">Choose this</a>
+              <a class="tpl-pick" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20the%20Sunset%20Beach%20Wedding%20design%20for%20my%20invite." target="_blank" rel="noopener">Get this</a>
             </div>
           </div>
         </article>
         <article class="tpl">
-          <a class="tpl-phone" href="../temple-wedding/" target="_blank" rel="noopener" aria-label="Open the Temple Doors Wedding demo"><img src="../temple-wedding/preview.jpg" alt="Temple Doors Wedding invitation on a phone" width="540" height="1110" loading="lazy"></a>
+          <a class="tpl-phone" href="../temple-wedding/" target="_blank" rel="noopener" aria-label="Open the Golden Envelope Wedding demo"><img src="../temple-wedding/preview.jpg" alt="Golden Envelope Wedding invitation on a phone" width="540" height="1110" loading="lazy"><span class="tpl-view">▶ View</span></a>
           <div class="tpl-body">
-            <h3>Temple Doors Wedding</h3>
-            <p>Carved doors open to marigold torans, falling petals, two event days and festive music.</p>
+            <h3>Golden Envelope Wedding</h3>
+            <p>Break a wax seal to open marigold torans, falling petals, two event days and festive music.</p>
             <div class="tpl-actions">
-              <a class="tpl-view" href="../temple-wedding/" target="_blank" rel="noopener">View live</a>
-              <a class="tpl-pick" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20the%20Temple%20Doors%20Wedding%20design%20for%20my%20invite." target="_blank" rel="noopener">Choose this</a>
+              <a class="tpl-pick" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20the%20Golden%20Envelope%20Wedding%20design%20for%20my%20invite." target="_blank" rel="noopener">Get this</a>
             </div>
           </div>
         </article>
         <article class="tpl">
-          <a class="tpl-phone" href="../party-wedding/" target="_blank" rel="noopener" aria-label="Open the Fun Friends Wedding demo"><img src="../party-wedding/preview.jpg" alt="Fun Friends Wedding invitation on a phone" width="540" height="1110" loading="lazy"></a>
+          <a class="tpl-phone" href="../party-wedding/" target="_blank" rel="noopener" aria-label="Open the Fun Friends Wedding demo"><img src="../party-wedding/preview.jpg" alt="Fun Friends Wedding invitation on a phone" width="540" height="1110" loading="lazy"><span class="tpl-view">▶ View</span></a>
           <div class="tpl-body">
             <h3>Fun Friends Wedding</h3>
             <p>A you've-got-mail envelope, polaroids, a food menu and upbeat party music. Perfect for friends.</p>
             <div class="tpl-actions">
-              <a class="tpl-view" href="../party-wedding/" target="_blank" rel="noopener">View live</a>
-              <a class="tpl-pick" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20the%20Fun%20Friends%20Wedding%20design%20for%20my%20invite." target="_blank" rel="noopener">Choose this</a>
+              <a class="tpl-pick" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20the%20Fun%20Friends%20Wedding%20design%20for%20my%20invite." target="_blank" rel="noopener">Get this</a>
             </div>
           </div>
         </article>
@@ -185,13 +184,12 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
       <div class="cat-head"><span class="cat-ico" aria-hidden="true">🍼</span><div><h2>Baby Shower</h2><p>Baby showers, gender reveals and naming ceremonies</p></div></div>
       <div class="tpl-grid">
         <article class="tpl">
-          <a class="tpl-phone" href="../baby-shower/" target="_blank" rel="noopener" aria-label="Open the Woodland Baby Shower demo"><img src="../baby-shower/preview.jpg" alt="Woodland Baby Shower invitation on a phone" width="540" height="1110" loading="lazy"></a>
+          <a class="tpl-phone" href="../baby-shower/" target="_blank" rel="noopener" aria-label="Open the Woodland Baby Shower demo"><img src="../baby-shower/preview.jpg" alt="Woodland Baby Shower invitation on a phone" width="540" height="1110" loading="lazy"><span class="tpl-view">▶ View</span></a>
           <div class="tpl-body">
             <h3>Woodland Baby Shower</h3>
             <p>Watercolour forest friends, a lullaby music box and a fun baby-predictions poll.</p>
             <div class="tpl-actions">
-              <a class="tpl-view" href="../baby-shower/" target="_blank" rel="noopener">View live</a>
-              <a class="tpl-pick" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20the%20Woodland%20Baby%20Shower%20design%20for%20my%20invite." target="_blank" rel="noopener">Choose this</a>
+              <a class="tpl-pick" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20the%20Woodland%20Baby%20Shower%20design%20for%20my%20invite." target="_blank" rel="noopener">Get this</a>
             </div>
           </div>
         </article>
@@ -209,13 +207,12 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
       <div class="cat-head"><span class="cat-ico" aria-hidden="true">🪔</span><div><h2>Festivals</h2><p>Navratri, Diwali, Eid, Christmas and more</p></div></div>
       <div class="tpl-grid">
         <article class="tpl">
-          <a class="tpl-phone" href="../navratri/" target="_blank" rel="noopener" aria-label="Open the Garba Night demo"><img src="../navratri/preview.jpg" alt="Garba Night invitation on a phone" width="540" height="1110" loading="lazy"></a>
+          <a class="tpl-phone" href="../navratri/" target="_blank" rel="noopener" aria-label="Open the Garba Night demo"><img src="../navratri/preview.jpg" alt="Garba Night invitation on a phone" width="540" height="1110" loading="lazy"><span class="tpl-view">▶ View</span></a>
           <div class="tpl-body">
             <h3>Garba Night</h3>
             <p>String lights, twirling dancers and a dhol groove your guests can speed up.</p>
             <div class="tpl-actions">
-              <a class="tpl-view" href="../navratri/" target="_blank" rel="noopener">View live</a>
-              <a class="tpl-pick" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20the%20Garba%20Night%20design%20for%20my%20invite." target="_blank" rel="noopener">Choose this</a>
+              <a class="tpl-pick" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20the%20Garba%20Night%20design%20for%20my%20invite." target="_blank" rel="noopener">Get this</a>
             </div>
           </div>
         </article>

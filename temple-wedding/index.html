@@ -47,41 +47,57 @@ h2.title{font-family:'Alex Brush',cursive;font-weight:400;font-size:clamp(50px,9
 .divider::after{background:linear-gradient(90deg,var(--gold),transparent)}
 .divider svg{width:34px;height:34px}
 
-/* ===== Temple-door gate ===== */
-.gate{position:fixed;inset:0;z-index:50;perspective:1600px;background:#2A1608}
-.door{position:absolute;top:0;bottom:0;width:50%;transition:transform 1.8s cubic-bezier(.6,0,.2,1);
-  /* carved teak: vertical grain + plank seams + recessed panel, with brass trim */
-  background:
-    repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 2px,transparent 2px 64px),
-    repeating-linear-gradient(90deg,rgba(255,220,170,.05) 0 1px,transparent 1px 7px,rgba(0,0,0,.06) 7px 9px,transparent 9px 17px),
-    linear-gradient(90deg,#5C3418,#7A4A26 30%,#6A3D1E 55%,#86542C 80%,#5C3418);
-  border:10px solid #3E2210;box-shadow:inset 0 0 0 6px #8A5A30,inset 0 0 0 9px #C9973F,inset 0 0 0 26px #5C3418,inset 0 0 0 29px #C9973F,inset 0 0 60px rgba(0,0,0,.55);
-  display:grid;place-items:center}
-/* brass studs in rows */
-.door::before{content:'';position:absolute;inset:44px;pointer-events:none;
-  background:radial-gradient(circle,#F3D27A 0 4px,#9C6B22 5px,transparent 6px) 0 0/72px 90px}
-.door::after{content:'';position:absolute;top:50%;width:26px;height:26px;margin-top:-13px;border-radius:50%;
-  background:radial-gradient(circle at 35% 35%,#FFE7A0,#C9973F 55%,#7A5014);box-shadow:0 0 0 4px rgba(0,0,0,.25),0 0 0 6px #C9973F}
-.door.l::after{right:18px}.door.r::after{left:18px}
-.door.l{left:0;transform-origin:left center;border-right-width:3px}
-.door.r{right:0;transform-origin:right center;border-left-width:3px}
-.door svg{width:58%;max-width:230px;color:#E7B85A;opacity:.85;position:relative;z-index:1;filter:drop-shadow(0 2px 2px rgba(0,0,0,.5));background:radial-gradient(circle,#4A2812 0 62%,transparent 63%);border-radius:50%}
-.gate.open .door.l{transform:rotateY(-105deg)}
-.gate.open .door.r{transform:rotateY(105deg)}
-.gate.open{background:transparent;pointer-events:none;transition:background 1s ease .6s}
+/* ===== Sealed-envelope gate ===== */
+.gate{position:fixed;inset:0;z-index:50;background:radial-gradient(ellipse at 50% 40%,#4A2812,#2A1608 70%);display:grid;place-items:center;overflow:hidden;
+  transition:opacity 1.2s cubic-bezier(.4,0,.2,1) 2.3s}
+.gate > svg.bg{position:absolute;left:50%;top:50%;width:150vmax;height:150vmax;transform:translate(-50%,-50%);color:#E9B949;opacity:.07;pointer-events:none}
+.gate.open{opacity:0;pointer-events:none}
 .gate.gone{display:none}
-.knock{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;text-align:center;width:min(400px,88vw);transition:opacity .5s;
-  padding:34px 26px 28px;border-radius:200px 200px 24px 24px;background:radial-gradient(ellipse at 50% 30%,#6E4220,#3E2210 78%);
-  border:2px solid #C9973F;box-shadow:0 0 0 6px rgba(42,22,8,.92),0 0 0 8px #C9973F,0 30px 80px rgba(0,0,0,.6)}
-.gate.open .knock{opacity:0}
-.knock .ganesha{font-family:'Cinzel',serif;color:var(--gold-light);letter-spacing:2px;font-size:12px;margin-top:22px}
-.knock h1{font-family:'Alex Brush',cursive;font-weight:400;color:#fff;font-size:clamp(46px,11vw,64px);line-height:1.05;margin:10px 0 4px;text-shadow:0 4px 20px rgba(0,0,0,.4)}
-.knock h1 small{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--gold-light)}
+.knock{position:relative;z-index:1;text-align:center;width:min(400px,92vw);padding:0 10px}
+.knock .ganesha{font-family:'Cinzel',serif;color:var(--gold-light);letter-spacing:2px;font-size:12px}
+.knock h1{font-family:'Alex Brush',cursive;font-weight:400;color:#fff;font-size:clamp(44px,11vw,60px);line-height:1.05;margin:8px 0 2px;text-shadow:0 4px 20px rgba(0,0,0,.4)}
 .knock p{color:var(--gold-light);font-family:'Cormorant Garamond',serif;font-size:19px}
-.open-btn{margin-top:22px;border:none;cursor:pointer;font:600 13px 'Poppins',sans-serif;letter-spacing:3px;text-transform:uppercase;color:var(--maroon-dark);
+.knock small{display:block;margin-top:12px;color:rgba(255,226,154,.75);font-size:12.5px}
+.open-btn{margin-top:26px;border:none;cursor:pointer;font:600 13px 'Poppins',sans-serif;letter-spacing:3px;text-transform:uppercase;color:var(--maroon-dark);
   background:linear-gradient(135deg,var(--gold-light),var(--saffron));padding:15px 30px;border-radius:999px;box-shadow:0 0 0 4px rgba(255,226,154,.25),0 10px 30px rgba(0,0,0,.4);animation:glow 2.4s ease-in-out infinite}
 @keyframes glow{0%,100%{box-shadow:0 0 0 4px rgba(255,226,154,.25),0 10px 30px rgba(0,0,0,.4)}50%{box-shadow:0 0 0 10px rgba(255,226,154,.12),0 10px 30px rgba(0,0,0,.4)}}
-.knock small{display:block;margin-top:12px;color:rgba(255,226,154,.75);font-size:12.5px}
+.knock .ganesha,.knock h1,.knock p{transition:opacity .8s ease 1.2s}
+.gate.open .ganesha,.gate.open h1,.gate.open .knock p{opacity:0}
+.gate.open .open-btn,.gate.open .knock small{opacity:0;transition:opacity .4s ease;animation:none}
+
+/* the envelope: back lining, card, front pocket, top flap, wax seal */
+.env{position:relative;width:min(330px,84vw);aspect-ratio:10/7;margin:26px auto 0;perspective:900px;cursor:pointer;
+  filter:drop-shadow(0 22px 30px rgba(0,0,0,.5));animation:env-bob 3.2s ease-in-out infinite}
+@keyframes env-bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-6px) rotate(1deg)}}
+.gate.open .env{animation:none}
+.env > *{position:absolute;inset:0;border-radius:10px}
+.env-back{background:radial-gradient(circle at 50% 30%,#7A1F1F,#4A0F12 75%);overflow:hidden}
+.env-back svg{position:absolute;left:50%;top:-30%;width:90%;transform:translateX(-50%);color:#E9B949;opacity:.25}
+.env-card{inset:7% 6% 5%;background:#FFF6E9;border-radius:6px;box-shadow:inset 0 0 0 4px #FFF6E9,inset 0 0 0 5px #C9973F,inset 0 0 0 8px #FFF6E9,inset 0 0 0 9px #C9973F;
+  display:grid;place-items:center;text-align:center;transition:transform 1.3s cubic-bezier(.45,0,.2,1) 1.05s;z-index:1}
+.env-card div{font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;color:#9C6B22;line-height:1.6;margin-top:-18%}
+.env-card b{display:block;font-family:'Alex Brush',cursive;font-weight:400;font-size:40px;letter-spacing:0;color:var(--maroon);line-height:1.1}
+.gate.open .env-card{transform:translateY(-58%) scale(1.04)}
+.env-front{z-index:2;overflow:hidden}
+.env-front svg,.env-flap svg{display:block;width:100%;height:100%;overflow:visible}
+.env-front::before{background:linear-gradient(120deg,#F6D47E,#E2AE45);clip-path:polygon(0 0,50% 52%,0 100%)}
+.env-front::after{background:linear-gradient(240deg,#F6D47E,#E2AE45);clip-path:polygon(100% 0,50% 52%,100% 100%)}
+.env-front::before{left:0;background:linear-gradient(to top right,rgba(0,0,0,.08) 49.6%,transparent 50%)}
+.env-front::after{right:0;background:linear-gradient(to top left,rgba(0,0,0,.08) 49.6%,transparent 50%)}
+.env-flap{z-index:3;bottom:auto;height:50%;border-radius:0;transform-origin:top center;
+  transition:transform 1s cubic-bezier(.45,0,.2,1) .35s,z-index 0s linear .85s}
+.gate.open .env-flap{transform:rotateX(180deg) scaleY(.55);z-index:0}
+.seal{z-index:4;inset:auto;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border:0;padding:0;background:none;cursor:pointer;border-radius:50%;
+  box-shadow:0 0 0 3px #8A1616,0 0 0 6px rgba(122,20,20,.35),0 6px 12px rgba(0,0,0,.35);transition:box-shadow .3s ease}
+.seal i{position:absolute;inset:0;border-radius:50%;display:grid;place-items:center;font:400 21px/1 'Alex Brush',cursive;font-style:normal;color:#F3D27A;white-space:nowrap;
+  background:radial-gradient(circle at 35% 30%,#C8322F,#9B1B1B 55%,#6A0E0E);text-shadow:0 1px 0 rgba(0,0,0,.35);
+  transition:transform .7s cubic-bezier(.45,0,.2,1),opacity .6s ease .1s}
+.seal i:first-child{clip-path:polygon(-5% -5%,53% -5%,46% 28%,55% 52%,47% 76%,52% 105%,-5% 105%)}
+.seal i:last-child{clip-path:polygon(53% -5%,105% -5%,105% 105%,52% 105%,47% 76%,55% 52%,46% 28%)}
+.gate.open .seal{box-shadow:none}
+.gate.open .seal i:first-child{transform:translate(-16px,18px) rotate(-24deg);opacity:0}
+.gate.open .seal i:last-child{transform:translate(16px,18px) rotate(24deg);opacity:0}
+@media (prefers-reduced-motion:reduce){.env{animation:none}.env-card,.env-flap,.seal i{transition-duration:.01s;transition-delay:0s}.gate{transition-delay:.2s}}
 
 /* ===== Hero ===== */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:150px 20px 90px;color:#fff;
@@ -234,7 +250,6 @@ footer small{display:block;margin-top:18px;font-size:12px;letter-spacing:2px;tex
   .diya{top:96px;width:30px}.diya svg{width:30px}.diya .chain{height:44px}
   .diya.l{left:3%}.diya.r{right:3%}
   .hero .ganesha{font-size:11px;letter-spacing:2px;padding:0 34px}
-  .knock{padding:30px 18px 24px}
   .hero{padding-top:130px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -262,15 +277,30 @@ footer small{display:block;margin-top:18px;font-size:12px;letter-spacing:2px;tex
   </defs>
 </svg>
 
-<!-- TEMPLE-DOOR GATE (a tap is needed before browsers allow audio) -->
+<!-- SEALED-ENVELOPE GATE (a tap is needed before browsers allow audio) -->
 <div class="gate" id="gate">
-  <div class="door l"><svg viewBox="0 0 200 200"><use href="#mandala"/></svg></div>
-  <div class="door r"><svg viewBox="0 0 200 200"><use href="#mandala"/></svg></div>
+  <svg class="bg" viewBox="0 0 200 200" aria-hidden="true"><use href="#mandala"/></svg>
   <div class="knock">
     <div class="ganesha">|| SHREE GANESHAYA NAMAHA ||</div>
     <h1>Sneha &amp; Karthik</h1>
     <p>invite you to celebrate their wedding</p>
-    <button class="open-btn" id="openBtn">Open the Doors &#9835;</button>
+    <div class="env" id="env" aria-hidden="true">
+      <div class="env-back"><svg viewBox="0 0 200 200"><use href="#mandala"/></svg></div>
+      <div class="env-card"><div>Wedding Invitation<b>Sneha &amp; Karthik</b>23 · 24 January 2027</div></div>
+      <div class="env-front"><svg viewBox="0 0 100 70" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="eg-side" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6D47E"/><stop offset="1" stop-color="#DDA640"/></linearGradient>
+          <linearGradient id="eg-bot" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1C964"/><stop offset="1" stop-color="#D9A23E"/></linearGradient>
+          <linearGradient id="eg-flap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F9DE90"/><stop offset="1" stop-color="#E8B44E"/></linearGradient>
+        </defs>
+        <path d="M0 0 L50 33 L0 70 Z" fill="url(#eg-side)"/>
+        <path d="M100 0 L50 33 L100 70 Z" fill="url(#eg-side)"/>
+        <path d="M0 70 L50 30 L100 70 Z" fill="url(#eg-bot)"/>
+      </svg></div>
+      <div class="env-flap"><svg viewBox="0 0 100 35" preserveAspectRatio="none"><path d="M0 0 H100 L50 35 Z" fill="url(#eg-flap)"/></svg></div>
+      <button class="seal" type="button" tabindex="-1"><i>S&amp;K</i><i>S&amp;K</i></button>
+    </div>
+    <button class="open-btn" id="openBtn">Open Invitation &#9835;</button>
     <small>Best enjoyed with sound on</small>
   </div>
 </div>
@@ -435,7 +465,7 @@ footer small{display:block;margin-top:18px;font-size:12px;letter-spacing:2px;tex
 <script>
 /* ---------- Festive background music, generated live with the Web Audio API ----------
    Tanpura-style drone + a flute melody in Raag Mohanam (pentatonic) + soft temple bells.
-   No audio file needed; starts only after the guest taps "Open the Doors". */
+   No audio file needed; starts only after the guest breaks the seal. */
 const Music = (() => {
   let ctx, master, bus, playing = false, next = 0, step = 0;
   const BEAT = 0.55;                      // seconds per melody note
@@ -544,16 +574,19 @@ const Music = (() => {
   return { start, state, toggle: () => (playing ? pause() : start(), playing), get playing() { return playing; } };
 })();
 
-/* ---------- Doors + music button ---------- */
+/* ---------- Envelope + music button ---------- */
 const gate = document.getElementById('gate'), musicBtn = document.getElementById('musicBtn');
-document.getElementById('openBtn').addEventListener('click', () => {
+function openInvite() {
+  if (gate.classList.contains('open')) return;
   Music.start();
   gate.classList.add('open');
   document.body.classList.remove('locked');
   musicBtn.classList.add('show', 'playing');
-  setTimeout(() => gate.classList.add('gone'), 2000);
-  showerPetals(36);
-});
+  setTimeout(() => gate.classList.add('gone'), 3600);
+  setTimeout(() => showerPetals(36), 2000);
+}
+document.getElementById('openBtn').addEventListener('click', openInvite);
+document.getElementById('env').addEventListener('click', openInvite);
 musicBtn.addEventListener('click', () => {
   const on = Music.toggle();
   musicBtn.classList.toggle('playing', on);
