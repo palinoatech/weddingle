@@ -142,7 +142,7 @@ footer .logo{font-size:26px}
 h2,.row h3,.occ-card h4,.hero h1{font-weight:400}
 
 /* ===== Pop Mela ===== */
-:root{--pink:#32127A;--sun:#FFD23F;--teal:#00B3A4;--purple:#6B2FA3;--orange:#FF7A1A;
+:root{--pink:#32127A;--sun:#FFD23F;--teal:#00B3A4;--purple:#6B2FA3;--orange:#FF7A1A;--brand:linear-gradient(110deg,#32127A 0%,#5A2A9A 50%,#00A0A0 100%);
   --plum:#24164A;--ink:#24164A;--muted:#4F4570;--rose:#32127A;--gold:#FF7A1A;--gold-light:#FFD23F;--ivory:#FFF8EC}
 body{font-weight:500;background:var(--ivory)}
 h2,.row h3,.occ-card h4,.hero h1{font-weight:800;letter-spacing:-.5px}
@@ -171,7 +171,7 @@ h2{color:var(--ink)}
 .chips span:nth-child(2){background:var(--teal);color:#fff;transform:rotate(2deg)}
 .chips span:nth-child(3){background:#fff;transform:rotate(-1deg)}
 .chips span:nth-child(4){background:var(--purple);color:#fff;transform:rotate(3deg)}
-.chips span:nth-child(5){background:var(--orange);color:#fff;transform:rotate(-2deg)}
+.chips span:nth-child(5){background:var(--brand);color:#fff;transform:rotate(-2deg)}
 .pop-deco{position:absolute;pointer-events:none;color:var(--pink)}
 .pop-deco svg{width:100%;height:100%}
 .d1{width:34px;height:34px;top:120px;left:46%;color:var(--teal);animation:spin 9s linear infinite}
@@ -188,11 +188,11 @@ h2{color:var(--ink)}
 .a1{background:var(--pink);transform:rotate(-2deg)}
 .a2{background:var(--teal);transform:rotate(2deg)}
 .a3{background:var(--purple);transform:rotate(-1.5deg)}
-.a4{background:var(--orange);transform:rotate(2deg)}
+.art.a4{background:var(--brand);transform:rotate(2deg)}
 .art{background-image:none}
 .num{font-family:'Caveat';font-weight:700;font-size:48px}
 .row:nth-child(1) .num{color:var(--pink)}.row:nth-child(2) .num{color:var(--teal)}
-.row:nth-child(3) .num{color:var(--purple)}.row:nth-child(4) .num{color:var(--orange)}
+.row:nth-child(3) .num{color:var(--purple)}.row:nth-child(4) .num{color:var(--teal)}
 .row h3{font-size:28px}
 .row p{font-weight:500}
 
@@ -217,7 +217,7 @@ h2{color:var(--ink)}
 /* steps */
 .step{border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);border-radius:22px}
 .step::before{font-family:'Baloo 2';font-weight:800;color:#fff;border:2.5px solid var(--ink)}
-.step:nth-child(1)::before{background:var(--pink)}.step:nth-child(2)::before{background:var(--teal)}.step:nth-child(3)::before{background:var(--orange)}
+.step:nth-child(1)::before{background:var(--pink)}.step:nth-child(2)::before{background:var(--teal)}.step:nth-child(3)::before{background:var(--purple)}
 .step h4{font-weight:800;font-size:18px}
 .step p{font-weight:500}
 
@@ -318,7 +318,7 @@ footer .logo{color:var(--sun)}
 /* Sticky "Get yours now" -> Instagram DM */
 .sticky-cta{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:60;display:inline-flex;align-items:center;gap:8px;
   padding:12px 18px 12px 14px;border-radius:999px;text-decoration:none;color:#fff;font:800 15px 'Nunito',sans-serif;
-  background:linear-gradient(45deg,#F58529,#DD2A7B 45%,#8134AF 75%,#515BD4);border:2.5px solid var(--ink);box-shadow:4px 4px 0 var(--ink);
+  background:var(--brand);border:2.5px solid var(--ink);box-shadow:4px 4px 0 var(--ink);
   animation:cta-nudge 6s ease-in-out 2s infinite;transition:transform .2s,box-shadow .2s}
 .sticky-cta svg{width:22px;height:22px;flex:none}
 .sticky-cta:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);animation-play-state:paused}
@@ -411,7 +411,7 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
 .hero-cta{margin-top:30px}
 @media (min-width:760px){.d1{top:auto;bottom:30%;left:auto;right:9%}}
 /* "View Designs" band */
-.dz{background:var(--sun);padding:64px 0;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+.dz{background:linear-gradient(120deg,#ECE4FA 0%,#E6E9FA 50%,#D9F2EF 100%);padding:64px 0;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
 .dz-grid{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;text-align:center}
 .dz h2{color:var(--ink);margin-top:4px}
 .dz p{font-weight:600;color:var(--muted);font-size:17px;max-width:420px;margin:0 auto}
@@ -422,7 +422,7 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
 .dz-fan img:nth-child(3){transform:translateX(-50%) rotate(-1deg);z-index:1}
 .dz-fan:hover img:nth-child(1){transform:translateX(-128%) translateY(14px) rotate(-14deg)}
 .dz-fan:hover img:nth-child(2){transform:translateX(28%) translateY(14px) rotate(14deg)}
-.btn-designs{display:inline-flex;align-items:center;gap:10px;margin-top:22px;text-decoration:none;font:600 20px 'Fredoka',sans-serif;color:#fff;background:var(--pink);padding:15px 32px;border:3px solid var(--ink);border-radius:999px;box-shadow:5px 5px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.btn-designs{display:inline-flex;align-items:center;gap:10px;margin-top:22px;text-decoration:none;font:600 20px 'Fredoka',sans-serif;color:#fff;background:var(--brand);padding:15px 32px;border:3px solid var(--ink);border-radius:999px;box-shadow:5px 5px 0 var(--ink);transition:transform .15s,box-shadow .15s}
 .btn-designs:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
 .btn-designs span{transition:transform .15s}.btn-designs:hover span{transform:translateX(4px)}
 @media (min-width:760px){.dz-grid{grid-template-columns:1fr 1fr;text-align:left}.dz p{margin:0}.dz-fan{height:340px;max-width:420px}.dz-fan img{width:150px}}
