@@ -85,6 +85,13 @@ h1{font-family:'Baloo 2',sans-serif;font-weight:800;letter-spacing:-.5px;font-si
 .tpl-ask p{flex:none;font-size:14px}
 .ask-cta{margin-top:12px;font:600 15px 'Fredoka',sans-serif;color:var(--pink)}
 @media (max-width:559px){.tpl-ask .tpl-phone{aspect-ratio:auto;width:100%;max-width:330px;border-radius:22px;transform:none}}
+/* When the "different look" card starts a new row on its own (3-column grid), show it as a short full-width strip */
+@media (min-width:900px){
+  .tpl-ask:nth-child(3n+1){grid-column:1/-1;align-self:stretch}
+  .tpl-ask:nth-child(3n+1) .tpl-phone{aspect-ratio:auto;width:100%;max-width:none;border-radius:22px;transform:none;flex-direction:row;flex-wrap:wrap;gap:6px 16px;padding:18px 24px}
+  .tpl-ask:nth-child(3n+1) .plus{width:44px;height:44px;font-size:28px;margin:0}
+  .tpl-ask:nth-child(3n+1) .ask-cta{margin:0}
+}
 /* Closing note */
 .more{text-align:center;padding:30px 0 70px}
 .more h2{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px}
@@ -139,6 +146,28 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
             <div class="tpl-actions">
               <a class="tpl-view" href="../goa-beach/" target="_blank" rel="noopener">View live</a>
               <a class="tpl-pick" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20the%20Sunset%20Beach%20Wedding%20design%20for%20my%20invite." target="_blank" rel="noopener">Choose this</a>
+            </div>
+          </div>
+        </article>
+        <article class="tpl">
+          <a class="tpl-phone" href="../temple-wedding/" target="_blank" rel="noopener" aria-label="Open the Temple Doors Wedding demo"><img src="../temple-wedding/preview.jpg" alt="Temple Doors Wedding invitation on a phone" width="540" height="1110" loading="lazy"></a>
+          <div class="tpl-body">
+            <h3>Temple Doors Wedding</h3>
+            <p>Carved doors open to marigold torans, falling petals, two event days and festive music.</p>
+            <div class="tpl-actions">
+              <a class="tpl-view" href="../temple-wedding/" target="_blank" rel="noopener">View live</a>
+              <a class="tpl-pick" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20the%20Temple%20Doors%20Wedding%20design%20for%20my%20invite." target="_blank" rel="noopener">Choose this</a>
+            </div>
+          </div>
+        </article>
+        <article class="tpl">
+          <a class="tpl-phone" href="../party-wedding/" target="_blank" rel="noopener" aria-label="Open the Fun Friends Wedding demo"><img src="../party-wedding/preview.jpg" alt="Fun Friends Wedding invitation on a phone" width="540" height="1110" loading="lazy"></a>
+          <div class="tpl-body">
+            <h3>Fun Friends Wedding</h3>
+            <p>A you've-got-mail envelope, polaroids, a food menu and upbeat party music. Perfect for friends.</p>
+            <div class="tpl-actions">
+              <a class="tpl-view" href="../party-wedding/" target="_blank" rel="noopener">View live</a>
+              <a class="tpl-pick" href="https://wa.me/918095622944?text=Hi%20Invitashion%21%20I%27d%20like%20the%20Fun%20Friends%20Wedding%20design%20for%20my%20invite." target="_blank" rel="noopener">Choose this</a>
             </div>
           </div>
         </article>

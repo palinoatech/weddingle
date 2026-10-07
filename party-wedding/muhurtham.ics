@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Nikhil and Pooja//EN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:muhurtham-nikhil-pooja-2027@invitashion
+DTSTAMP:20261007T000000Z
+DTSTART:20270213T050000Z
+DTEND:20270213T053000Z
+SUMMARY:Nikhil & Pooja - Muhurtham
+LOCATION:SPK Inn & Convention Centre\, Magadi Main Road\, Sunkadakatte\, Bengaluru 560091
+END:VEVENT
+END:VCALENDAR

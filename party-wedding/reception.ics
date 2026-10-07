@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Nikhil and Pooja//EN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:reception-nikhil-pooja-2027@invitashion
+DTSTAMP:20261007T000000Z
+DTSTART:20270212T133000Z
+DTEND:20270212T170000Z
+SUMMARY:Nikhil & Pooja's Wedding Reception
+LOCATION:SPK Inn & Convention Centre\, Magadi Main Road\, Sunkadakatte\, Bengaluru 560091
+END:VEVENT
+END:VCALENDAR
