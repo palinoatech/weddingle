@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Vihaan Dino Birthday//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:vihaan-dino-birthday-20270227@invitashion.online
+DTSTAMP:20261008T000000Z
+DTSTART:20270227T103000Z
+DTEND:20270227T140000Z
+SUMMARY:Vihaan's 5th Birthday Dino Party
+LOCATION:Fern Valley Play Park\, 27th Main Road\, HSR Layout Sector 2\, Bengaluru
+DESCRIPTION:Fossil dig\, egg hunt\, volcano cake and dinner. Invitation: https://invitashion.online/dino-birthday/
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Vihaan's dino party tomorrow at 4:00 PM
+END:VALARM
+END:VEVENT
+END:VCALENDAR
