@@ -430,6 +430,11 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
 .nav-links{display:flex;gap:18px;align-items:center}
 @media (max-width:420px){.nav-links{gap:12px}}
 @media (prefers-reduced-motion:reduce){.btn-designs,.btn-designs span,.dz-fan img{transition:none}}
+/* hero button spacing (.btn-designs margin was overriding .hero-cta) */
+.hero .hero-cta{margin-top:40px}
+/* align nav links with the wordmark, not the logo box (flourish makes it top-light) */
+.nav{align-items:flex-end}
+.nav-links{padding-bottom:.18em}
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
