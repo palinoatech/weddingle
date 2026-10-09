@@ -443,6 +443,11 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
 footer{padding-bottom:calc(22px + env(safe-area-inset-bottom))!important}
 .sticky-cta.away{opacity:0;pointer-events:none;transform:translateY(16px)}
 .sticky-cta{transition:opacity .3s,transform .3s,box-shadow .2s}
+
+/* final CTA: longer handwritten lead-in stays tidy on phones and above the corner circle */
+.final .wrap{position:relative;z-index:1}
+.final .kicker{line-height:1.15;max-width:340px}
+@media (max-width:420px){.final .kicker{font-size:23px}.final::before{width:140px;height:140px}}
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
@@ -751,15 +756,15 @@ footer{padding-bottom:calc(22px + env(safe-area-inset-bottom))!important}
 
   <section class="final">
     <div class="wrap reveal">
-      <div class="kicker" >Let's make yours</div>
-      <h2>Your invite deserves more than a PDF</h2>
+      <div class="kicker" >Your invite deserves more than a PDF</div>
+      <h2>Let's make yours</h2>
       <p class="lead">Message us on WhatsApp, or DM <b>INVITE</b> on Instagram.</p>
       <div class="ctas">
         <a class="btn btn-wa" href="https://wa.me/919043624116?text=Hi%20Invitashion!%20I%27d%20like%20a%20digital%20invite." target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
           Chat on WhatsApp
         </a>
-        <a class="btn btn-ghost" href="https://www.instagram.com/invitashion.online/" target="_blank" rel="noopener">Follow on Instagram</a>
+        <a class="btn btn-ghost" href="https://ig.me/m/invitashion.online" target="_blank" rel="noopener">DM on Instagram</a>
       </div>
     </div>
   </section>
