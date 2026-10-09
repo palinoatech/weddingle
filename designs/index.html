@@ -33,10 +33,11 @@ a{color:inherit}
 .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
 /* Header */
 .top{background:#fff;padding:20px 0 0}
-.nav{display:flex;justify-content:space-between;align-items:center}
+.nav{display:flex;justify-content:space-between;align-items:flex-end}  /* links sit on the wordmark, not the top-light logo box */
 .logo-img{display:inline-block;line-height:0}
 .logo-img img{height:52px;width:auto;display:block}
-.nav-links{display:flex;gap:18px}
+.nav-links{display:flex;gap:18px;padding-bottom:.18em}
+.nav-links a{white-space:nowrap}
 .nav-links a{font-size:13px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;font-weight:800}
 .intro{text-align:center;padding:36px 0 26px}
 .kicker{font:700 28px/1 'Caveat',cursive;color:var(--pink);display:inline-block;transform:rotate(-2deg)}
@@ -108,6 +109,8 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
 .ft-made a{color:#FFD23F;font-weight:800;text-decoration:none;border-bottom:2px solid rgba(255,210,63,.4)}
 .ft-copy{font-size:12.5px;color:#9F95BD;margin-top:6px}
 @media (max-width:420px){.logo-img img{height:42px}.nav-links{gap:12px}}
+@media (max-width:400px){.nav-links{gap:10px}.nav-links a{font-size:12px;letter-spacing:1.2px}}
+@media (max-width:340px){.logo-img img{height:34px}.nav-links a{letter-spacing:.8px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tpl,.tpl-actions a,.chips a,.sticky-cta,.tpl-phone,.idea-btn{transition:none}}
 </style>
 </head>
