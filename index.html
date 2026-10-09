@@ -438,6 +438,11 @@ footer .logo-img img{height:40px;margin:0 auto 8px}
 .nav-links a{white-space:nowrap}
 @media (max-width:400px){.nav-links{gap:10px}.nav a.ig{font-size:12px;letter-spacing:1.2px}}
 @media (max-width:340px){.logo-img img{height:34px}.nav a.ig{letter-spacing:.8px}}
+
+/* Footer credit sits at the very bottom; the floating CTA steps aside when the footer is in view */
+footer{padding-bottom:calc(22px + env(safe-area-inset-bottom))!important}
+.sticky-cta.away{opacity:0;pointer-events:none;transform:translateY(16px)}
+.sticky-cta{transition:opacity .3s,transform .3s,box-shadow .2s}
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
@@ -781,6 +786,13 @@ if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
   els.forEach(function(e){io.observe(e)});
+})();
+</script>
+<script>
+(function(){
+  var cta=document.querySelector('.sticky-cta'),ft=document.querySelector('footer');
+  if(!cta||!ft||!('IntersectionObserver' in window))return;
+  new IntersectionObserver(function(es){cta.classList.toggle('away',es[0].isIntersecting)},{threshold:0}).observe(ft);
 })();
 </script>
 </body>
