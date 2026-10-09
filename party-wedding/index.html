@@ -567,5 +567,27 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   <a class="ivx-all" href="/designs/#weddings">See all designs</a>
 </section>
 <!-- /INVITASHION DEMO CTA -->
+<!-- scroll cue -->
+<style>
+.sc-cue{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));z-index:39;transform:translate(-50%,12px);display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 18px 7px;border:0;border-radius:999px;background:rgba(20,14,30,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;font:600 11px/1 system-ui,-apple-system,'Segoe UI',sans-serif;letter-spacing:3px;text-transform:uppercase;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .6s,transform .6s}
+.sc-cue.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.sc-cue svg{width:18px;height:18px;animation:scNudge 1.6s ease-in-out infinite}
+@keyframes scNudge{0%,100%{transform:translateY(-2px);opacity:.6}50%{transform:translateY(3px);opacity:1}}
+@media (prefers-reduced-motion:reduce){.sc-cue svg{animation:none}.sc-cue{transition:none}}
+</style>
+<button class="sc-cue" type="button" aria-label="Scroll down to see more">Scroll<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+<script>
+(function(){
+  var cue=document.querySelector('.sc-cue'),done=false,t;
+  function hide(){done=true;clearTimeout(t);cue.classList.remove('on')}
+  function show(){if(!done&&window.scrollY<60)cue.classList.add('on')}
+  function arm(){t=setTimeout(show,1800)}
+  if(document.body.classList.contains('locked')){
+    new MutationObserver(function(m,o){if(!document.body.classList.contains('locked')){o.disconnect();arm()}}).observe(document.body,{attributes:true,attributeFilter:['class']});
+  }else arm();
+  window.addEventListener('scroll',function(){if(window.scrollY>60)hide()},{passive:true});
+  cue.addEventListener('click',function(){window.scrollBy({top:window.innerHeight*.85,behavior:'smooth'});hide()});
+})();
+</script>
 </body>
 </html>
