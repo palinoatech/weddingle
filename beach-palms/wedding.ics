@@ -1,20 +1,20 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Invitashion//Anjali and Adarsh//EN
+PRODID:-//Invitashion//Anjali and Akash//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:anjali-adarsh-wedding-20261206@invitashion.online
+UID:anjali-akash-wedding-20261206@invitashion.online
 DTSTAMP:20261007T000000Z
 DTSTART:20261206T110000Z
 DTEND:20261206T180000Z
-SUMMARY:Anjali & Adarsh's Wedding
+SUMMARY:Anjali & Akash's Wedding
 LOCATION:Taj Exotica Resort & Spa\, Calwaddo\, Benaulim\, South Goa 403716
 DESCRIPTION:Invitation: https://invitashion.online/beach-palms/
 BEGIN:VALARM
 TRIGGER:-P1D
 ACTION:DISPLAY
-DESCRIPTION:Anjali & Adarsh's wedding tomorrow at 4:30 PM
+DESCRIPTION:Anjali & Akash's wedding tomorrow at 4:30 PM
 END:VALARM
 END:VEVENT
 END:VCALENDAR
