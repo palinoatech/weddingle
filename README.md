@@ -1,4 +1,4 @@
-# Weddingle — digital wedding invitations
+# Invitashion — digital invitations
 
 Published with GitHub Pages: https://invitashion.online/
 
