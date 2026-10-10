@@ -22,6 +22,7 @@ label{display:block;font-weight:800;font-size:14px;margin:16px 0 6px}
 input,select,textarea{width:100%;font:600 17px 'Nunito',sans-serif;color:var(--ink);padding:12px 14px;border:2px solid #D9D0EE;border-radius:14px;background:#FBF9FF}
 input:focus,select:focus,textarea:focus{outline:none;border-color:#5A2A9A}
 .row{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:end}
+[hidden]{display:none!important}
 .row .amp{font:800 22px 'Baloo 2';padding-bottom:10px;color:#5A2A9A}
 textarea{font-size:15px;line-height:1.45;min-height:150px;resize:vertical}
 .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
@@ -43,9 +44,9 @@ button:disabled,a.btn[aria-disabled=true]{opacity:.45;pointer-events:none}
   <select id="design"></select>
 
   <div class="row">
-    <div><label for="a">First name</label><input id="a" autocomplete="off" autocapitalize="words" placeholder="Priya"></div>
-    <span class="amp">&amp;</span>
-    <div><label for="b">Second name</label><input id="b" autocomplete="off" autocapitalize="words" placeholder="Rahul"></div>
+    <div><label for="a" id="aLabel">First name</label><input id="a" autocomplete="off" autocapitalize="words" placeholder="Priya"></div>
+    <span class="amp" id="ampSign">&amp;</span>
+    <div id="bWrap"><label for="b">Second name</label><input id="b" autocomplete="off" autocapitalize="words" placeholder="Rahul"></div>
   </div>
 
   <label for="msg">Message</label>
@@ -61,17 +62,22 @@ button:disabled,a.btn[aria-disabled=true]{opacity:.45;pointer-events:none}
 <div class="toast" id="toast">Copied ✓</div>
 
 <script>
-// Designs that accept names in the link (?a=&b=)
+// Designs that accept names in the link: couples use ?a=&b=, kids' designs use ?n= (one name)
 const DESIGNS = [
   { path: 'beach-palms', name: 'Palm Beach Wedding' },
+  { path: 'first-birthday', name: 'First Birthday Party', kid: true },
 ];
 const $ = id => document.getElementById(id);
 DESIGNS.forEach((d, i) => $('design').add(new Option(d.name, i)));
 const tidy = v => v.replace(/\s+/g, ' ').trim().replace(/^\p{Ll}/u, c => c.toUpperCase());
 function update() {
-  const d = DESIGNS[$('design').value], a = tidy($('a').value), b = tidy($('b').value), ok = a && b;
-  const url = 'https://invitashion.online/' + d.path + '/?' + new URLSearchParams({ a, b });
-  $('msg').value = ok ? `Hi ${a} & ${b}! 💌 Here's your ${d.name} invite with your names:\n${url}\n\nOpen it on your phone with sound on 🔊 We'll add your date, venue, photos and music to make it fully yours. Want to go ahead?` : '';
+  const d = DESIGNS[$('design').value], a = tidy($('a').value), b = tidy($('b').value), ok = d.kid ? !!a : a && b;
+  $('bWrap').hidden = $('ampSign').hidden = !!d.kid;
+  $('aLabel').textContent = d.kid ? "Child's name" : 'First name';
+  const url = 'https://invitashion.online/' + d.path + '/?' + new URLSearchParams(d.kid ? { n: a } : { a, b });
+  $('msg').value = !ok ? '' : d.kid
+    ? `Hi! 💌 Here's ${a}'s ${d.name} invite:\n${url}\n\nOpen it on your phone with sound on 🔊 Pop the balloons and blow out the candle! We'll add your date, venue, photos and music to make it fully yours. Want to go ahead?`
+    : `Hi ${a} & ${b}! 💌 Here's your ${d.name} invite with your names:\n${url}\n\nOpen it on your phone with sound on 🔊 We'll add your date, venue, photos and music to make it fully yours. Want to go ahead?`;
   $('link').textContent = ok ? url : '';
   $('open').href = ok ? url : '#';
   $('open').setAttribute('aria-disabled', !ok);

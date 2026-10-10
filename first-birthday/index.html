@@ -225,12 +225,38 @@ footer small{display:block;margin-top:8px;color:var(--mint);font-weight:800;lett
 </style>
 </head>
 <body class="locked">
+<script>
+/* ---------- Personalised preview: ?n=Riya puts the child's name everywhere ----------
+   The name is cleaned (letters, spaces, . ' - only; max 14 characters, cut at a word) and set as plain text. */
+const KID = (() => {
+  const v = (new URLSearchParams(location.search).get('n') || '').replace(/[^\p{L}\p{M} .'-]/gu, '').replace(/\s+/g, ' ').trim()
+    .replace(/^(.{14}).*$/u, (m, h) => h.includes(' ') ? h.slice(0, h.lastIndexOf(' ')) : h)
+    .replace(/^\p{Ll}/u, c => c.toUpperCase());
+  return v || 'Aarya';
+})();
+document.addEventListener('DOMContentLoaded', () => {
+  if (KID === 'Aarya') return;
+  document.querySelectorAll('[data-n]').forEach(el => { el.textContent = KID; });
+  document.title = KID + ' Turns One! — First Birthday Party Invitation';
+  document.getElementById('tag').textContent = '#' + KID.replace(/[^\p{L}\p{M}]/gu, '') + 'TurnsOne';
+  const cal = document.querySelector('[data-cal]');
+  if (cal) cal.href = cal.href.replace('text=Aarya%27s', 'text=' + encodeURIComponent(KID + "'s"));
+  const strip = document.querySelector('.ivx p');
+  if (strip) strip.textContent = 'This is your preview for ' + KID + '! We make it yours with your date, venue, photos and music.';
+  // keep the big hero name on one line for longer names
+  const big = document.querySelector('.hero h1 .name');
+  if (big) document.fonts.ready.then(() => { let f = parseFloat(getComputedStyle(big).fontSize); big.style.whiteSpace = 'nowrap';
+    const textW = () => { const r = document.createRange(); r.selectNodeContents(big); return r.getBoundingClientRect().width; };
+    while (textW() > big.parentElement.clientWidth - 12 && f > 30) { f -= 4; big.style.fontSize = f + 'px'; } });
+});
+</script>
+
 
 <!-- GIFT-BOX GATE (a tap is needed before browsers allow audio) -->
 <div class="gate" id="gate">
   <div class="knock">
     <div class="to">Psst… a little someone has news!</div>
-    <h1>Aarya is turning <b>ONE</b></h1>
+    <h1><span data-n>Aarya</span> is turning <b>ONE</b></h1>
     <p>and you're invited to the party 🎉</p>
     <div class="gift" id="gift" aria-hidden="true">
       <span class="balloon g-bal b-pink"></span><span class="balloon g-bal b-sun"></span><span class="balloon g-bal b-mint"></span>
@@ -264,7 +290,7 @@ footer small{display:block;margin-top:8px;color:var(--mint);font-weight:800;lett
   <button class="balloon b-peach hb6" type="button" aria-label="Pop a balloon"></button>
   <div class="wrap">
     <div class="kicker">Come celebrate!</div>
-    <h1><span class="name">Aarya</span><span class="turns">is turning</span></h1>
+    <h1><span class="name" data-n>Aarya</span><span class="turns">is turning</span></h1>
     <div class="one" aria-label="one">1</div>
     <p class="sub">Our little sunshine's very first birthday!</p>
     <div class="chips"><span>📅 Sat, 20 Feb · 6:30 PM</span><span>📍 JW Marriott, Bengaluru</span></div>
@@ -290,7 +316,7 @@ footer small{display:block;margin-top:8px;color:var(--mint);font-weight:800;lett
   <div class="wrap">
     <div class="center reveal">
       <div class="kicker">Meet the birthday girl</div>
-      <h2>One whole year of Aarya</h2>
+      <h2>One whole year of <span data-n>Aarya</span></h2>
     </div>
     <div class="little-grid reveal">
       <div class="avatar" aria-hidden="true">
@@ -320,7 +346,7 @@ footer small{display:block;margin-top:8px;color:var(--mint);font-weight:800;lett
 <section class="cake-sec center">
   <div class="wrap reveal">
     <div class="kicker">Your turn</div>
-    <h2>Make a wish for Aarya</h2>
+    <h2>Make a wish for <span data-n>Aarya</span></h2>
     <p class="lead">Tap the cake to blow out the candle.</p>
     <button class="cake" id="cake" type="button" aria-label="Blow out the candle">
       <svg viewBox="0 0 200 210">
@@ -357,7 +383,7 @@ footer small{display:block;margin-top:8px;color:var(--mint);font-weight:800;lett
         <div class="big">Saturday, 20 February 2027</div>
         <p>6:30 PM onwards · cake cutting at 7:30 PM</p>
         <div class="btns">
-          <a class="btn btn-pink" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Aarya%27s+1st+Birthday+Party&dates=20270220T130000Z/20270220T160000Z&details=Cake%2C+games+and+dinner.+Invitation%3A+https%3A%2F%2Finvitashion.online%2Ffirst-birthday%2F&location=JW+Marriott+Hotel%2C+Vittal+Mallya+Road%2C+Bengaluru" target="_blank" rel="noopener">Google Calendar</a>
+          <a class="btn btn-pink" data-cal href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Aarya%27s+1st+Birthday+Party&dates=20270220T130000Z/20270220T160000Z&details=Cake%2C+games+and+dinner.+Invitation%3A+https%3A%2F%2Finvitashion.online%2Ffirst-birthday%2F&location=JW+Marriott+Hotel%2C+Vittal+Mallya+Road%2C+Bengaluru" target="_blank" rel="noopener">Google Calendar</a>
           <a class="btn" href="first-birthday.ics" download>Apple / Outlook</a>
         </div>
       </div>
@@ -399,7 +425,7 @@ footer small{display:block;margin-top:8px;color:var(--mint);font-weight:800;lett
       </div>
       <label for="gCount">How many of you?</label>
       <select id="gCount"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5+</option></select>
-      <label for="gWish">A birthday wish for Aarya</label>
+      <label for="gWish">A birthday wish for <span data-n>Aarya</span></label>
       <textarea id="gWish" rows="3" placeholder="May your days be full of giggles…"></textarea>
       <button class="btn btn-pink" type="submit">Send RSVP 💌</button>
     </form>
@@ -413,9 +439,9 @@ footer small{display:block;margin-top:8px;color:var(--mint);font-weight:800;lett
 
 <footer>
   <div class="sig">See you at the party!</div>
-  <p>With love, Neha, Vikram &amp; little Aarya</p>
+  <p>With love, Neha, Vikram &amp; little <span data-n>Aarya</span></p>
   <p>20 February 2027 · Bengaluru</p>
-  <small>#AaryaTurnsOne</small>
+  <small id="tag">#AaryaTurnsOne</small>
 </footer>
 
 <button class="music" id="musicBtn" aria-label="Pause music" title="Music"><i></i><i></i><i></i><i></i></button>
@@ -582,7 +608,7 @@ cake.addEventListener('click', () => {
   cake.classList.add('out');
   Music.whoosh();
   const r = cake.getBoundingClientRect();
-  setTimeout(() => { confetti(r.left + r.width / 2, r.top + r.height * .15, 50); wishMsg.textContent = 'Yay! Your wish is on its way to Aarya 🎉'; relight.hidden = false; }, 350);
+  setTimeout(() => { confetti(r.left + r.width / 2, r.top + r.height * .15, 50); wishMsg.textContent = 'Yay! Your wish is on its way to ' + KID + ' 🎉'; relight.hidden = false; }, 350);
 });
 relight.addEventListener('click', () => { cake.classList.remove('out'); wishMsg.textContent = ''; relight.hidden = true; });
 
