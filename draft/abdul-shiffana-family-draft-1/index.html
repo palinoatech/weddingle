@@ -47,12 +47,12 @@ h2.title{font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(46px,
   box-shadow:inset 0 0 60px rgba(0,0,0,.55);transition:transform 2.4s cubic-bezier(.65,0,.25,1) .2s}
 .door.l{left:0}.door.r{right:0}
 .gate.open .door.l{transform:translateX(-102%)}.gate.open .door.r{transform:translateX(102%)}
-.henna{position:absolute;top:0;height:100%;width:78px;opacity:.38}
+.henna{position:absolute;top:0;height:21%;width:78px;opacity:.38;-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent)}
 .door.l .henna{right:0}
 .door.r .henna{left:0;transform:scaleX(-1)}
-.pull{position:absolute;top:50%;width:46px;height:62px;margin-top:-31px;filter:drop-shadow(0 4px 6px rgba(0,0,0,.6))}
-.door.l .pull{right:9px}.door.r .pull{left:9px}
-.cta{position:absolute;left:50%;top:calc(50% + 56px);width:min(330px,92vw);transform:translateX(-50%);z-index:4;text-align:center;color:#fff;padding:18px 16px 14px;background:radial-gradient(ellipse at center,rgba(4,23,15,.88) 38%,rgba(4,23,15,0) 72%);transition:opacity .5s ease}
+.door .henna.b{top:auto;bottom:0;transform:scaleY(-1)}
+.door.r .henna.b{transform:scale(-1,-1)}
+.cta{position:absolute;left:50%;top:50%;width:min(330px,92vw);transform:translate(-50%,-50%);z-index:4;text-align:center;color:#fff;padding:18px 16px 14px;background:radial-gradient(ellipse at center,rgba(4,23,15,.88) 38%,rgba(4,23,15,0) 72%);transition:opacity .5s ease}
 .gate.open .cta{opacity:0;pointer-events:none}
 .cta .who{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:23px;color:var(--gold-l);text-shadow:0 2px 10px rgba(0,0,0,.6)}
 .cta .who span{display:block;font-family:'Cinzel',serif;font-style:normal;font-weight:500;font-size:10.5px;letter-spacing:4px;color:rgba(241,220,147,.85);margin-bottom:4px}
@@ -211,9 +211,6 @@ footer small{display:block;margin-top:16px;font-size:12px;letter-spacing:2px;tex
       <use href="#pom" transform="translate(30 336)"/><use href="#pom" transform="translate(88 132) scale(.85)"/>
       <use href="#flw" transform="translate(152 36)"/><use href="#flw" transform="translate(76 222) scale(.8)"/>
     </g></symbol>
-    <symbol id="pullsym" viewBox="0 0 46 62"><defs><radialGradient id="pg" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#F8E9AE"/><stop offset=".55" stop-color="#D4AF37"/><stop offset="1" stop-color="#8A6B1C"/></radialGradient></defs>
-      <ellipse cx="23" cy="31" rx="21" ry="29" fill="url(#pg)"/><ellipse cx="23" cy="31" rx="15.5" ry="23.5" fill="#0B3D2E" stroke="#8A6B1C" stroke-width="1"/>
-      <g fill="none" stroke="#D4AF37" stroke-width="1.1" stroke-linecap="round"><path d="M23 48V28M23 34C16 30 14 24 16 18M23 34C30 30 32 24 30 18"/><circle cx="23" cy="20" r="3.4" fill="#D4AF37"/></g></symbol>
     <symbol id="star8" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="22" y="22" width="56" height="56"/><rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)"/><circle cx="50" cy="50" r="10"/><circle cx="50" cy="50" r="44"/></g></symbol>
     <symbol id="ico-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
     <symbol id="ico-leaf" viewBox="0 0 24 24"><path d="M12 21c-5-3-8-7-8-11 3-1 5 0 8 3 3-3 5-4 8-3 0 4-3 8-8 11zM12 13V4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -223,8 +220,8 @@ footer small{display:block;margin-top:16px;font-size:12px;letter-spacing:2px;tex
 
 <!-- GATE: embroidered velvet doors that open onto the invitation -->
 <div class="gate" id="gate">
-  <div class="door l"><svg class="henna" aria-hidden="true"><rect width="100%" height="100%" fill="url(#henna)"/></svg><svg class="pull" viewBox="0 0 46 62" aria-hidden="true"><use href="#pullsym"/></svg></div>
-  <div class="door r"><svg class="henna" aria-hidden="true"><rect width="100%" height="100%" fill="url(#henna)"/></svg><svg class="pull" viewBox="0 0 46 62" aria-hidden="true"><use href="#pullsym"/></svg></div>
+  <div class="door l"><svg class="henna" aria-hidden="true"><rect width="100%" height="100%" fill="url(#henna)"/></svg><svg class="henna b" aria-hidden="true"><rect width="100%" height="100%" fill="url(#henna)"/></svg></div>
+  <div class="door r"><svg class="henna" aria-hidden="true"><rect width="100%" height="100%" fill="url(#henna)"/></svg><svg class="henna b" aria-hidden="true"><rect width="100%" height="100%" fill="url(#henna)"/></svg></div>
   <div class="cta">
     <div class="who"><span>YOU ARE INVITED</span>Abdul Basith &amp; Shiffana</div>
     <button class="open-btn" id="openBtn">Open Invitation</button>
