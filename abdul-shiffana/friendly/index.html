@@ -30,16 +30,13 @@
     body.locked{height:100vh;overflow:hidden}
     button,a{font:inherit}
     a{text-decoration:none;color:inherit}
-    .music-control{
-      position:fixed;z-index:80;top:14px;right:14px;width:44px;height:44px;border-radius:50%;
-      border:1px solid rgba(255,255,255,.38);background:rgba(11,34,48,.52);backdrop-filter:blur(10px);
-      color:#fff;display:grid;place-items:center;font-size:18px;box-shadow:0 8px 24px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:.35s
-    }
-    .music-control.visible{opacity:1;pointer-events:auto}
-    .music-control.playing{box-shadow:0 0 0 1px rgba(244,215,196,.35),0 0 22px rgba(244,215,196,.4)}
-    .calendar-control{position:fixed;right:18px;bottom:76px;z-index:90;width:42px;height:42px;border-radius:50%;border:1px solid rgba(244,215,196,.7);background:rgba(11,34,48,.88);color:#F4D7C4;display:grid;place-items:center;font-size:19px;box-shadow:0 8px 24px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:.35s;cursor:pointer}
-    .calendar-control.visible{opacity:1;pointer-events:auto}
-    .calendar-control:active{transform:scale(.94)}
+.music-control{position:fixed;right:18px;bottom:18px;z-index:80;width:54px;height:54px;border-radius:50%;border:2px solid #F4D7C4;cursor:pointer;background:#0B2230;box-shadow:0 8px 24px rgba(0,0,0,.35);display:none;align-items:center;justify-content:center;gap:3px;padding:0}
+    .music-control.visible{display:flex}
+    .music-control i{display:block;width:4px;border-radius:2px;background:#F4D7C4;height:8px}
+    .music-control.playing i{animation:eq 1s ease-in-out infinite}
+    .music-control.playing i:nth-child(2){animation-delay:.2s}.music-control.playing i:nth-child(3){animation-delay:.4s}.music-control.playing i:nth-child(4){animation-delay:.6s}
+    @keyframes eq{0%,100%{height:6px}50%{height:22px}}
+    .music-control:not(.playing)::after{content:'';position:absolute;width:30px;height:2px;background:#F4D7C4;transform:rotate(-45deg)}
     .opening{
       position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:#0B2230;
       background-image:radial-gradient(ellipse at 50% 38%,#17475A 0,#0F2F40 48%,#08192A 100%);transition:opacity 1s ease,visibility 1s ease;
@@ -257,8 +254,7 @@
       </g>
     </defs>
   </svg>
-  <button class="music-control" id="musicToggle" aria-label="Toggle music">♪</button>
-  <button class="calendar-control" id="calendarBtn" aria-label="Add to calendar" title="Add to calendar">▣</button>
+  <button class="music-control" id="musicToggle" aria-label="Pause music" title="Music"><i></i><i></i><i></i><i></i></button>
 
   <div class="opening" id="opening">
     <div class="art-stars" aria-hidden="true"></div>
@@ -475,16 +471,15 @@ window.scrollTo(0,0);
     setTimeout(()=>opening.classList.add('opened'),2700);
     body.classList.remove('locked');
     document.documentElement.style.overflowY='auto';
-    Music.start(); musicToggle.classList.add('playing'); musicToggle.textContent='♫';
+    Music.start(); musicToggle.classList.add('playing');
     document.getElementById('wm').classList.add('show');
     musicToggle.classList.add('visible');
-    document.getElementById('calendarBtn').classList.add('visible');
     setTimeout(()=>document.getElementById('home').scrollIntoView({behavior:'auto'}),2500);
   }
   seal.addEventListener('click',openInvite);
   seal.addEventListener('touchend',e=>{e.preventDefault();openInvite();},{passive:false});
-  musicToggle.addEventListener('click',()=>{const on=Music.toggle();musicToggle.classList.toggle('playing',on);musicToggle.textContent=on?'♫':'♪'});
-  document.addEventListener('visibilitychange',()=>{if(document.hidden&&Music.playing){Music.toggle();musicToggle.classList.remove('playing');musicToggle.textContent='♪'}});
+  musicToggle.addEventListener('click',()=>{const on=Music.toggle();musicToggle.classList.toggle('playing',on);musicToggle.setAttribute('aria-label',on?'Pause music':'Play music')});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden&&Music.playing){Music.toggle();musicToggle.classList.remove('playing')}});
 
   // Scratch-to-reveal: real scratching only. Two solid swipes (or three lighter swipes)
   // completely remove the gold coating and automatically launch the celebration.
@@ -640,23 +635,6 @@ window.scrollTo(0,0);
   }
   const cdTimer=setInterval(updateCountdown,1000);updateCountdown();
 
-  // Add both invitation events to the user's calendar.
-  document.getElementById('calendarBtn').addEventListener('click',()=>{
-    const ics=[
-      'BEGIN:VCALENDAR','VERSION:2.0','CALSCALE:GREGORIAN','METHOD:PUBLISH',
-      'PRODID:-//Invitashion//Abdul and Shiffana//EN',
-      'BEGIN:VEVENT','UID:nikkah-abdul-shiffana-2026-f3@invitashion',
-      'DTSTAMP:20261010T000000Z','DTSTART:20261122T053000Z','DTEND:20261122T073000Z',
-      'SUMMARY:Nikkah - Abdul Basith & Shiffana Azmi',
-      'LOCATION:The New College Auditorium\\, Chennai',
-      'END:VEVENT','END:VCALENDAR'
-    ].join('\r\n');
-    const blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement('a'); a.href=url; a.download='Abdul-Shiffana-nikkah.ics';
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(()=>URL.revokeObjectURL(url),1500);
-  });
 
 })();
 
