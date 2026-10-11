@@ -284,7 +284,7 @@ $('#openBtn').addEventListener('click',()=>{
 const target=new Date('2026-11-22T11:00:00+05:30').getTime(),p2=n=>String(n).padStart(2,'0');
 (function tick(){
   const s=Math.max(0,Math.floor((target-Date.now())/1000));
-  if(!s){$('#countdown').innerHTML='<p class="done">Alhamdulillah, the day has arrived.</p>';return}
+  if(!s){$('#countdown').innerHTML='<p class="done">Today is the day — Alhamdulillah!</p>';return}
   $('#cd-d').textContent=Math.floor(s/86400);$('#cd-h').textContent=p2(Math.floor(s%86400/3600));
   $('#cd-m').textContent=p2(Math.floor(s%3600/60));$('#cd-s').textContent=p2(s%60);
   setTimeout(tick,1000);
