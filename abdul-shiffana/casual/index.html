@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0B2230">
+  <title>Abdul Basith &amp; Shiffana Azmi · Nikkah 22 November 2026</title>
+  <meta name="description" content="Abdul Basith K M and Shiffana Azmi S invite you to their Nikkah on 22 November 2026 at The New College Auditorium, Chennai.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Abdul Basith &amp; Shiffana Azmi · Nikkah">
+  <meta property="og:description" content="Sunday 22 November 2026, 11 AM · The New College Auditorium. Touch the seal to open your invitation.">
+  <meta property="og:url" content="https://invitashion.online/abdul-shiffana/casual/">
+  <meta property="og:image" content="https://invitashion.online/abdul-shiffana/casual/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Marcellus&family=Montserrat:wght@400;500;600;800&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+  <style>
+
+    :root{
+      --navy:#0B2230; --navy2:#12384A; --ink:#15303F; --gold:#C99B7C;
+      --gold2:#F4D7C4; --paper:#FBF4EF; --white:#fff; --line:rgba(201,155,124,.55);
+      --shadow:0 22px 60px rgba(3,16,24,.18);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--navy)}
+    body{margin:0;background:var(--navy);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;overflow-x:hidden}
+    body.locked{height:100vh;overflow:hidden}
+    button,a{font:inherit}
+    a{text-decoration:none;color:inherit}
+    .music-control{
+      position:fixed;z-index:80;top:14px;right:14px;width:44px;height:44px;border-radius:50%;
+      border:1px solid rgba(255,255,255,.38);background:rgba(11,34,48,.52);backdrop-filter:blur(10px);
+      color:#fff;display:grid;place-items:center;font-size:18px;box-shadow:0 8px 24px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:.35s
+    }
+    .music-control.visible{opacity:1;pointer-events:auto}
+    .music-control.playing{box-shadow:0 0 0 1px rgba(244,215,196,.35),0 0 22px rgba(244,215,196,.4)}
+    .calendar-control{position:fixed;right:18px;bottom:76px;z-index:90;width:42px;height:42px;border-radius:50%;border:1px solid rgba(244,215,196,.7);background:rgba(11,34,48,.88);color:#F4D7C4;display:grid;place-items:center;font-size:19px;box-shadow:0 8px 24px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:.35s;cursor:pointer}
+    .calendar-control.visible{opacity:1;pointer-events:auto}
+    .calendar-control:active{transform:scale(.94)}
+    .opening{
+      position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:#0B2230;
+      background-image:radial-gradient(ellipse at 50% 38%,#17475A 0,#0F2F40 48%,#08192A 100%);transition:opacity 1s ease,visibility 1s ease;
+    }
+    .opening::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 49%,transparent 0 13%,rgba(1,11,24,.18) 42%,rgba(1,10,22,.44) 100%);pointer-events:none}
+    .opening::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 49%,transparent 0 18%,rgba(1,11,24,.10) 52%,rgba(1,10,22,.34) 100%);pointer-events:none}
+    .opening.opening-now{animation:openingZoomIntoSeal 1.18s cubic-bezier(.2,.72,.15,1) forwards;pointer-events:none}
+    .opening.opening-now .seal-wrap{animation:sealZoomIntoInvitation 1.08s cubic-bezier(.16,.76,.12,1) forwards}
+    .opening.opening-now .open-text,.opening.opening-now .open-sub{animation:fadeUpOut .42s ease forwards}
+    .opening.opened{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.02)}
+    .seal-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:20px;transform:translateY(6vh)}
+    .seal-button{
+      position:relative;width:150px;height:150px;border-radius:50%;border:0;cursor:pointer;
+      background:transparent;box-shadow:none;appearance:none;-webkit-tap-highlight-color:transparent;
+      transition:transform .18s ease,filter .18s ease;
+    }
+    .seal-button::before{
+      content:"";position:absolute;inset:4px;border-radius:50%;border:1.2px solid rgba(244,215,196,.72);
+      box-shadow:0 0 5px rgba(244,215,196,.9),0 0 10px rgba(244,215,196,.58),0 0 16px rgba(244,215,196,.30),inset 0 0 12px rgba(244,215,196,.16);
+      animation:sealGlow 1.55s ease-in-out infinite;pointer-events:none;
+    }
+    .seal-button::after{
+      content:"";position:absolute;inset:5px;border-radius:50%;
+      background:radial-gradient(circle,rgba(244,215,196,.10),transparent 60%);animation:sealHalo 1.55s ease-in-out infinite;pointer-events:none
+    }
+    .seal-button:active{transform:scale(.94)}
+    .seal-mark{display:none}
+    .open-text{color:#fff;letter-spacing:.22em;text-transform:uppercase;font:500 12px "Montserrat",sans-serif;text-shadow:0 2px 14px #000;animation:breathe 1.8s ease-in-out infinite}
+    .open-sub{color:rgba(255,255,255,.7);font:400 10px "Montserrat",sans-serif;letter-spacing:.12em}
+    @keyframes sealGlow{0%,100%{opacity:.55;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}
+    @keyframes sealHalo{0%,100%{opacity:.35;transform:scale(.94)}50%{opacity:.75;transform:scale(1.05)}}
+    @keyframes breathe{0%,100%{opacity:.65}50%{opacity:1}}
+    @keyframes openingZoomIntoSeal{0%{opacity:1;transform:scale(1);filter:brightness(1)}45%{opacity:1;transform:scale(1.045);filter:brightness(1.06)}78%{opacity:.96;transform:scale(1.16);filter:brightness(1.13)}100%{opacity:0;transform:scale(1.32);filter:brightness(1.2)}}
+    @keyframes sealZoomIntoInvitation{0%{transform:translateY(6vh) scale(1);filter:brightness(1)}18%{transform:translateY(6vh) scale(1.06);filter:brightness(1.12)}55%{transform:translateY(6vh) scale(2.15);filter:brightness(1.28)}82%{transform:translateY(6vh) scale(5.2);filter:brightness(1.5)}100%{transform:translateY(6vh) scale(8.5);filter:brightness(1.75);opacity:0}}
+    @keyframes fadeUpOut{to{opacity:0;transform:translateY(-18px)}}
+    .burst{position:fixed;inset:0;z-index:120;pointer-events:none;opacity:0}
+    .burst.active{opacity:1}
+    .spark{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--gold2);box-shadow:0 0 10px var(--gold2);left:50%;top:50%;animation:sparkFly 1.3s cubic-bezier(.2,.7,.15,1) forwards}
+    @keyframes sparkFly{0%{transform:translate(-50%,-50%) scale(.4);opacity:1}100%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(0);opacity:0}}
+
+    main{background:var(--paper)}
+    .section{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:72px 18px;overflow:hidden}
+    .paper-section{background:linear-gradient(160deg,#EFD9D0,#DCE3E8 55%,#C9D6DF)}
+    .paper-section::before{content:"";position:absolute;inset:0;background:rgba(250,249,245,.16)}
+    .paper-card{
+      position:relative;width:min(100%,540px);min-height:calc(100svh - 55px);padding:38px 22px 34px;
+      border:1px solid rgba(255,255,255,.9);border-radius:30px;background:rgba(251,245,241,.93);
+      box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;text-align:center;
+      overflow:hidden;backdrop-filter:blur(2px)
+    }
+    .paper-card::before{content:"";position:absolute;inset:10px;border:1px solid rgba(11,34,48,.12);border-radius:23px;pointer-events:none}
+    .eyebrow{font:500 11px "Montserrat",sans-serif;letter-spacing:.28em;text-transform:uppercase;color:#58707A;margin-bottom:18px}
+    .arabic{font-family:'Amiri',serif;font-size:clamp(27px,7vw,39px);line-height:1.65;color:#12303F;margin:0 0 15px;direction:rtl}
+    .meaning{font-size:clamp(17px,4.7vw,22px);line-height:1.38;max-width:450px;margin:0;color:#43606B}
+    .qref{font:500 10px "Montserrat",sans-serif;letter-spacing:.16em;margin:14px 0 18px;color:#76878C}
+    .ornament{width:74px;height:1px;background:var(--line);margin:4px auto 18px;position:relative}
+    .ornament::before{content:"✦";position:absolute;left:50%;top:-9px;transform:translateX(-50%);background:#FBF4EF;padding:0 8px;color:var(--gold)}
+    .names{font-family:"Allura",cursive;color:#A5634C;font-size:clamp(40px,10.5vw,62px);line-height:.88;margin:5px 0}
+    .amp{font-family:"Cormorant Garamond";font-size:29px;color:#A5634C;margin:5px 0}
+    .invite-copy{font:500 10px/1.75 "Montserrat",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#4F6770;margin:15px 0 18px}
+    .scratch-wrap{width:min(100%,410px);margin-top:auto;position:relative}
+    .scratch-label{font:500 10px "Montserrat",sans-serif;letter-spacing:.23em;color:#5B7078;margin-bottom:9px}
+    .scratch-card{position:relative;height:132px;border-radius:19px;overflow:hidden;background:linear-gradient(135deg,#FFFBF7,#F3E2D7);box-shadow:0 13px 28px rgba(9,31,55,.22);border:1px solid rgba(201,155,124,.5);touch-action:none;user-select:none;-webkit-user-select:none}
+    .scratch-reveal{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#A5634C}
+    .scratch-date{font-size:clamp(25px,6.7vw,32px);font-weight:600;letter-spacing:.02em}
+    .scratch-day{font:500 10px "Montserrat";letter-spacing:.28em;margin-top:7px}
+    .scratch-hint{display:none}
+    #scratchCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:3;cursor:grab}
+    .scratch-burst{position:absolute;inset:-170px;z-index:8;pointer-events:none;overflow:visible;opacity:1}
+    .scratch-particle{position:absolute;left:50%;top:50%;font-family:Georgia,serif;color:#F4D7C4;text-shadow:0 0 8px rgba(244,215,196,.95);animation:scratchFly 1.55s cubic-bezier(.16,.72,.16,1) forwards;opacity:0;will-change:transform,opacity}
+    @keyframes scratchFly{0%{transform:translate(-50%,-50%) scale(.35) rotate(0deg);opacity:0}12%{opacity:1}100%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(.15) rotate(var(--r));opacity:0}}
+    .reveal-status{height:21px;margin-top:9px;font:500 9px "Montserrat";letter-spacing:.1em;color:#7E9096}
+
+
+    .paper-section::after{display:none}
+    .paper-card{z-index:2}
+    .details-section{margin-top:0;padding-top:72px;flex-direction:column;gap:28px}
+    .details-section::after{display:none}
+    .details-card{z-index:2}
+    .details-section{background:radial-gradient(ellipse at 50% 0%,#17475A,#0B2230 70%)}
+    
+
+    .details-eyebrow{font-weight:800;color:#16394A;letter-spacing:.22em;text-shadow:0 0 0 rgba(27,53,82,0.01)}
+    .details-card{position:relative;width:min(100%,540px);border:1px solid rgba(244,215,196,.42);border-radius:30px;padding:52px 26px;background:rgba(251,244,239,.96);box-shadow:0 25px 70px rgba(0,0,0,.34);text-align:center}
+    .title{font-size:clamp(48px,13vw,72px);font-style:italic;font-weight:500;margin:0;color:#16394A}
+    .gold-line{height:1px;width:100px;background:var(--gold);margin:22px auto 25px}
+    .detail-row{padding:19px 5px;border-top:1px solid rgba(23,44,71,.18)}
+    .detail-label{font:500 10px "Montserrat";letter-spacing:.3em;color:#76878C;margin-bottom:10px}
+    .detail-value{font-size:clamp(24px,6vw,32px);line-height:1.15;color:#1B4152}
+    .detail-small{font-size:19px;line-height:1.25;color:#47616B}
+    .pill-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:17px;padding:14px 25px;border:1px solid #aeb9c6;border-radius:999px;color:#1F4152;background:#fff;font:500 11px "Montserrat";letter-spacing:.08em;transition:.25s}
+    .pill-btn:hover,.pill-btn:active{transform:translateY(-2px);border-color:var(--gold);box-shadow:0 8px 20px rgba(20,43,70,.12)}
+    .count-title{font:500 10px "Montserrat";letter-spacing:.24em;color:#5B7078;margin:27px 0 13px}
+    .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+    .time-box{border:1px solid #cfd5db;border-radius:13px;padding:11px 3px;background:rgba(255,255,255,.5)}
+    .time-num{font-size:27px;color:#1B4152}
+    .time-label{font:500 8px "Montserrat";letter-spacing:.08em;color:#72868B}
+    .countdown-wrap{position:relative;z-index:2;width:min(100%,540px);text-align:center;border:1px solid rgba(244,215,196,.42);border-radius:30px;padding:42px 26px;background:rgba(251,244,239,.96);box-shadow:0 25px 70px rgba(0,0,0,.34)}
+    .blessing{font-size:22px;font-style:italic;line-height:1.25;margin:27px 0 0;color:#38545F}
+
+    footer{background:#0B2230;color:#fff;text-align:center;padding:62px 20px 70px;position:relative}
+    footer::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:110px;height:1px;background:var(--gold)}
+    .footer-love{font:500 10px "Montserrat";letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:23px}
+
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .85s ease,transform .85s ease}
+    .reveal.show{opacity:1;transform:none}
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}.reveal{transition:none}.seal-button::before,.seal-button::after,.open-text{animation:none}
+    }
+    @media (min-width:700px){
+      .section{padding:90px 24px}
+      .paper-card{min-height:820px}
+      .seal-button{width:150px;height:150px}
+    }
+  
+
+    .art{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;color:#C99B7C}
+    .art.op{opacity:.2}.art.blue{color:#6F8FAA;opacity:.28}.art.dim{opacity:.13}
+    .art-stars{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(255,255,255,.85) 0 1px,transparent 1.6px),radial-gradient(circle,rgba(244,215,196,.7) 0 1.2px,transparent 2px);background-size:90px 90px,137px 137px;background-position:12px 20px,50px 70px;opacity:.55}
+    .opening .moon{position:absolute;left:50%;top:15%;width:76px;transform:translateX(-50%);color:#F4D7C4;z-index:2;animation:breathe 3.2s ease-in-out infinite}
+    .seal-button{background:none}
+    .seal-button svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 10px 18px rgba(0,0,0,.5))}
+    .paper-section>.art,.details-section>.art,.closing>.art,.paper-section>.art-stars,.details-section>.art-stars,.closing>.art-stars{z-index:0}
+    .paper-section .paper-card,.details-section>*:not(.art):not(.art-stars),.closing-content{z-index:2}
+    .closing{min-height:70svh;background:radial-gradient(ellipse at 50% 100%,#17475A,#0B2230 70%)}
+    .closing::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,17,35,.35),rgba(4,17,35,.6))}
+    .closing-content{position:relative;z-index:2;text-align:center;width:min(100%,500px);color:#fff}
+    .closing-content .ar{font-family:'Amiri',serif;direction:rtl;font-size:clamp(24px,6.4vw,32px);line-height:1.9;color:#F4D7C4}
+    .closing-date{font:500 11px "Montserrat",sans-serif;letter-spacing:.26em;color:#F4D7C4;margin-top:24px}
+    .closing-quote{font-size:24px;font-style:italic;line-height:1.35;margin-top:22px;color:#fff}
+    footer{padding:40px 20px 90px}
+    .directions-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .wm{position:fixed;left:18px;bottom:18px;z-index:90;display:none;flex-direction:column;align-items:flex-start;gap:8px}
+    .wm.show{display:flex}
+    .wm-btn{width:84px;height:54px;border-radius:27px;border:1px solid rgba(244,215,196,.45);background:rgba(11,34,48,.75);cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:.6;transition:opacity .3s;padding:0}
+    .wm-btn:hover,.wm.open .wm-btn{opacity:1}
+    .wm-btn img{width:56px;height:auto;display:block}
+    .wm-pop{order:-1;display:none;padding:10px 16px;border-radius:14px;background:#0B2230;border:1px solid rgba(244,215,196,.5);box-shadow:0 8px 24px rgba(0,0,0,.4);color:#fff;font:600 13px "Montserrat",sans-serif;text-decoration:none;white-space:nowrap}
+    .wm.open .wm-pop{display:block}
+    .wm-pop b{color:#F4D7C4}
+
+
+    /* ---- envelope opening (friends-3) ---- */
+    .opening.opening-now{animation:envOut .8s ease 1.9s forwards}
+    .opening.opening-now .seal-wrap{animation:none}
+    .seal-wrap{transform:none;gap:22px}
+    .opening .moon{top:9%;width:62px}
+    .env-stage{perspective:1100px}
+    .env{position:relative;width:min(80vw,330px);aspect-ratio:1.46/1;margin:0 auto;filter:drop-shadow(0 22px 34px rgba(0,0,0,.5));transition:transform 1s cubic-bezier(.5,0,.2,1) 1.35s}
+    .env-back{position:absolute;inset:0;border-radius:6px;background:linear-gradient(180deg,#C99B7C,#B07E64)}
+    .env-card{position:absolute;left:7%;right:7%;top:9%;bottom:8%;border-radius:4px;background:linear-gradient(180deg,#FFFBF7,#F6E9E0);box-shadow:0 2px 8px rgba(0,0,0,.18);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;z-index:2;transition:transform 1s cubic-bezier(.3,.7,.2,1) .75s,top 0s;padding:0 10px}
+    .ec-kicker{font:600 8px "Montserrat",sans-serif;letter-spacing:.34em;text-transform:uppercase;color:#A5634C}
+    .ec-names{font-family:"Allura",cursive;font-size:clamp(22px,7vw,30px);line-height:1;color:#A5634C}
+    .ec-date{font:500 8px "Montserrat",sans-serif;letter-spacing:.28em;color:#5B7078}
+    .env-front{position:absolute;inset:0;z-index:3;border-radius:6px;background:linear-gradient(180deg,#F6E7DD,#EAD2C4);clip-path:polygon(0 0,50% 54%,100% 0,100% 100%,0 100%)}
+    .env-flap{position:absolute;left:0;right:0;top:0;height:60%;z-index:4;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#F1DDD0,#E3C3B2);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:50% 0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+    .env .seal-button{position:absolute;left:50%;top:60%;width:86px;height:86px;margin:-43px 0 0 -43px;z-index:6;transition:transform .45s ease,opacity .45s ease}
+    .opening.opening-now .env .seal-button{transform:scale(1.35);opacity:0;pointer-events:none}
+    .opening.opening-now .env-flap{animation:flapOpen .8s cubic-bezier(.4,0,.2,1) .35s forwards}
+    .opening.opening-now .env-card{transform:translateY(-62%)}
+    .opening.opening-now .env{transform:scale(2.3) translateY(14%)}
+    @keyframes flapOpen{0%{transform:rotateX(0);z-index:4}49%{z-index:4}50%{z-index:1;background:#C99B7C}100%{transform:rotateX(180deg);z-index:1;background:#C99B7C}}
+    @keyframes envOut{to{opacity:0;visibility:hidden}}
+    .seal-button::before{inset:-4px}
+    @media (prefers-reduced-motion:reduce){.opening.opening-now{animation:envOut .2s ease .3s forwards}.opening.opening-now .env-flap,.opening.opening-now .env{animation:none;transition:none}}
+
+    /* Time & Venue card: own fonts + map preview */
+    .details-card .title{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:500;font-size:clamp(38px,10.5vw,58px)}
+    .details-card .detail-value{font-family:"Marcellus",Georgia,serif;font-size:clamp(21px,5.4vw,27px);letter-spacing:.04em}
+    .details-card .detail-small{font-family:"Marcellus",Georgia,serif;font-size:16px;letter-spacing:.06em}
+    .map-prev{margin-top:18px;height:210px;border-radius:18px;overflow:hidden;border:1px solid rgba(201,155,124,.6);box-shadow:0 10px 24px rgba(11,34,48,.18)}
+    .map-prev iframe{display:block;width:100%;height:100%;border:0}
+
+    .scratch-hint{display:block;position:absolute;z-index:4;left:0;top:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;pointer-events:none;
+      background:radial-gradient(circle,rgba(255,255,255,.55),rgba(255,255,255,.22) 55%,rgba(255,255,255,0) 72%);box-shadow:0 0 18px rgba(244,215,196,.35);
+      animation:scratchHint 3.2s ease-in-out infinite}
+    .scratch-card.touched .scratch-hint,.scratch-card.done .scratch-hint{display:none}
+    @keyframes scratchHint{0%{left:14%;top:38%;opacity:0}12%{opacity:.85}50%{left:86%;top:62%;opacity:.85}62%{opacity:0}100%{left:14%;top:38%;opacity:0}}
+    @media (prefers-reduced-motion:reduce){.scratch-hint{animation:none;left:50%;opacity:.6}}
+  </style>
+</head>
+<body class="locked">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <radialGradient id="rg" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#FBE3D3"/><stop offset=".55" stop-color="#D9A88C"/><stop offset="1" stop-color="#9B5F49"/></radialGradient>
+      <g id="petal"><path d="M0 0C-13-16-11-40 0-46C11-40 13-16 0 0Z"/><path d="M0-6V-34" opacity=".5"/></g>
+      <g id="bloom" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+        <use href="#petal"/><use href="#petal" transform="rotate(72)"/><use href="#petal" transform="rotate(144)"/><use href="#petal" transform="rotate(216)"/><use href="#petal" transform="rotate(288)"/>
+        <circle r="4"/><path d="M0-8V-16M7-4L13-8M4 7L8 13M-4 7L-8 13M-7-4L-13-8" opacity=".7"/>
+      </g>
+      <g id="sprig" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round">
+        <path d="M0 0C20-30 30-70 60-100"/>
+        <path d="M14-22C26-24 34-32 36-42C26-40 18-34 14-22ZM28-50C40-50 48-58 50-68C40-66 32-60 28-50ZM44-76C54-74 62-80 64-90C54-90 48-84 44-76Z"/>
+        <path d="M12-30C0-34-8-42-8-52C4-48 10-40 12-30ZM30-58C18-62 12-70 12-80C24-76 28-68 30-58Z"/>
+      </g>
+      <pattern id="blooms" width="260" height="300" patternUnits="userSpaceOnUse"><g color="#C99B7C">
+        <use href="#bloom" transform="translate(60 70) scale(1.1)"/>
+        <use href="#bloom" transform="translate(190 170) scale(.8) rotate(20)"/>
+        <use href="#bloom" transform="translate(40 240) scale(.55) rotate(-15)"/>
+        <use href="#sprig" transform="translate(120 120) rotate(-20) scale(.7)"/>
+        <use href="#sprig" transform="translate(230 40) rotate(150) scale(.55)"/>
+        <use href="#sprig" transform="translate(90 290) rotate(200) scale(.5)"/>
+      </g></pattern>
+      <pattern id="blooms-b" width="260" height="300" patternUnits="userSpaceOnUse"><g color="#6F8FAA">
+        <use href="#bloom" transform="translate(60 70) scale(1.1)"/>
+        <use href="#bloom" transform="translate(190 170) scale(.8) rotate(20)"/>
+        <use href="#bloom" transform="translate(40 240) scale(.55) rotate(-15)"/>
+        <use href="#sprig" transform="translate(120 120) rotate(-20) scale(.7)"/>
+        <use href="#sprig" transform="translate(230 40) rotate(150) scale(.55)"/>
+        <use href="#sprig" transform="translate(90 290) rotate(200) scale(.5)"/>
+      </g></pattern>
+      <g id="moonstar" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60 10A44 44 0 1 0 100 70A36 36 0 1 1 60 10Z"/>
+        <path d="M92 28l3.4 7.6 8.2.9-6.1 5.6 1.7 8.1-7.2-4.1-7.2 4.1 1.7-8.1-6.1-5.6 8.2-.9z" fill="currentColor" stroke="none"/>
+      </g>
+    </defs>
+  </svg>
+  <button class="music-control" id="musicToggle" aria-label="Toggle music">♪</button>
+  <button class="calendar-control" id="calendarBtn" aria-label="Add to calendar" title="Add to calendar">▣</button>
+
+  <div class="opening" id="opening">
+    <div class="art-stars" aria-hidden="true"></div>
+    <svg class="art op" aria-hidden="true"><rect width="100%" height="100%" fill="url(#blooms)"/></svg>
+    <svg class="moon" viewBox="0 0 120 100" aria-hidden="true"><use href="#moonstar"/></svg>
+    <div class="seal-wrap">
+      <div class="env-stage">
+        <div class="env" id="env">
+          <div class="env-back"></div>
+          <div class="env-card">
+            <span class="ec-kicker">Nikkah</span>
+            <span class="ec-names">Abdul Basith &amp; Shiffana Azmi</span>
+          </div>
+          <div class="env-front"></div>
+          <div class="env-flap"></div>
+          <button class="seal-button" id="sealButton" aria-label="Touch the seal to open the invitation"><svg viewBox="-80 -80 160 160" aria-hidden="true"><path d="M0-68C14-72 22-62 34-60C44-56 50-48 58-40C66-30 70-18 68-6C72 6 66 18 62 28C56 38 48 46 38 54C26 62 14 66 2 68C-12 72-24 64-36 58C-46 52-54 44-60 34C-68 22-68 10-66-2C-70-16-64-28-58-38C-50-48-42-54-32-60C-22-66-10-64 0-68Z" fill="url(#rg)"/><circle r="48" fill="none" stroke="#6E3E2E" stroke-opacity=".35" stroke-width="1.4"/><circle r="52" fill="none" stroke="#FBE3D3" stroke-opacity=".5" stroke-width=".8" stroke-dasharray="2 4"/><g transform="translate(-30 -34) scale(.5)" fill="none" stroke="#6E3E2E" stroke-opacity=".75" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M60 10A44 44 0 1 0 100 70A36 36 0 1 1 60 10Z"/><path d="M92 28l3.4 7.6 8.2.9-6.1 5.6 1.7 8.1-7.2-4.1-7.2 4.1 1.7-8.1-6.1-5.6 8.2-.9z" fill="#6E3E2E" fill-opacity=".75" stroke="none"/></g><text y="38" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-weight="600" font-size="24" fill="#6E3E2E" fill-opacity=".8">A &amp; S</text></svg></button>
+        </div>
+      </div>
+      <div class="open-text">Touch the seal to open</div>
+      <div class="open-sub">A Nikkah invitation</div>
+    </div>
+  </div>
+  <div class="burst" id="openBurst"></div>
+
+  <main id="invitation">
+    <section class="section paper-section" id="home">
+      <svg class="art blue" aria-hidden="true"><rect width="100%" height="100%" fill="url(#blooms-b)"/></svg>
+      <div class="paper-card reveal show">
+        <div class="eyebrow">Bismillah • Nikkah Invitation</div>
+        <p class="arabic">وَمِنْ آَيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا</p>
+        <p class="meaning">“And among His signs is that He created for you spouses from among yourselves.”</p>
+        <div class="qref">— SURAH AR-RUM 30:21</div>
+        <div class="ornament"></div>
+        <div class="names">Abdul Basith K&nbsp;M</div>
+        <div class="amp">&amp;</div>
+        <div class="names">Shiffana Azmi S</div>
+        <div class="invite-copy">Together with their families<br>invite you to celebrate<br>their Nikkah</div>
+
+        <div class="scratch-wrap">
+          <div class="scratch-label">SCRATCH TO REVEAL</div>
+          <div class="scratch-burst" id="scratchBurst" aria-hidden="true"></div>
+          <div class="scratch-card" id="scratchCard">
+            <div class="scratch-reveal">
+              <div class="scratch-date">22 November 2026</div>
+              <div class="scratch-day">SUNDAY • 11:00 AM</div>
+            </div>
+            <span class="scratch-hint" aria-hidden="true"></span>
+            <canvas id="scratchCanvas" width="410" height="132"></canvas>
+          </div>
+          <div class="reveal-status" id="revealStatus">Swipe across 2–3 times to reveal the date</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section details-section" id="details">
+      <div class="art-stars" aria-hidden="true"></div>
+      <svg class="art dim" aria-hidden="true"><rect width="100%" height="100%" fill="url(#blooms)"/></svg>
+      <div class="countdown-wrap reveal countdown-card">
+        <div class="count-title">COUNTDOWN TO THE NIKKAH</div>
+        <div class="countdown" aria-label="Countdown">
+          <div class="time-box"><div class="time-num" id="days">00</div><div class="time-label">DAYS</div></div>
+          <div class="time-box"><div class="time-num" id="hours">00</div><div class="time-label">HRS</div></div>
+          <div class="time-box"><div class="time-num" id="mins">00</div><div class="time-label">MINS</div></div>
+          <div class="time-box"><div class="time-num" id="secs">00</div><div class="time-label">SECS</div></div>
+        </div>
+        <p class="blessing">“May Allah bless this union with love, mercy, peace and barakah.”</p>
+      </div>
+
+      <div class="details-card reveal">
+        <div class="eyebrow details-eyebrow">Nikkah</div>
+        <h2 class="title">Time &amp; Venue</h2>
+        <div class="gold-line"></div>
+
+        <div class="detail-row">
+          <div class="detail-label">DATE</div>
+          <div class="detail-value">22 November 2026</div>
+          <div class="detail-small">Sunday</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">TIME</div>
+          <div class="detail-value">11:00 AM</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">VENUE</div>
+          <div class="detail-value">THE NEW COLLEGE AUDITORIUM</div>
+          <div class="detail-small">Chennai</div>
+          <div class="map-prev"><iframe src="https://www.google.com/maps?q=The+New+College+Auditorium,+Chennai&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="The New College Auditorium on Google Maps"></iframe></div>
+          <a class="pill-btn" href="https://www.google.com/maps/search/?api=1&amp;query=The+New+College+Auditorium+Chennai" target="_blank" rel="noopener">⌖ &nbsp; VIEW ON MAP</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section closing">
+      <div class="art-stars" aria-hidden="true"></div>
+      <svg class="art dim" aria-hidden="true"><rect width="100%" height="100%" fill="url(#blooms)"/></svg>
+      <div class="closing-content reveal">
+        <div class="ar">بَارَكَ اللَّهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</div>
+        <p class="closing-quote">Your presence and duas are our greatest gift.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="wm" id="wm"><a class="wm-pop" href="https://www.instagram.com/invitashion.online/" target="_blank" rel="noopener">Made by <b>Invitashion</b> &#8599;</a><button class="wm-btn" id="wmBtn" type="button" aria-label="Made by Invitashion"><img src="invitashion-logo.png" alt="Invitashion"></button></div>
+
+<script>
+const Music = (() => {
+  let ctx, master, src, buffer, playing = false, el = null;
+  const load = () => fetch('music.mp3').then(r => r.arrayBuffer());
+  // Download early so it's ready at the tap, except inside the homepage preview frame (load on tap there)
+  let file = window.self === window.top && location.protocol !== 'file:' ? load() : null;
+
+  // iPhones mute Web Audio when the ringer switch is on silent; playing a looping
+  // silent <audio> element on the tap moves sound to the media channel instead.
+  function unlockIOS() {
+    const rate = 8000, n = rate / 2, buf = new ArrayBuffer(44 + n), v = new DataView(buf);
+    const w = (o, str) => [...str].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+    w(0, 'RIFF'); v.setUint32(4, 36 + n, true); w(8, 'WAVEfmt '); v.setUint32(16, 16, true);
+    v.setUint16(20, 1, true); v.setUint16(22, 1, true); v.setUint32(24, rate, true); v.setUint32(28, rate, true);
+    v.setUint16(32, 1, true); v.setUint16(34, 8, true); w(36, 'data'); v.setUint32(40, n, true);
+    for (let i = 0; i < n; i++) v.setUint8(44 + i, 128);
+    const el = new Audio(URL.createObjectURL(new Blob([buf], { type: 'audio/wav' })));
+    el.loop = true; el.setAttribute('playsinline', ''); el.volume = 0.01;
+    el.play().catch(() => {});
+  }
+
+  // mp3 encoders pad the start/end with silence; find where the sound really begins and ends
+  function edges(buf) {
+    const d = buf.getChannelData(0), th = 0.002;
+    let s = 0, e = d.length - 1;
+    while (s < e && Math.abs(d[s]) < th) s++;
+    while (e > s && Math.abs(d[e]) < th) e--;
+    return [s / buf.sampleRate, (e + 1) / buf.sampleRate];
+  }
+
+  function decode(ab) {
+    return new Promise((ok, fail) => { const p = ctx.decodeAudioData(ab, ok, fail); if (p && p.catch) p.catch(fail); });
+  }
+
+  // Opened straight from disk (file://), browsers block fetch(); fall back to a plain looping <audio>.
+  function startEl() {
+    el = new Audio('music.mp3'); el.loop = true; el.setAttribute('playsinline', '');
+    el.play().catch(() => {}); playing = true;
+  }
+  function start() {
+    if (el) return resume();
+    if (!ctx && location.protocol === 'file:') return startEl();
+    if (ctx) return resume();
+    unlockIOS();
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    // iPhone/WebKit: the context can start suspended even inside a tap, so resume it
+    // and play a 1-sample silent buffer within the same tap to unlock output.
+    if (ctx.state !== 'running') ctx.resume();
+    const blip = ctx.createBufferSource(); blip.buffer = ctx.createBuffer(1, 1, 22050);
+    blip.connect(ctx.destination); blip.start(0);
+    // iOS can 'interrupt' audio (calls, app switches); resume on the next touch.
+    const revive = () => { if (playing && ctx.state !== 'running') ctx.resume(); };
+    document.addEventListener('touchend', revive); document.addEventListener('click', revive);
+    master = ctx.createGain(); master.connect(ctx.destination);
+    master.gain.setValueAtTime(0, ctx.currentTime);
+    playing = true;
+    (file = file || load()).then(decode).then(buf => {
+      buffer = buf;
+      const [s, e] = edges(buf);
+      src = ctx.createBufferSource(); src.buffer = buf;
+      src.loop = true; src.loopStart = s; src.loopEnd = e;
+      src.connect(master); src.start(0, s);
+      const t = ctx.currentTime;
+      master.gain.setValueAtTime(0, t);
+      master.gain.linearRampToValueAtTime(0.9, t + 2.5); // gentle fade-in
+    }).catch(() => {});
+  }
+  function resume() { if (el) el.play().catch(() => {}); else ctx.resume(); playing = true; }
+  function state() { return ctx ? ctx.state + ' @ ' + ctx.sampleRate + 'Hz, t=' + ctx.currentTime.toFixed(1) + 's, ' + (buffer ? 'song ' + buffer.duration.toFixed(2) + 's' : 'song loading') : 'not started'; }
+  function pause() { if (el) el.pause(); else if (ctx) ctx.suspend(); playing = false; }
+  return { start, state, toggle: () => (playing ? pause() : start(), playing), get playing() { return playing; } };
+})();
+</script>
+<script>
+if('scrollRestoration' in history)history.scrollRestoration='manual';
+window.scrollTo(0,0);
+
+(function(){
+  const opening = document.getElementById('opening');
+  const seal = document.getElementById('sealButton');
+  const musicToggle = document.getElementById('musicToggle');
+  const burst = document.getElementById('openBurst');
+  const wmEl = document.getElementById('wm');
+  document.getElementById('wmBtn').addEventListener('click',e=>{e.stopPropagation();wmEl.classList.toggle('open')});
+  document.addEventListener('click',e=>{if(!wmEl.contains(e.target))wmEl.classList.remove('open')});
+  const body = document.body;
+
+  function makeBurst(count=90){
+    burst.innerHTML='';
+    for(let i=0;i<count;i++){
+      const s=document.createElement('span');
+      s.className='spark';
+      const angle=Math.random()*Math.PI*2;
+      const distance=80+Math.random()*520;
+      s.style.setProperty('--x',(Math.cos(angle)*distance)+'px');
+      s.style.setProperty('--y',(Math.sin(angle)*distance)+'px');
+      s.style.width=(2+Math.random()*4)+'px';
+      s.style.height=s.style.width;
+      s.style.animationDelay=(Math.random()*.22)+'s';
+      burst.appendChild(s);
+    }
+    burst.classList.add('active');
+    setTimeout(()=>burst.classList.remove('active'),1500);
+  }
+
+  async function openInvite(){
+    if(opening.classList.contains('opened')) return;
+    setTimeout(()=>makeBurst(70),650);
+    opening.classList.add('opening-now');
+    setTimeout(()=>opening.classList.add('opened'),2700);
+    body.classList.remove('locked');
+    document.documentElement.style.overflowY='auto';
+    Music.start(); musicToggle.classList.add('playing'); musicToggle.textContent='♫';
+    document.getElementById('wm').classList.add('show');
+    musicToggle.classList.add('visible');
+    document.getElementById('calendarBtn').classList.add('visible');
+    setTimeout(()=>document.getElementById('home').scrollIntoView({behavior:'auto'}),2500);
+  }
+  seal.addEventListener('click',openInvite);
+  seal.addEventListener('touchend',e=>{e.preventDefault();openInvite();},{passive:false});
+  musicToggle.addEventListener('click',()=>{const on=Music.toggle();musicToggle.classList.toggle('playing',on);musicToggle.textContent=on?'♫':'♪'});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden&&Music.playing){Music.toggle();musicToggle.classList.remove('playing');musicToggle.textContent='♪'}});
+
+  // Scratch-to-reveal: real scratching only. Two solid swipes (or three lighter swipes)
+  // completely remove the gold coating and automatically launch the celebration.
+  const card=document.getElementById('scratchCard');
+  const canvas=document.getElementById('scratchCanvas');
+  const ctx=canvas.getContext('2d',{willReadFrequently:true});
+  const status=document.getElementById('revealStatus');
+  const scratchBurst=document.getElementById('scratchBurst');
+  let drawing=false, revealed=false, swipes=0, lastX=0,lastY=0,strokeDistance=0,strokeMoved=false,activePointer=null;
+  const SOLID_SWIPE=95;
+  const LIGHT_SWIPE=35;
+  const SCRATCH_BRUSH=150;
+
+  function sizeCanvas(){
+    if(revealed)return;
+    const dpr=Math.min(window.devicePixelRatio||1,2), r=card.getBoundingClientRect();
+    canvas.width=Math.round(r.width*dpr); canvas.height=Math.round(r.height*dpr);
+    canvas.style.width=r.width+'px'; canvas.style.height=r.height+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0); ctx.globalCompositeOperation='source-over';
+    const W=r.width,H=r.height;
+    // night-sky foil
+    const g=ctx.createLinearGradient(0,0,W,H);
+    g.addColorStop(0,'#0F3445'); g.addColorStop(.5,'#1B5468'); g.addColorStop(1,'#0B2634');
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+    // engraved 8-point star lattice
+    ctx.strokeStyle='rgba(244,215,196,.16)'; ctx.lineWidth=.8;
+    for(let y=14;y<H;y+=44)for(let x=((y/44)%2?0:22)+14;x<W;x+=44){
+      ctx.beginPath();
+      for(let i=0;i<16;i++){const a=i*Math.PI/8,rad=i%2?4.5:10;ctx.lineTo(x+Math.cos(a)*rad,y+Math.sin(a)*rad)}
+      ctx.closePath();ctx.stroke();
+    }
+    // gold dust
+    let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+    for(let i=0;i<70;i++){
+      const x=rnd()*W,y=rnd()*H,rad=.6+rnd()*1.5;
+      ctx.fillStyle='rgba(244,215,196,'+(.35+rnd()*.5)+')';
+      ctx.beginPath();ctx.arc(x,y,rad,0,7);ctx.fill();
+    }
+    // soft sheen
+    const sh=ctx.createLinearGradient(0,0,W,0);
+    sh.addColorStop(0,'rgba(255,255,255,0)');sh.addColorStop(.42,'rgba(255,255,255,0)');sh.addColorStop(.5,'rgba(255,255,255,.13)');sh.addColorStop(.58,'rgba(255,255,255,0)');sh.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.fillStyle=sh;ctx.fillRect(0,0,W,H);
+    // rose-gold inner frame
+    ctx.strokeStyle='rgba(226,183,156,.75)';ctx.lineWidth=1.2;
+    ctx.strokeRect(9,9,W-18,H-18);
+    ctx.strokeStyle='rgba(226,183,156,.35)';ctx.lineWidth=.8;
+    ctx.strokeRect(13,13,W-26,H-26);
+    // crescent + star emblem and label
+    const em=document.createElement('canvas');em.width=em.height=80;const ec=em.getContext('2d');
+    ec.fillStyle='#F2D3BE';ec.beginPath();ec.arc(34,40,20,0,7);ec.fill();
+    ec.globalCompositeOperation='destination-out';ec.beginPath();ec.arc(42,36,17,0,7);ec.fill();
+    ec.globalCompositeOperation='source-over';ec.fillStyle='#F2D3BE';ec.beginPath();
+    for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,rad=i%2?3.2:7.5;ec.lineTo(58+Math.cos(a)*rad,24+Math.sin(a)*rad)}
+    ec.closePath();ec.fill();
+    ctx.drawImage(em,W/2-26,H/2-44,52,52);
+    ctx.fillStyle='rgba(242,211,190,.92)';ctx.font='500 10px Montserrat,sans-serif';ctx.textAlign='center';
+    if('letterSpacing' in ctx)ctx.letterSpacing='3px';
+    ctx.fillText('SCRATCH HERE',W/2+1.5,H/2+30);
+    if('letterSpacing' in ctx)ctx.letterSpacing='0px';
+  }
+  requestAnimationFrame(sizeCanvas);
+  window.addEventListener('resize',sizeCanvas);
+
+  function point(e){const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+  function erase(x,y){
+    const dx=x-lastX, dy=y-lastY; strokeDistance += Math.hypot(dx,dy);
+    ctx.save();ctx.globalCompositeOperation='destination-out';ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=SCRATCH_BRUSH;
+    ctx.beginPath();ctx.moveTo(lastX,lastY);ctx.lineTo(x,y);ctx.stroke();ctx.restore();lastX=x;lastY=y;
+  }
+  function revealDate(){
+    if(revealed)return;
+    revealed=true; drawing=false; activePointer=null;
+    // Remove the gold coating immediately, then fire the popup automatically — no second tap.
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    canvas.style.transition='opacity .16s ease-out';
+    canvas.style.opacity='0'; canvas.style.pointerEvents='none';
+    card.classList.add('done');
+    status.textContent='DATE REVEALED ✦';
+    setTimeout(fireScratchBurst,80);
+  }
+  function fireScratchBurst(){
+    scratchBurst.innerHTML='';
+    const symbols=['✦','✧','•','✦','✧','❈','·','✦'];
+    for(let i=0;i<360;i++){
+      const s=document.createElement('span'); s.className='scratch-particle';
+      s.textContent=symbols[i%symbols.length];
+      s.style.fontSize=(16+Math.random()*32)+'px';
+      s.style.color=Math.random()>.28?'#F4D7C4':'#ffffff';
+      const a=Math.random()*Math.PI*2, d=140+Math.random()*680;
+      s.style.setProperty('--x',(Math.cos(a)*d)+'px');
+      s.style.setProperty('--y',(Math.sin(a)*d)+'px');
+      s.style.setProperty('--r',(-220+Math.random()*440)+'deg');
+      s.style.animationDelay=(Math.random()*.12)+'s';
+      scratchBurst.appendChild(s);
+    }
+    setTimeout(()=>scratchBurst.innerHTML='',2400);
+  }
+  function start(e){
+    if(revealed || activePointer!==null)return;
+    e.preventDefault();
+    card.classList.add('touched');
+    activePointer=e.pointerId; drawing=true; strokeMoved=false; strokeDistance=0;
+    const pt=point(e); lastX=pt.x; lastY=pt.y;
+    if(canvas.setPointerCapture) try{canvas.setPointerCapture(e.pointerId)}catch(_){ }
+  }
+  function move(e){
+    if(!drawing||revealed||e.pointerId!==activePointer)return;
+    e.preventDefault();
+    const pt=point(e), step=Math.hypot(pt.x-lastX,pt.y-lastY);
+    if(step>1){erase(pt.x,pt.y);strokeMoved=true;}
+  }
+  function end(e){
+    if(!drawing || e.pointerId!==activePointer)return;
+    e.preventDefault(); drawing=false;
+    const distance=strokeDistance;
+    // A tap/press never counts. Only a genuine swipe increments the counter.
+    if(strokeMoved && distance>=LIGHT_SWIPE){
+      swipes++;
+      // Two normal/full swipes reveal. Three lighter swipes also reveal.
+      if(distance>=SOLID_SWIPE || swipes>=3){
+        revealDate();
+      }
+    }
+    strokeMoved=false; activePointer=null;
+  }
+  canvas.addEventListener('pointerdown',start,{passive:false});
+  canvas.addEventListener('pointermove',move,{passive:false});
+  canvas.addEventListener('pointerup',end,{passive:false});
+  canvas.addEventListener('pointercancel',end,{passive:false});
+
+  // Scroll reveal animations.
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')});
+  },{threshold:.16});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+  // Countdown to the wedding date.
+  const target=new Date('2026-11-22T11:00:00+05:30').getTime();
+  function updateCountdown(){
+    let diff=Math.max(0,target-Date.now());
+    if(!diff){
+      document.querySelector('.count-title').textContent='THE DAY HAS ARRIVED';
+      document.querySelector('.countdown').innerHTML='<p class="blessing" style="grid-column:1/-1;margin:0">Alhamdulillah, the day has arrived.</p>';
+      clearInterval(cdTimer);return;
+    }
+    const d=Math.floor(diff/86400000); diff%=86400000;
+    const h=Math.floor(diff/3600000); diff%=3600000;
+    const m=Math.floor(diff/60000); const s=Math.floor((diff%60000)/1000);
+    document.getElementById('days').textContent=String(d).padStart(2,'0');
+    document.getElementById('hours').textContent=String(h).padStart(2,'0');
+    document.getElementById('mins').textContent=String(m).padStart(2,'0');
+    document.getElementById('secs').textContent=String(s).padStart(2,'0');
+  }
+  const cdTimer=setInterval(updateCountdown,1000);updateCountdown();
+
+  // Add both invitation events to the user's calendar.
+  document.getElementById('calendarBtn').addEventListener('click',()=>{
+    const ics=[
+      'BEGIN:VCALENDAR','VERSION:2.0','CALSCALE:GREGORIAN','METHOD:PUBLISH',
+      'PRODID:-//Invitashion//Abdul and Shiffana//EN',
+      'BEGIN:VEVENT','UID:nikkah-abdul-shiffana-2026-f3@invitashion',
+      'DTSTAMP:20261010T000000Z','DTSTART:20261122T053000Z','DTEND:20261122T073000Z',
+      'SUMMARY:Nikkah - Abdul Basith & Shiffana Azmi',
+      'LOCATION:The New College Auditorium\\, Chennai',
+      'END:VEVENT','END:VCALENDAR'
+    ].join('\r\n');
+    const blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a'); a.href=url; a.download='Abdul-Shiffana-nikkah.ics';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1500);
+  });
+
+})();
+
+</script>
+</body>
+</html>
