@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Doctors Wedding//EN
+BEGIN:VEVENT
+UID:reception-20270313@invitashion.online
+DTSTAMP:20261012T000000Z
+DTSTART:20270313T133000Z
+DTEND:20270313T163000Z
+SUMMARY:Sajitha & Shashank - Reception
+LOCATION:Taj Malabar Resort & Spa\, Willingdon Island\, Kochi
+DESCRIPTION:Reception from 7 PM. Invitation: https://invitashion.online/doctors-wedding/
+END:VEVENT
+BEGIN:VEVENT
+UID:wedding-20270314@invitashion.online
+DTSTAMP:20261012T000000Z
+DTSTART:20270314T050000Z
+DTEND:20270314T083000Z
+SUMMARY:Sajitha & Shashank - Wedding Ceremony
+LOCATION:Taj Malabar Resort & Spa\, Willingdon Island\, Kochi
+DESCRIPTION:Muhurtham at 10:30 AM. Invitation: https://invitashion.online/doctors-wedding/
+END:VEVENT
+END:VCALENDAR
