@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Dipsheekha and DibyaJyoti Housewarming//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:dipsheekha-housewarming-20270314@invitashion.online
+DTSTAMP:20261012T000000Z
+DTSTART:20270314T040000Z
+DTEND:20270314T080000Z
+SUMMARY:Dipsheekha & DibyaJyoti's Housewarming
+LOCATION:Near Ramamurthy Nagar Main Road\, Ramamurthy Nagar\, Bengaluru
+DESCRIPTION:Griha Pravesh at 9:30 AM\, lunch at 12:30 PM. Invitation: https://invitashion.online/golden-hour-home/
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Dipsheekha & DibyaJyoti's housewarming tomorrow at 9:30 AM
+END:VALARM
+END:VEVENT
+END:VCALENDAR
