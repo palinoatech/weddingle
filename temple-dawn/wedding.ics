@@ -1,0 +1,12 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Temple Dawn//EN
+BEGIN:VEVENT
+UID:wedding-temple-dawn-2026@invitashion
+DTSTAMP:20261019T000000Z
+DTSTART:20261213T040000Z
+DTEND:20261213T080000Z
+SUMMARY:Meghana & Arjun's Wedding (Muhurtham)
+LOCATION:Sri Kalyana Mantapa\, Basavanagudi\, Bengaluru 560004
+END:VEVENT
+END:VCALENDAR
