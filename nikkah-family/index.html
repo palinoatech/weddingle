@@ -234,6 +234,7 @@ footer small{display:block;margin-top:16px;font-size:12px;letter-spacing:2px;tex
   <div class="cta">
     <div class="who"><span>YOU ARE INVITED</span>Ayaan &amp; Zoya</div>
     <button class="open-btn" id="openBtn">Open Invitation</button>
+    <small class="snd">Best enjoyed with sound on</small>
   </div>
 </div>
 
@@ -370,14 +371,62 @@ footer small{display:block;margin-top:16px;font-size:12px;letter-spacing:2px;tex
 
 <script>
 const Music = (() => {
-  let ctx, master, src, buffer, playing = false, el = null;
-  const load = () => fetch('music.mp3').then(r => r.arrayBuffer());
-  // Download early so it's ready at the tap, except inside the homepage preview frame (load on tap there)
-  let file = window.self === window.top && location.protocol !== 'file:' ? load() : null;
+  let ctx, master, bus, playing = false, next = 0, step = 0, timer;
+  const BPM = 76, E8 = 60 / BPM / 2;                  // one eighth note
+  const mf = m => 440 * Math.pow(2, (m - 69) / 12);
+  // D - A - Bm - G, one chord per bar: [bass, arpeggio notes...]
+  const BARS = [[38, [50, 57, 62, 66]], [33, [45, 52, 57, 61]], [35, [47, 54, 59, 62]], [31, [43, 50, 55, 59]]];
+  const ARP = [0, 1, 2, 3, 2, 1, 2, 3];
+  const PAD = [[62, 66, 69], [61, 64, 69], [62, 66, 71], [62, 67, 71]];
+  // Top line (quarter notes; 0 = rest), joins on the second time round
+  const MEL = [[78, 76, 74, 76], [76, 0, 73, 69], [74, 73, 71, 73], [71, 74, 0, 0],
+               [78, 79, 81, 78], [76, 0, 73, 76], [74, 76, 78, 74], [71, 0, 0, 0]];
 
-  // iPhones mute Web Audio when the ringer switch is on silent; playing a looping
-  // silent <audio> element on the tap moves sound to the media channel instead.
-  function unlockIOS() {
+  function piano(m, t, vol, dur = 1.8) {
+    const f = mf(m), g = ctx.createGain(), lp = ctx.createBiquadFilter();
+    lp.type = 'lowpass'; lp.frequency.setValueAtTime(3200, t); lp.frequency.exponentialRampToValueAtTime(900, t + dur);
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + 0.004); g.gain.exponentialRampToValueAtTime(0.0008, t + dur);
+    lp.connect(g); g.connect(bus);
+    [['sine', 1, 1], ['triangle', 1, 0.35], ['sine', 2, 0.22], ['sine', 3, 0.06]].forEach(([type, k, v]) => {
+      const o = ctx.createOscillator(), og = ctx.createGain(); o.type = type; o.frequency.value = f * k; og.gain.value = v;
+      o.connect(og); og.connect(lp); o.start(t); o.stop(t + dur + 0.05);
+    });
+  }
+  function pad(notes, t, dur) {
+    const lp = ctx.createBiquadFilter(), g = ctx.createGain(); lp.type = 'lowpass'; lp.frequency.value = 1400;
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.03, t + dur * 0.35); g.gain.linearRampToValueAtTime(0, t + dur + 0.4);
+    lp.connect(g); g.connect(bus);
+    notes.forEach(m => [-7, 7].forEach(c => { const o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.value = mf(m); o.detune.value = c; o.connect(lp); o.start(t); o.stop(t + dur + 0.5); }));
+  }
+  function kick(t) {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.frequency.setValueAtTime(110, t); o.frequency.exponentialRampToValueAtTime(42, t + 0.15);
+    g.gain.setValueAtTime(0.4, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.4);
+    o.connect(g); g.connect(master); o.start(t); o.stop(t + 0.45);
+  }
+  function snap(t) {
+    const len = Math.floor(ctx.sampleRate * 0.12), buf = ctx.createBuffer(1, len, ctx.sampleRate), d = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 4);
+    const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+    s.buffer = buf; f.type = 'bandpass'; f.frequency.value = 2200; f.Q.value = 1.2; g.gain.value = 0.22;
+    s.connect(f); f.connect(g); g.connect(bus); s.start(t);
+  }
+  function impulse(seconds, decay) {
+    const len = ctx.sampleRate * seconds, buf = ctx.createBuffer(2, len, ctx.sampleRate);
+    for (let c = 0; c < 2; c++) { const d = buf.getChannelData(c); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, decay); }
+    return buf;
+  }
+  function schedule() {
+    while (next < ctx.currentTime + 0.3) {
+      const e = step % 8, barN = Math.floor(step / 8), bar = barN % 4, [root, notes] = BARS[bar], t = next;
+      if (e === 0) { piano(root, t, 0.16, 3.2); piano(root + 12, t, 0.08, 3.2); pad(PAD[bar], t, E8 * 8); }
+      piano(notes[ARP[e]], t, e === 0 ? 0.11 : 0.075, 1.4);
+      if (barN >= 4 && e % 2 === 0) { const m = MEL[barN % 8][e / 2]; if (m) piano(m, t + 0.01, 0.13, 2.2); }
+      if (barN >= 8) { if (e === 0 || e === 5) kick(t); if (e === 2 || e === 6) snap(t); }
+      next += E8; step++;
+    }
+  }
+  function unlockIOS() {   // iPhone silent switch: route audio through the media channel
     const rate = 8000, n = rate / 2, buf = new ArrayBuffer(44 + n), v = new DataView(buf);
     const w = (o, str) => [...str].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
     w(0, 'RIFF'); v.setUint32(4, 36 + n, true); w(8, 'WAVEfmt '); v.setUint32(16, 16, true);
@@ -385,59 +434,28 @@ const Music = (() => {
     v.setUint16(32, 1, true); v.setUint16(34, 8, true); w(36, 'data'); v.setUint32(40, n, true);
     for (let i = 0; i < n; i++) v.setUint8(44 + i, 128);
     const el = new Audio(URL.createObjectURL(new Blob([buf], { type: 'audio/wav' })));
-    el.loop = true; el.setAttribute('playsinline', ''); el.volume = 0.01;
-    el.play().catch(() => {});
-  }
-
-  // mp3 encoders pad the start/end with silence; find where the sound really begins and ends
-  function edges(buf) {
-    const d = buf.getChannelData(0), th = 0.002;
-    let s = 0, e = d.length - 1;
-    while (s < e && Math.abs(d[s]) < th) s++;
-    while (e > s && Math.abs(d[e]) < th) e--;
-    return [s / buf.sampleRate, (e + 1) / buf.sampleRate];
-  }
-
-  function decode(ab) {
-    return new Promise((ok, fail) => { const p = ctx.decodeAudioData(ab, ok, fail); if (p && p.catch) p.catch(fail); });
-  }
-
-  // Opened straight from disk (file://), browsers block fetch(); fall back to a plain looping <audio>.
-  function startEl() {
-    el = new Audio('music.mp3'); el.loop = true; el.setAttribute('playsinline', '');
-    el.play().catch(() => {}); playing = true;
+    el.loop = true; el.setAttribute('playsinline', ''); el.volume = 0.01; el.play().catch(() => {});
   }
   function start() {
-    if (el) return resume();
-    if (!ctx && location.protocol === 'file:') return startEl();
     if (ctx) return resume();
     unlockIOS();
     ctx = new (window.AudioContext || window.webkitAudioContext)();
-    // iPhone/WebKit: the context can start suspended even inside a tap, so resume it
-    // and play a 1-sample silent buffer within the same tap to unlock output.
     if (ctx.state !== 'running') ctx.resume();
-    const blip = ctx.createBufferSource(); blip.buffer = ctx.createBuffer(1, 1, 22050);
-    blip.connect(ctx.destination); blip.start(0);
-    // iOS can 'interrupt' audio (calls, app switches); resume on the next touch.
+    const blip = ctx.createBufferSource(); blip.buffer = ctx.createBuffer(1, 1, 22050); blip.connect(ctx.destination); blip.start(0);
     const revive = () => { if (playing && ctx.state !== 'running') ctx.resume(); };
     document.addEventListener('touchend', revive); document.addEventListener('click', revive);
     master = ctx.createGain(); master.connect(ctx.destination);
-    master.gain.setValueAtTime(0, ctx.currentTime);
+    master.gain.setValueAtTime(0, ctx.currentTime); master.gain.linearRampToValueAtTime(0.9, ctx.currentTime + 2);
+    bus = ctx.createGain();
+    const dry = ctx.createGain(), verb = ctx.createConvolver(), wet = ctx.createGain();
+    dry.gain.value = 0.8; verb.buffer = impulse(2.6, 2.5); wet.gain.value = 0.45;
+    bus.connect(dry); dry.connect(master); bus.connect(verb); verb.connect(wet); wet.connect(master);
+    next = ctx.currentTime + 0.2; step = 0; schedule(); timer = setInterval(schedule, 80);
     playing = true;
-    (file = file || load()).then(decode).then(buf => {
-      buffer = buf;
-      const [s, e] = edges(buf);
-      src = ctx.createBufferSource(); src.buffer = buf;
-      src.loop = true; src.loopStart = s; src.loopEnd = e;
-      src.connect(master); src.start(0, s);
-      const t = ctx.currentTime;
-      master.gain.setValueAtTime(0, t);
-      master.gain.linearRampToValueAtTime(0.9, t + 2.5); // gentle fade-in
-    }).catch(() => {});
   }
-  function resume() { if (el) el.play().catch(() => {}); else ctx.resume(); playing = true; }
-  function state() { return ctx ? ctx.state + ' @ ' + ctx.sampleRate + 'Hz, t=' + ctx.currentTime.toFixed(1) + 's, ' + (buffer ? 'song ' + buffer.duration.toFixed(2) + 's' : 'song loading') : 'not started'; }
-  function pause() { if (el) el.pause(); else if (ctx) ctx.suspend(); playing = false; }
+  function resume() { ctx.resume(); playing = true; }
+  function pause() { if (ctx) ctx.suspend(); playing = false; }
+  function state() { return ctx ? ctx.state + ' @ ' + ctx.sampleRate + 'Hz, t=' + ctx.currentTime.toFixed(1) + 's' : 'not started'; }
   return { start, state, toggle: () => (playing ? pause() : start(), playing), get playing() { return playing; } };
 })();
 const $=s=>document.querySelector(s);
@@ -447,7 +465,7 @@ if('scrollRestoration' in history)history.scrollRestoration='manual';
 window.scrollTo(0,0);
 function openInvite(){
   if(gate.classList.contains('open'))return;
-  gate.classList.add('open');$('#wm').classList.add('show');
+  Music.start();gate.classList.add('open');$('#musicBtn').classList.add('show','playing');$('#wm').classList.add('show');
   window.scrollTo(0,0);
   document.body.classList.remove('locked');
   window.scrollTo(0,0);
