@@ -209,6 +209,26 @@
     .g-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     .g-fig{margin:0;border-radius:20px;overflow:hidden;border:1px solid rgba(244,215,196,.45);box-shadow:0 18px 44px rgba(0,0,0,.4);background:#12384A}
     .g-fig img{display:block;width:100%;height:auto}
+    .dbx{display:flex;gap:8px;justify-content:center;margin:2px auto 0;max-width:330px}
+    .dbx div{flex:1;min-width:0;padding:10px 4px;text-align:center;border:1px solid rgba(201,155,124,.65);border-radius:12px;background:rgba(255,255,255,.6)}
+    .dbx .y{flex:1.5}
+    .dbx b{display:block;font-family:"Marcellus",Georgia,serif;font-weight:400;font-size:30px;line-height:1.1;color:#1B4152;letter-spacing:.04em}
+    .dbx.sm{margin:0;gap:5px;max-width:none;flex:1}
+    .dbx.sm div{padding:5px 2px;border-radius:8px}
+    .dbx.sm b{font-size:19px}
+    .sr-row{display:flex;align-items:center;gap:10px;width:100%;padding:0 14px;margin:5px 0}
+    .sr-lab{font:600 9px "Montserrat",sans-serif;letter-spacing:.14em;color:#16394A;width:74px;text-align:left;flex:none}
+    .details-card .day{font:500 12.5px "Montserrat",sans-serif;letter-spacing:.3em;color:#8A9AA0;margin-top:11px}
+    .details-card .time{font-family:"Marcellus",Georgia,serif;font-size:clamp(22px,6vw,28px);line-height:1.1;color:#A5634C;margin-top:8px;letter-spacing:.03em}
+    .details-card .time small{font-size:.5em;letter-spacing:.08em;color:#47616B}
+    .pill-btn{cursor:pointer}
+    .details-card .detail-label{font:600 16px "Montserrat",sans-serif;letter-spacing:.26em;color:#16394A;margin-bottom:14px}
+    .cal-opts{display:none;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+    .cal-opts.show{display:flex}
+    .cal-opts a{padding:10px 18px;border-radius:999px;border:1px solid var(--gold);background:#fff;color:#1F4152;font:500 11px "Montserrat",sans-serif;letter-spacing:.06em}
+    .cal-opts a.rec{background:#0B2230;color:#F4D7C4;border-color:#0B2230}
+    .cal-other{display:none;margin-top:10px;font:500 10px "Montserrat",sans-serif;letter-spacing:.08em;color:#5B7078;text-decoration:underline;cursor:pointer;background:none;border:0}
+    .cal-other.show{display:inline-block}
     /* Time & Venue card: own fonts + map preview */
     .details-card .title{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:500;font-size:clamp(38px,10.5vw,58px)}
     .details-card .detail-value{font-family:"Marcellus",Georgia,serif;font-size:clamp(21px,5.4vw,27px);letter-spacing:.04em}
@@ -298,8 +318,8 @@
           <div class="scratch-burst" id="scratchBurst" aria-hidden="true"></div>
           <div class="scratch-card" id="scratchCard">
             <div class="scratch-reveal">
-              <div class="scratch-date">26 &amp; 27 November 2026</div>
-              <div class="scratch-day">THURSDAY &amp; FRIDAY</div>
+              <div class="sr-row"><span class="sr-lab">RECEPTION</span><div class="dbx sm"><div><b>26</b></div><div><b>NOV</b></div><div class="y"><b>2026</b></div></div></div>
+              <div class="sr-row"><span class="sr-lab">MUHURTHAM</span><div class="dbx sm"><div><b>27</b></div><div><b>NOV</b></div><div class="y"><b>2026</b></div></div></div>
             </div>
             <span class="scratch-hint" aria-hidden="true"></span>
             <canvas id="scratchCanvas" width="410" height="132"></canvas>
@@ -344,13 +364,19 @@
 
         <div class="detail-row">
           <div class="detail-label">RECEPTION</div>
-          <div class="detail-value">Thursday, 26 November 2026</div>
-          <div class="detail-small">7:00 PM onwards</div>
+          <div class="dbx"><div><b>26</b></div><div><b>NOV</b></div><div class="y"><b>2026</b></div></div>
+          <div class="day">THURSDAY</div>
+          <div class="time">7:00 PM <small>onwards</small></div>
+          <button class="pill-btn cal" data-event="reception" type="button">📅 &nbsp; ADD TO CALENDAR</button>
+          <div class="cal-opts" id="opts-reception"><a class="cal-g" data-event="reception" target="_blank" rel="noopener">Google Calendar</a><a class="cal-a" href="reception.ics">Apple Calendar</a></div>
         </div>
         <div class="detail-row">
           <div class="detail-label">MUHURTHAM</div>
-          <div class="detail-value">Friday, 27 November 2026</div>
-          <div class="detail-small">10:10 – 10:25 AM</div>
+          <div class="dbx"><div><b>27</b></div><div><b>NOV</b></div><div class="y"><b>2026</b></div></div>
+          <div class="day">FRIDAY</div>
+          <div class="time">10:10 – 10:25 AM</div>
+          <button class="pill-btn cal" data-event="muhurtham" type="button">📅 &nbsp; ADD TO CALENDAR</button>
+          <div class="cal-opts" id="opts-muhurtham"><a class="cal-g" data-event="muhurtham" target="_blank" rel="noopener">Google Calendar</a><a class="cal-a" href="muhurtham.ics">Apple Calendar</a></div>
         </div>
         <div class="detail-row">
           <div class="detail-label">VENUE</div>
@@ -645,6 +671,28 @@ window.scrollTo(0,0);
     document.getElementById('secs').textContent=String(s).padStart(2,'0');
   }
   const cdTimer=setInterval(updateCountdown,1000);updateCountdown();
+
+  // Add to calendar: Android -> Google Calendar, iPhone/iPad/Mac -> .ics (Apple Calendar); otherwise show both
+  const EVENTS={
+    reception:{title:"Jeevan & Bhumika - Reception",dates:"20261126T133000Z/20261126T170000Z"},
+    muhurtham:{title:"Jeevan & Bhumika - Muhurtham",dates:"20261127T044000Z/20261127T045500Z"}
+  };
+  const LOC="SPK Inn & Convention Centre, Magadi Main Road, Sunkadakatte, Bengaluru 560091";
+  const ua=navigator.userAgent, isAndroid=/Android/i.test(ua), isApple=/iPhone|iPad|iPod|Macintosh/.test(ua);
+  document.querySelectorAll('.cal-g').forEach(a=>{const e=EVENTS[a.dataset.event];
+    a.href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(e.title)+'&dates='+e.dates+'&location='+encodeURIComponent(LOC);});
+  document.querySelectorAll('.cal').forEach(btn=>btn.addEventListener('click',()=>{
+    const ev=btn.dataset.event, opts=document.getElementById('opts-'+ev);
+    if(isAndroid){window.open(opts.querySelector('.cal-g').href,'_blank');return}
+    if(isApple){location.href=opts.querySelector('.cal-a').getAttribute('href');return}
+    opts.classList.toggle('show');
+  }));
+  if(isAndroid||isApple)document.querySelectorAll('.cal').forEach(btn=>{
+    const o=document.createElement('button');o.type='button';o.className='cal-other show';o.textContent='Use a different calendar';
+    o.addEventListener('click',()=>document.getElementById('opts-'+btn.dataset.event).classList.toggle('show'));
+    document.getElementById('opts-'+btn.dataset.event).insertAdjacentElement('afterend',o);
+  });
+
 
 
 })();
