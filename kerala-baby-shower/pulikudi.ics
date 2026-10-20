@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Pulikudi//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:kerala-baby-shower-20261215@invitashion.online
+DTSTAMP:20261020T000000Z
+DTSTART:20261215T043000Z
+DTEND:20261215T090000Z
+SUMMARY:Pulikudi & Baby Shower - Devika & Harikrishnan
+LOCATION:The Windsor Castle\, Kodimatha\, Kottayam\, Kerala
+DESCRIPTION:Pulikudi muhurtham 10:30 AM\, sadya 12:30 PM. https://invitashion.online/kerala-baby-shower/
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Pulikudi & Baby Shower tomorrow
+END:VALARM
+END:VEVENT
+END:VCALENDAR
