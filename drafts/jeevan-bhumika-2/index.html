@@ -14,6 +14,7 @@
   <meta property="og:image" content="https://invitashion.online/drafts/jeevan-bhumika-2/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <link rel="preload" href="audio-lite.mp3" as="fetch" type="audio/mpeg" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Allura&family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Tenor+Sans&display=swap" rel="stylesheet">
@@ -227,6 +228,7 @@
     /* zigzag: cut-out photo on one side, details on the other */
     .detail-row.ev,.closing-split{display:grid;grid-template-columns:minmax(0,44%) minmax(0,1fr);gap:6px;align-items:center}
     .detail-row.ev.flip .ev-cut{order:2}
+    .detail-row.ev.flip{grid-template-columns:minmax(0,1fr) minmax(0,44%)}
     .details-card.ev-card{padding-top:40px;padding-bottom:40px}
     .details-card .detail-row:first-child{border-top:0;padding-top:0}
     .details-card .detail-row.ev{padding:22px 2px;gap:10px}
@@ -237,13 +239,14 @@
     @media (max-width:400px){.ev .dbx b{font-size:15px}.ev .dbx{gap:3px}.ev .dbx div{padding:6px 1px}.details-card .ev .detail-label{font-size:12px;letter-spacing:.16em}.ev .pill-btn{font-size:9px;padding:10px 9px}.details-card{padding-left:16px !important;padding-right:16px !important}}
     .ev-cut{margin:0;align-self:end}
     .ev-cut img{display:block;width:100%;height:auto;-webkit-mask-image:linear-gradient(#000 86%,transparent);mask-image:linear-gradient(#000 86%,transparent);filter:drop-shadow(0 8px 10px rgba(11,34,48,.25))}
+    .ev-cut.full img{-webkit-mask-image:none;mask-image:none}
     .ev-text{min-width:0}
     .ev .dbx{gap:4px;max-width:none}
     .ev .dbx div{padding:6px 2px;border-radius:9px}
     .ev .dbx div{overflow:hidden}
     .ev .dbx b{font-size:clamp(13px,4.2vw,20px);letter-spacing:0}
     .ev .dbx div:nth-child(2){flex:1.4}
-    @media (max-width:400px){.detail-row.ev,.closing-split{grid-template-columns:minmax(0,39%) minmax(0,1fr)}.details-card .ev .time{font-size:16px;white-space:nowrap}.details-card .ev .day{letter-spacing:.18em}.ev .dbx div{padding:6px 0}.ev .dbx b{font-size:clamp(12px,4vw,16px)}}
+    @media (max-width:400px){.detail-row.ev,.closing-split{grid-template-columns:minmax(0,39%) minmax(0,1fr)}.detail-row.ev.flip{grid-template-columns:minmax(0,1fr) minmax(0,39%)}.details-card .ev .time{font-size:16px;white-space:normal}.details-card .ev .day{letter-spacing:.18em}.ev .dbx div{padding:6px 0}.ev .dbx b{font-size:clamp(12px,4vw,16px)}}
     .details-card .ev .detail-label{font-size:13px;letter-spacing:.2em;margin-bottom:10px}
     .details-card .ev .time{font-size:20px}
     .details-card .ev .day{font-size:11px;letter-spacing:.24em}
@@ -401,7 +404,7 @@
         <div class="city-sep first"><span>BENGALURU</span><i></i></div>
         <img class="city-art" src="bangalore.jpg" alt="Line drawing of the Bengaluru skyline with Vidhana Soudha" width="430" height="101" loading="lazy">
         <div class="detail-row ev">
-          <figure class="ev-cut"><img src="cut-2.webp" alt="Jeevan and Bhumika laughing together" loading="lazy"></figure>
+          <figure class="ev-cut full"><img src="cut-2d.webp" alt="Jeevan and Bhumika laughing together" loading="lazy"></figure>
           <div class="ev-text">
           <div class="detail-label">RECEPTION</div>
           <div class="dbx"><div><b>26</b></div><div><b>NOV</b></div><div class="y"><b>2026</b></div></div>
@@ -415,7 +418,7 @@
 
       <div class="details-card reveal ev-card">
         <div class="detail-row ev flip">
-          <figure class="ev-cut"><img src="cut-1b.webp" alt="Jeevan and Bhumika" loading="lazy"></figure>
+          <figure class="ev-cut"><img src="cut-1c.webp" alt="Jeevan and Bhumika" loading="lazy"></figure>
           <div class="ev-text">
           <div class="detail-label">MUHURTHAM</div>
           <div class="dbx"><div><b>27</b></div><div><b>NOV</b></div><div class="y"><b>2026</b></div></div>
@@ -454,7 +457,7 @@
         <div class="detail-row">
           <div class="detail-label">VENUE</div>
           <div class="detail-value">HG CONVENTION HALL</div>
-          <div class="detail-small">Belur Road, next to Brigade College,<br>Hassan</div>
+          <div class="detail-small">Next to Brigade College, Belur Road,<br>Hassan</div>
           <div class="map-prev"><iframe src="https://www.google.com/maps?q=13.0139631,76.0682333&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="HG Convention Hall on Google Maps"></iframe></div>
           <a class="pill-btn" href="https://maps.app.goo.gl/QJTSMYvziXaQz4iY7" target="_blank" rel="noopener">⌖ &nbsp; VIEW ON MAP</a>
         </div>
@@ -481,9 +484,17 @@
 <script>
 const Music = (() => {
   let ctx, master, src, buffer, playing = false, el = null;
-  const load = () => fetch('audio.mp3').then(r => r.arrayBuffer());
+  const load = () => fetch('audio-lite.mp3').then(r => r.arrayBuffer());
   // Download early so it's ready at the tap, except inside the homepage preview frame (load on tap there)
   let file = window.self === window.top && location.protocol !== 'file:' ? load() : null;
+  // Decode in the background right away (an offline context needs no tap), so the tap only has to play.
+  const predecode = ab => new Promise((ok, fail) => {
+    const O = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+    if (!O) return fail();
+    const p = new O(2, 44100, 44100).decodeAudioData(ab, ok, fail); if (p && p.catch) p.catch(fail);
+  });
+  let pre = file ? file.then(predecode) : null;
+  if (pre) pre.catch(() => {});
 
   // iPhones mute Web Audio when the ringer switch is on silent; playing a looping
   // silent <audio> element on the tap moves sound to the media channel instead.
@@ -514,38 +525,42 @@ const Music = (() => {
 
   // Opened straight from disk (file://), browsers block fetch(); fall back to a plain looping <audio>.
   function startEl() {
-    el = new Audio('audio.mp3'); el.loop = true; el.setAttribute('playsinline', '');
-    el.addEventListener('timeupdate', () => {
-      const d = el.duration; if (!d) return;
+    el = new Audio('audio-lite.mp3'); el.loop = true; el.setAttribute('playsinline', '');
+    el.volume = 0; // never start at full volume: the song opens on a beat that would thump
+    // fade in over the first 2.5s and out over the last 3s of every pass (fine-grained, ~25 times a second)
+    setInterval(() => {
+      const d = el.duration; if (!d || el.paused) return;
       el.volume = Math.max(0, Math.min(1, el.currentTime / 2.5, (d - el.currentTime) / 3));
-    });
+    }, 40);
     el.play().catch(() => {}); playing = true;
   }
   function start() {
     if (el) return resume();
     if (!ctx && location.protocol === 'file:') return startEl();
     if (ctx) return resume();
-    unlockIOS();
+    // The silent keep-alive <audio> and 1-sample blip are only needed on iOS; on other devices
+    // opening an extra audio element at the tap can itself make a short thump.
+    const IOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (IOS) unlockIOS();
     ctx = new (window.AudioContext || window.webkitAudioContext)();
     // iPhone/WebKit: the context can start suspended even inside a tap, so resume it
     // and play a 1-sample silent buffer within the same tap to unlock output.
     if (ctx.state !== 'running') ctx.resume();
-    const blip = ctx.createBufferSource(); blip.buffer = ctx.createBuffer(1, 1, 22050);
-    blip.connect(ctx.destination); blip.start(0);
+    if (IOS) { const blip = ctx.createBufferSource(); blip.buffer = ctx.createBuffer(1, 1, 22050); blip.connect(ctx.destination); blip.start(0); }
     // iOS can 'interrupt' audio (calls, app switches); resume on the next touch.
     const revive = () => { if (playing && ctx.state !== 'running') ctx.resume(); };
     document.addEventListener('touchend', revive); document.addEventListener('click', revive);
-    master = ctx.createGain(); master.connect(ctx.destination);
+    master = ctx.createGain(); master.gain.value = 0; master.connect(ctx.destination);
     master.gain.setValueAtTime(0, ctx.currentTime);
     playing = true;
-    (file = file || load()).then(decode).then(buf => {
+    (pre ? pre.catch(() => (file = load()).then(decode)) : (file = file || load()).then(decode)).then(buf => {
       buffer = buf;
       const [s, e] = edges(buf);
       // Each pass fades in, plays, fades out, then the next pass starts (no hard loop cut).
       const FADE_IN = 2.5, FADE_OUT = 3, len = e - s;
       const cycle = () => {
         if (!ctx) return;
-        const t = ctx.currentTime;
+        const t = ctx.currentTime + 0.08; // short lead-in so the output stream is open before sound starts
         src = ctx.createBufferSource(); src.buffer = buf; src.connect(master);
         master.gain.cancelScheduledValues(t);
         master.gain.setValueAtTime(0, t);
@@ -790,7 +805,7 @@ window.scrollTo(0,0);
   const EVENTS={
     reception:{title:"Jeevan & Bhumika - Reception",dates:"20261126T133000Z/20261126T170000Z"},
     muhurtham:{title:"Jeevan & Bhumika - Muhurtham",dates:"20261127T044000Z/20261127T045500Z"},
-    beegara:{title:"Jeevan & Bhumika - Beegara Oota",dates:"20261129T070000Z/20261129T093000Z",loc:"HG Convention Hall, Belur Road, next to Brigade College, Hassan"}
+    beegara:{title:"Jeevan & Bhumika - Beegara Oota",dates:"20261129T070000Z/20261129T093000Z",loc:"HG Convention Hall, Next to Brigade College, Belur Road, Hassan"}
   };
   const LOC="SPK Inn & Convention Centre, Magadi Main Road, Sunkadakatte, Bengaluru 560091";
   document.querySelectorAll('.cal-g').forEach(a=>{const e=EVENTS[a.dataset.event];
