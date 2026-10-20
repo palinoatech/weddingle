@@ -101,13 +101,25 @@
     .scratch-label{font:500 10px "Tenor Sans",sans-serif;letter-spacing:.23em;color:#5B7078;margin-bottom:9px}
     .scratch-card{position:relative;height:132px;border-radius:19px;overflow:hidden;background:linear-gradient(135deg,#FFFBF7,#F3E2D7);box-shadow:0 13px 28px rgba(9,31,55,.22);border:1px solid rgba(201,155,124,.5);touch-action:none;user-select:none;-webkit-user-select:none}
     .scratch-reveal{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#A5634C}
-    .scratch-date{font-size:clamp(25px,6.7vw,32px);font-weight:600;letter-spacing:.02em}
+    .scratch-date{font-family:"Tenor Sans",sans-serif;font-weight:400;font-size:clamp(18px,5.2vw,24px);letter-spacing:.04em;text-align:center;white-space:nowrap}
+    .sr3{display:grid;grid-template-columns:repeat(3,1fr);width:100%;padding:0 10px}
+    .sr3>div{display:flex;flex-direction:column;align-items:center;padding:0 4px}
+    .sr3>div+div{border-left:1px solid rgba(165,99,76,.3)}
+    .sr3 b{font:400 clamp(26px,7.6vw,34px)/1 "Tenor Sans",sans-serif;letter-spacing:.02em;color:#A5634C}
+    .sr3 sup{font-size:.4em;vertical-align:top;position:relative;top:.2em;margin-left:1px;letter-spacing:.04em}
+    .sr3 span{font:500 9px "Tenor Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5B7078;margin-top:8px;white-space:nowrap}
     .scratch-day{font:500 10px "Tenor Sans",sans-serif;letter-spacing:.28em;margin-top:7px}
     .scratch-hint{display:none}
     #scratchCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:3;cursor:grab}
     .scratch-burst{position:absolute;inset:-170px;z-index:8;pointer-events:none;overflow:visible;opacity:1}
     .scratch-particle{position:absolute;left:50%;top:50%;font-family:Georgia,serif;color:#F4D7C4;text-shadow:0 0 8px rgba(244,215,196,.95);animation:scratchFly 1.55s cubic-bezier(.16,.72,.16,1) forwards;opacity:0;will-change:transform,opacity}
     @keyframes scratchFly{0%{transform:translate(-50%,-50%) scale(.35) rotate(0deg);opacity:0}12%{opacity:1}100%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(.15) rotate(var(--r));opacity:0}}
+    /* Akshathe: rice grains kicked up while scratching, and showered on reveal */
+    .grain{position:absolute;width:5px;height:10px;border-radius:50%;background:var(--c);box-shadow:inset -1px -1px 1px rgba(0,0,0,.16);pointer-events:none;opacity:0;will-change:transform,opacity}
+    .grain.kick{animation:grainKick var(--t) cubic-bezier(.25,.6,.4,1) forwards}
+    .grain.shower{left:50%;top:50%;animation:grainShower var(--t) linear forwards}
+    @keyframes grainKick{0%{transform:translate(0,0) rotate(0);opacity:0}12%{opacity:1}40%{transform:translate(calc(var(--x)*.6),var(--up)) rotate(calc(var(--r)*.5))}100%{transform:translate(var(--x),var(--fall)) rotate(var(--r));opacity:0}}
+    @keyframes grainShower{0%{transform:translate(-50%,-50%) rotate(0);opacity:0;animation-timing-function:cubic-bezier(.12,.7,.3,1)}6%{opacity:1}30%{transform:translate(calc(-50% + var(--x)*.6),calc(-50% + var(--up))) rotate(calc(var(--r)*.4));animation-timing-function:ease-in-out}85%{opacity:1}100%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--fall))) rotate(var(--r));opacity:0}}
     .reveal-status{height:21px;margin-top:9px;font:500 9px "Tenor Sans",sans-serif;letter-spacing:.1em;color:#7E9096}
 
 
@@ -138,7 +150,7 @@
     .count-title{font:500 10px "Tenor Sans",sans-serif;letter-spacing:.24em;color:#5B7078;margin:27px 0 13px}
     .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
     .time-box{border:1px solid #0B2230;border-radius:13px;padding:11px 3px;background:#0B2230}
-    .time-num{font-size:27px;color:#F4D7C4}
+    .time-num{font-family:"Tenor Sans",sans-serif;font-weight:400;font-size:24px;letter-spacing:.04em;color:#F4D7C4}
     .time-label{font:500 8px "Tenor Sans",sans-serif;letter-spacing:.08em;color:rgba(251,244,239,.75)}
     .countdown-wrap{position:relative;z-index:2;width:min(100%,540px);text-align:center;border:1px solid rgba(244,215,196,.42);border-radius:30px;padding:42px 26px;background:rgba(251,244,239,.96);box-shadow:0 25px 70px rgba(0,0,0,.34)}
     .blessing{font-size:22px;font-style:italic;line-height:1.25;margin:27px 0 0;color:#38545F}
@@ -194,19 +206,20 @@
     .opening .moon{top:9%;width:62px}
     .env-stage{perspective:1100px}
     .env{position:relative;width:min(80vw,330px);aspect-ratio:1.46/1;margin:0 auto;filter:drop-shadow(0 22px 34px rgba(0,0,0,.5));transition:transform 1s cubic-bezier(.5,0,.2,1) 1.35s}
-    .env-back{position:absolute;inset:0;border-radius:6px;background:linear-gradient(180deg,#C99B7C,#B07E64)}
+    .env-back{position:absolute;inset:0;border-radius:6px;background:linear-gradient(180deg,#DCC59B,#CDB387)}
     .env-card{position:absolute;left:7%;right:7%;top:9%;bottom:8%;border-radius:4px;background:linear-gradient(180deg,#FFFBF7,#F6E9E0);box-shadow:0 2px 8px rgba(0,0,0,.18);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;z-index:2;transition:transform 1s cubic-bezier(.3,.7,.2,1) .75s,top 0s;padding:0 10px}
     .ec-kicker{font:600 8px "Tenor Sans",sans-serif;letter-spacing:.34em;text-transform:uppercase;color:#A5634C}
     .ec-names{font-family:"Allura",cursive;font-size:clamp(22px,7vw,30px);line-height:1;color:#A5634C}
     .ec-date{font:500 8px "Tenor Sans",sans-serif;letter-spacing:.28em;color:#5B7078}
-    .env-front{position:absolute;inset:0;z-index:3;border-radius:6px;background:linear-gradient(180deg,#F6E7DD,#EAD2C4);clip-path:polygon(0 0,50% 54%,100% 0,100% 100%,0 100%)}
-    .env-flap{position:absolute;left:0;right:0;top:0;height:60%;z-index:4;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#F1DDD0,#E3C3B2);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:50% 0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-    .env .seal-button{position:absolute;left:50%;top:60%;width:86px;height:86px;margin:-43px 0 0 -43px;z-index:6;transition:transform .45s ease,opacity .45s ease}
+    .env-front{position:absolute;inset:0;z-index:3;border-radius:6px;background:linear-gradient(35deg,rgba(120,90,50,.13),transparent 38%),linear-gradient(-35deg,rgba(120,90,50,.13),transparent 38%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .35 0 0 0 0 .2 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"),linear-gradient(180deg,#F5ECDC,#EADBC2);box-shadow:inset 0 0 0 1px rgba(110,80,40,.22);clip-path:polygon(0 0,50% 54%,100% 0,100% 100%,0 100%)}
+    .env-flap{position:absolute;left:0;right:0;top:0;height:60%;z-index:4;border-radius:6px 6px 0 0;background:#D8C4A0;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:50% 0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+    .env-flap::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#F7EFE0,#ECDDC5);clip-path:polygon(.8% 0,99.2% 0,50% 94%)}
+    .env .seal-button{position:absolute;left:50%;top:60%;width:64px;height:64px;margin:-32px 0 0 -32px;z-index:6;transition:transform .45s ease,opacity .45s ease}
     .opening.opening-now .env .seal-button{transform:scale(1.35);opacity:0;pointer-events:none}
     .opening.opening-now .env-flap{animation:flapOpen .8s cubic-bezier(.4,0,.2,1) .35s forwards}
     .opening.opening-now .env-card{transform:translateY(-62%)}
     .opening.opening-now .env{transform:scale(2.3) translateY(14%)}
-    @keyframes flapOpen{0%{transform:rotateX(0);z-index:4}49%{z-index:4}50%{z-index:1;background:#C99B7C}100%{transform:rotateX(180deg);z-index:1;background:#C99B7C}}
+    @keyframes flapOpen{0%{transform:rotateX(0);z-index:4}49%{z-index:4}50%{z-index:1;background:#D5BE92}100%{transform:rotateX(180deg);z-index:1;background:#D5BE92}}
     @keyframes envOut{to{opacity:0;visibility:hidden}}
     .seal-button::before{inset:-4px}
     @media (prefers-reduced-motion:reduce){.opening.opening-now{animation:envOut .2s ease .3s forwards}.opening.opening-now .env-flap,.opening.opening-now .env{animation:none;transition:none}}
@@ -255,7 +268,7 @@
 <body class="locked">
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
-      <radialGradient id="rg" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#FBE3D3"/><stop offset=".55" stop-color="#D9A88C"/><stop offset="1" stop-color="#9B5F49"/></radialGradient>
+      <radialGradient id="rg" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#C4503E"/><stop offset=".55" stop-color="#9C2B1F"/><stop offset="1" stop-color="#5E140D"/></radialGradient>
       <g id="petal"><path d="M0 0C-13-16-11-40 0-46C11-40 13-16 0 0Z"/><path d="M0-6V-34" opacity=".5"/></g>
       <g id="bloom" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
         <use href="#petal"/><use href="#petal" transform="rotate(72)"/><use href="#petal" transform="rotate(144)"/><use href="#petal" transform="rotate(216)"/><use href="#petal" transform="rotate(288)"/>
@@ -300,7 +313,7 @@
           </div>
           <div class="env-front"></div>
           <div class="env-flap"></div>
-          <button class="seal-button" id="sealButton" aria-label="Touch the seal to open the invitation"><svg viewBox="-80 -80 160 160" aria-hidden="true"><path d="M0-68C14-72 22-62 34-60C44-56 50-48 58-40C66-30 70-18 68-6C72 6 66 18 62 28C56 38 48 46 38 54C26 62 14 66 2 68C-12 72-24 64-36 58C-46 52-54 44-60 34C-68 22-68 10-66-2C-70-16-64-28-58-38C-50-48-42-54-32-60C-22-66-10-64 0-68Z" fill="url(#rg)"/><circle r="48" fill="none" stroke="#6E3E2E" stroke-opacity=".35" stroke-width="1.4"/><circle r="52" fill="none" stroke="#FBE3D3" stroke-opacity=".5" stroke-width=".8" stroke-dasharray="2 4"/><text y="10" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-weight="600" font-size="30" fill="#6E3E2E" fill-opacity=".85">J &amp; B</text></svg></button>
+          <button class="seal-button" id="sealButton" aria-label="Touch the seal to open the invitation"><svg viewBox="-80 -80 160 160" aria-hidden="true"><path d="M0-68C14-72 22-62 34-60C44-56 50-48 58-40C66-30 70-18 68-6C72 6 66 18 62 28C56 38 48 46 38 54C26 62 14 66 2 68C-12 72-24 64-36 58C-46 52-54 44-60 34C-68 22-68 10-66-2C-70-16-64-28-58-38C-50-48-42-54-32-60C-22-66-10-64 0-68Z" fill="url(#rg)"/><circle r="48" fill="none" stroke="#3F0C07" stroke-opacity=".35" stroke-width="1.4"/><circle r="52" fill="none" stroke="#E8A89A" stroke-opacity=".35" stroke-width=".8" stroke-dasharray="2 4"/><text y="10" text-anchor="middle" font-family="Cormorant Garamond,serif" font-style="italic" font-weight="600" font-size="30" fill="#4A0F09" fill-opacity=".8">J &amp; B</text></svg></button>
         </div>
       </div>
       <div class="open-text">Touch the seal to open</div>
@@ -326,8 +339,12 @@
           <div class="scratch-burst" id="scratchBurst" aria-hidden="true"></div>
           <div class="scratch-card" id="scratchCard">
             <div class="scratch-reveal">
-              <div class="sr-row"><span class="sr-lab">RECEPTION</span><div class="dbx sm"><div><b>26</b></div><div><b>NOV</b></div><div class="y"><b>2026</b></div></div></div>
-              <div class="sr-row"><span class="sr-lab">MUHURTHAM</span><div class="dbx sm"><div><b>27</b></div><div><b>NOV</b></div><div class="y"><b>2026</b></div></div></div>
+              <div class="sr3">
+                <div><b>26<sup>th</sup></b><span>Reception</span></div>
+                <div><b>27<sup>th</sup></b><span>Madve</span></div>
+                <div><b>29<sup>th</sup></b><span>Beegara Oota</span></div>
+              </div>
+              <div class="scratch-day">NOVEMBER 2026</div>
             </div>
             <span class="scratch-hint" aria-hidden="true"></span>
             <canvas id="scratchCanvas" width="410" height="132"></canvas>
@@ -389,10 +406,10 @@
         </div>
         <div class="detail-row">
           <div class="detail-label">VENUE</div>
-          <div class="detail-value">SAR CONVENTION HALL</div>
+          <div class="detail-value">SPK INN &amp; CONVENTION CENTRE</div>
           <div class="detail-small">Chandana Layout, Sri Gandhada Kaval,<br>Magadi Main Road, Sunkadakatte,<br>Bengaluru 560091</div>
-          <div class="map-prev"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5341.62854203356!2d77.50439513262488!3d12.985965209852774!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3c485b3586ad%3A0x7a9c336a4eec2a29!2sSAR%20Convention%20Hall!5e0!3m2!1sen!2sus!4v1792497071050!5m2!1sen!2sus" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="SAR Convention Hall on Google Maps"></iframe></div>
-          <a class="pill-btn" href="https://maps.app.goo.gl/UrLpvXvvo7ffC4RJ6" target="_blank" rel="noopener">⌖ &nbsp; VIEW ON MAP</a>
+          <div class="map-prev"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d817.3045360630074!2d77.50617576500062!3d12.98607959973128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3c485a4004e5%3A0x1d8dfb9d6cb1b4be!2sSPK%20Inn%20and%20Convention%20Centre!5e0!3m2!1sen!2sin!4v1792497736055!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="SPK Inn &amp; Convention Centre on Google Maps"></iframe></div>
+          <a class="pill-btn" href="https://www.google.com/maps?ftid=0x3bae3c485a4004e5:0x1d8dfb9d6cb1b4be" target="_blank" rel="noopener">⌖ &nbsp; VIEW ON MAP</a>
         </div>
       </div>
 
@@ -583,38 +600,33 @@ window.scrollTo(0,0);
     canvas.style.width=r.width+'px'; canvas.style.height=r.height+'px';
     ctx.setTransform(dpr,0,0,dpr,0,0); ctx.globalCompositeOperation='source-over';
     const W=r.width,H=r.height;
-    // night-sky foil
+    // turmeric (haldi) powder base with vermilion (kumkum) patches
     const g=ctx.createLinearGradient(0,0,W,H);
-    g.addColorStop(0,'#0F3445'); g.addColorStop(.5,'#1B5468'); g.addColorStop(1,'#0B2634');
+    g.addColorStop(0,'#F4B823'); g.addColorStop(.5,'#F9CC4A'); g.addColorStop(1,'#EFA815');
     ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
-    // engraved flower lattice
-    ctx.strokeStyle='rgba(244,215,196,.16)'; ctx.lineWidth=.8;
-    for(let y=14;y<H;y+=44)for(let x=((y/44)%2?0:22)+14;x<W;x+=44){
-      for(let i=0;i<5;i++){const a=i*2*Math.PI/5-Math.PI/2;ctx.beginPath();ctx.ellipse(x+Math.cos(a)*6,y+Math.sin(a)*6,5,2.4,a,0,7);ctx.stroke();}
-    }
-    // gold dust
+    const blob=(cx,cy,r,c0,c1)=>{const rg=ctx.createRadialGradient(cx,cy,0,cx,cy,r);rg.addColorStop(0,c0);rg.addColorStop(.55,c0);rg.addColorStop(1,c1);ctx.fillStyle=rg;ctx.fillRect(0,0,W,H);};
+    blob(W*.02,H*1.05,W*.42,'rgba(196,34,20,.97)','rgba(201,38,22,0)');
+    blob(W*.98,H*-.05,W*.40,'rgba(205,42,24,.95)','rgba(214,52,28,0)');
+    // powder grain: fine speckle in both colours
     let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
-    for(let i=0;i<70;i++){
-      const x=rnd()*W,y=rnd()*H,rad=.6+rnd()*1.5;
-      ctx.fillStyle='rgba(244,215,196,'+(.35+rnd()*.5)+')';
+    const cols=['255,236,160','176,22,12','224,150,8','230,70,36','255,250,225'];
+    for(let i=0;i<1400;i++){
+      const x=rnd()*W,y=rnd()*H,rad=.4+rnd()*1.3;
+      ctx.fillStyle='rgba('+cols[Math.floor(rnd()*cols.length)]+','+(.12+rnd()*.38)+')';
       ctx.beginPath();ctx.arc(x,y,rad,0,7);ctx.fill();
     }
-    // soft sheen
-    const sh=ctx.createLinearGradient(0,0,W,0);
-    sh.addColorStop(0,'rgba(255,255,255,0)');sh.addColorStop(.42,'rgba(255,255,255,0)');sh.addColorStop(.5,'rgba(255,255,255,.13)');sh.addColorStop(.58,'rgba(255,255,255,0)');sh.addColorStop(1,'rgba(255,255,255,0)');
-    ctx.fillStyle=sh;ctx.fillRect(0,0,W,H);
-    // rose-gold inner frame
-    ctx.strokeStyle='rgba(226,183,156,.75)';ctx.lineWidth=1.2;
+    // inner frame
+    ctx.strokeStyle='rgba(122,31,16,.5)';ctx.lineWidth=1.2;
     ctx.strokeRect(9,9,W-18,H-18);
-    ctx.strokeStyle='rgba(226,183,156,.35)';ctx.lineWidth=.8;
+    ctx.strokeStyle='rgba(122,31,16,.25)';ctx.lineWidth=.8;
     ctx.strokeRect(13,13,W-26,H-26);
     // flower emblem and label
     const em=document.createElement('canvas');em.width=em.height=80;const ec=em.getContext('2d');
-    ec.fillStyle='#F2D3BE';
+    ec.fillStyle='#FFF3D6';
     for(let i=0;i<5;i++){const a=i*2*Math.PI/5-Math.PI/2;ec.beginPath();ec.ellipse(40+Math.cos(a)*17,40+Math.sin(a)*17,15,8,a,0,7);ec.fill();}
-    ec.fillStyle='#1B5468';ec.beginPath();ec.arc(40,40,6,0,7);ec.fill();
+    ec.fillStyle='#A92A18';ec.beginPath();ec.arc(40,40,6,0,7);ec.fill();
     ctx.drawImage(em,W/2-26,H/2-44,52,52);
-    ctx.fillStyle='rgba(242,211,190,.92)';ctx.font='500 10px "Tenor Sans",sans-serif';ctx.textAlign='center';
+    ctx.fillStyle='rgba(110,24,12,.95)';ctx.font='500 10px "Tenor Sans",sans-serif';ctx.textAlign='center';
     if('letterSpacing' in ctx)ctx.letterSpacing='3px';
     ctx.fillText('SCRATCH HERE',W/2+1.5,H/2+30);
     if('letterSpacing' in ctx)ctx.letterSpacing='0px';
@@ -639,22 +651,50 @@ window.scrollTo(0,0);
     status.textContent='DATES REVEALED ❀';
     setTimeout(fireScratchBurst,80);
   }
+  // Akshathe: mostly ivory rice, a few turmeric-yellow and kumkum-red grains
+  const GRAIN_COLORS=['#FFF6E0','#FFF6E0','#FFF6E0','#F7E7B4','#F7E7B4','#F2B93B','#D6453D'];
+  function makeGrain(cls,vars){
+    const g=document.createElement('span'); g.className='grain '+cls;
+    g.style.setProperty('--c',GRAIN_COLORS[Math.floor(Math.random()*GRAIN_COLORS.length)]);
+    for(const k in vars)g.style.setProperty(k,vars[k]);
+    g.style.transform='translate(-50%,-50%) rotate('+Math.round(Math.random()*180)+'deg)';
+    g.addEventListener('animationend',()=>g.remove());
+    return g;
+  }
+  const REDUCED=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let lastKick=0;
+  function kickGrains(clientX,clientY){
+    if(REDUCED)return;
+    const now=performance.now(); if(now-lastKick<45)return; lastKick=now;
+    if(scratchBurst.childElementCount>140)return;
+    const b=scratchBurst.getBoundingClientRect();
+    for(let i=0;i<2;i++){
+      const g=makeGrain('kick',{
+        '--x':((Math.random()-.5)*90)+'px',
+        '--up':(-(14+Math.random()*34))+'px',
+        '--fall':(30+Math.random()*60)+'px',
+        '--r':((Math.random()-.5)*540)+'deg',
+        '--t':(.7+Math.random()*.5)+'s'});
+      g.style.left=(clientX-b.left+(Math.random()-.5)*18)+'px';
+      g.style.top=(clientY-b.top+(Math.random()-.5)*18)+'px';
+      scratchBurst.appendChild(g);
+    }
+  }
   function fireScratchBurst(){
     scratchBurst.innerHTML='';
-    const symbols=['❀','✿','•','❀','✿','❁','·','✿'];
-    for(let i=0;i<360;i++){
-      const s=document.createElement('span'); s.className='scratch-particle';
-      s.textContent=symbols[i%symbols.length];
-      s.style.fontSize=(16+Math.random()*32)+'px';
-      s.style.color=Math.random()>.28?'#F4D7C4':'#ffffff';
-      const a=Math.random()*Math.PI*2, d=140+Math.random()*680;
-      s.style.setProperty('--x',(Math.cos(a)*d)+'px');
-      s.style.setProperty('--y',(Math.sin(a)*d)+'px');
-      s.style.setProperty('--r',(-220+Math.random()*440)+'deg');
-      s.style.animationDelay=(Math.random()*.12)+'s';
-      scratchBurst.appendChild(s);
+    // Thrown up from the card and raining down, like akshathe at a wedding
+    for(let i=0;i<260;i++){
+      const g=makeGrain('shower',{
+        '--x':((Math.random()-.5)*620)+'px',
+        '--up':(-(70+Math.random()*190))+'px',
+        '--fall':(60+Math.random()*260)+'px',
+        '--r':((Math.random()-.5)*600)+'deg',
+        '--t':(4+Math.random()*2.5)+'s'});
+      g.style.animationDelay=(Math.random()*.35)+'s';
+      g.style.marginLeft=((Math.random()-.5)*300)+'px';
+      scratchBurst.appendChild(g);
     }
-    setTimeout(()=>scratchBurst.innerHTML='',2400);
+    setTimeout(()=>scratchBurst.innerHTML='',7500);
   }
   function start(e){
     if(revealed || activePointer!==null)return;
@@ -668,7 +708,7 @@ window.scrollTo(0,0);
     if(!drawing||revealed||e.pointerId!==activePointer)return;
     e.preventDefault();
     const pt=point(e), step=Math.hypot(pt.x-lastX,pt.y-lastY);
-    if(step>1){erase(pt.x,pt.y);strokeMoved=true;}
+    if(step>1){erase(pt.x,pt.y);strokeMoved=true;kickGrains(e.clientX,e.clientY);}
   }
   function end(e){
     if(!drawing || e.pointerId!==activePointer)return;
@@ -720,7 +760,7 @@ window.scrollTo(0,0);
     muhurtham:{title:"Jeevan & Bhumika - Muhurtham",dates:"20261127T044000Z/20261127T045500Z"},
     beegara:{title:"Jeevan & Bhumika - Beegara Oota",dates:"20261129T070000Z/20261129T093000Z",loc:"HG Convention Hall, Belur Road, next to Brigade College, Hassan"}
   };
-  const LOC="SAR Convention Hall, Magadi Main Road, Sunkadakatte, Bengaluru 560091";
+  const LOC="SPK Inn & Convention Centre, Magadi Main Road, Sunkadakatte, Bengaluru 560091";
   document.querySelectorAll('.cal-g').forEach(a=>{const e=EVENTS[a.dataset.event];
     a.href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(e.title)+'&dates='+e.dates+'&location='+encodeURIComponent(e.loc||LOC);});
   document.querySelectorAll('.cal').forEach(btn=>btn.addEventListener('click',()=>{
