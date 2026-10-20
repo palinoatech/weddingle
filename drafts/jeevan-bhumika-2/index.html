@@ -234,13 +234,16 @@
     .ev-text .time{margin-top:10px !important}
     .ev-text .pill-btn{margin-top:20px}
     .ev-text .dbx{margin-top:4px}
-    @media (max-width:400px){.ev .dbx b{font-size:17px}.details-card .ev .detail-label{font-size:12px;letter-spacing:.16em}.ev .pill-btn{font-size:9px;padding:10px 9px}.details-card{padding-left:16px !important;padding-right:16px !important}}
+    @media (max-width:400px){.ev .dbx b{font-size:15px}.ev .dbx{gap:3px}.ev .dbx div{padding:6px 1px}.details-card .ev .detail-label{font-size:12px;letter-spacing:.16em}.ev .pill-btn{font-size:9px;padding:10px 9px}.details-card{padding-left:16px !important;padding-right:16px !important}}
     .ev-cut{margin:0;align-self:end}
     .ev-cut img{display:block;width:100%;height:auto;-webkit-mask-image:linear-gradient(#000 86%,transparent);mask-image:linear-gradient(#000 86%,transparent);filter:drop-shadow(0 8px 10px rgba(11,34,48,.25))}
     .ev-text{min-width:0}
     .ev .dbx{gap:4px;max-width:none}
     .ev .dbx div{padding:6px 2px;border-radius:9px}
-    .ev .dbx b{font-size:20px}
+    .ev .dbx div{overflow:hidden}
+    .ev .dbx b{font-size:clamp(13px,4.2vw,20px);letter-spacing:0}
+    .ev .dbx div:nth-child(2){flex:1.4}
+    @media (max-width:400px){.detail-row.ev,.closing-split{grid-template-columns:minmax(0,39%) minmax(0,1fr)}.details-card .ev .time{font-size:16px;white-space:nowrap}.details-card .ev .day{letter-spacing:.18em}.ev .dbx div{padding:6px 0}.ev .dbx b{font-size:clamp(12px,4vw,16px)}}
     .details-card .ev .detail-label{font-size:13px;letter-spacing:.2em;margin-bottom:10px}
     .details-card .ev .time{font-size:20px}
     .details-card .ev .day{font-size:11px;letter-spacing:.24em}
@@ -448,9 +451,6 @@
           <div class="cal-opts" id="opts-beegara"><a class="cal-g" data-event="beegara" target="_blank" rel="noopener">Google Calendar</a><a class="cal-a" href="beegara-oota.ics">Apple Calendar</a></div>
           </div>
         </div>
-      </div>
-
-      <div class="details-card reveal ev-card">
         <div class="detail-row">
           <div class="detail-label">VENUE</div>
           <div class="detail-value">HG CONVENTION HALL</div>
