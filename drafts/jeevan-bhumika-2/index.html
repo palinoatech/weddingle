@@ -125,7 +125,7 @@
 
     .paper-section::after{display:none}
     .paper-card{z-index:2}
-    .details-section{margin-top:0;padding-top:72px;flex-direction:column;gap:28px}
+    .details-section{margin-top:0;padding-top:72px;flex-direction:column;gap:38px}
     .details-section::after{display:none}
     .details-card{z-index:2}
     .details-section{background:radial-gradient(ellipse at 50% 0%,#17475A,#0B2230 70%)}
@@ -227,6 +227,14 @@
     /* zigzag: cut-out photo on one side, details on the other */
     .detail-row.ev,.closing-split{display:grid;grid-template-columns:minmax(0,44%) minmax(0,1fr);gap:6px;align-items:center}
     .detail-row.ev.flip .ev-cut{order:2}
+    .details-card.ev-card{padding-top:40px;padding-bottom:40px}
+    .details-card .detail-row:first-child{border-top:0;padding-top:0}
+    .details-card .detail-row.ev{padding:22px 2px;gap:10px}
+    .ev-text .day{margin-top:14px !important}
+    .ev-text .time{margin-top:10px !important}
+    .ev-text .pill-btn{margin-top:20px}
+    .ev-text .dbx{margin-top:4px}
+    @media (max-width:400px){.ev .dbx b{font-size:17px}.details-card .ev .detail-label{font-size:12px;letter-spacing:.16em}.ev .pill-btn{font-size:9px;padding:10px 9px}.details-card{padding-left:16px !important;padding-right:16px !important}}
     .ev-cut{margin:0;align-self:end}
     .ev-cut img{display:block;width:100%;height:auto;-webkit-mask-image:linear-gradient(#000 86%,transparent);mask-image:linear-gradient(#000 86%,transparent);filter:drop-shadow(0 8px 10px rgba(11,34,48,.25))}
     .ev-text{min-width:0}
@@ -400,8 +408,11 @@
           <div class="cal-opts" id="opts-reception"><a class="cal-g" data-event="reception" target="_blank" rel="noopener">Google Calendar</a><a class="cal-a" href="reception.ics">Apple Calendar</a></div>
           </div>
         </div>
+      </div>
+
+      <div class="details-card reveal ev-card">
         <div class="detail-row ev flip">
-          <figure class="ev-cut"><img src="cut-1.webp" alt="Jeevan and Bhumika" loading="lazy"></figure>
+          <figure class="ev-cut"><img src="cut-1b.webp" alt="Jeevan and Bhumika" loading="lazy"></figure>
           <div class="ev-text">
           <div class="detail-label">MUHURTHAM</div>
           <div class="dbx"><div><b>27</b></div><div><b>NOV</b></div><div class="y"><b>2026</b></div></div>
@@ -411,6 +422,9 @@
           <div class="cal-opts" id="opts-muhurtham"><a class="cal-g" data-event="muhurtham" target="_blank" rel="noopener">Google Calendar</a><a class="cal-a" href="muhurtham.ics">Apple Calendar</a></div>
           </div>
         </div>
+      </div>
+
+      <div class="details-card reveal ev-card">
         <div class="detail-row">
           <div class="detail-label">VENUE</div>
           <div class="detail-value">SPK INN &amp; CONVENTION CENTRE</div>
@@ -420,7 +434,7 @@
         </div>
       </div>
 
-      <div class="details-card reveal">
+      <div class="details-card reveal ev-card">
         <div class="city-sep first"><span>HASSAN</span><i></i></div>
         <img class="city-art" src="hassan-belur-2.jpg" alt="Chennakeshava temple, Belur, Hassan" width="860" height="202" loading="lazy">
         <div class="detail-row ev">
@@ -434,6 +448,9 @@
           <div class="cal-opts" id="opts-beegara"><a class="cal-g" data-event="beegara" target="_blank" rel="noopener">Google Calendar</a><a class="cal-a" href="beegara-oota.ics">Apple Calendar</a></div>
           </div>
         </div>
+      </div>
+
+      <div class="details-card reveal ev-card">
         <div class="detail-row">
           <div class="detail-label">VENUE</div>
           <div class="detail-value">HG CONVENTION HALL</div>
