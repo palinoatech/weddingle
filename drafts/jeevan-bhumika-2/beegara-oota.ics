@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Jeevan and Bhumika//EN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:beegara-jeevan-bhumika-2026@invitashion.online
+DTSTAMP:20261020T000000Z
+DTSTART:20261129T070000Z
+DTEND:20261129T093000Z
+SUMMARY:Jeevan & Bhumika - Beegara Oota
+LOCATION:HG Convention Hall\, Belur Road\, next to Brigade College\, Hassan
+END:VEVENT
+END:VCALENDAR
