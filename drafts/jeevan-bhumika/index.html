@@ -127,21 +127,8 @@
     .city-sep.first{padding-top:0;border-top:0}
     .city-sep span{display:inline-block;font-family:"Tenor Sans","Cormorant Garamond",Georgia,serif;font-size:15px;letter-spacing:.34em;color:#A5634C;padding:0 0 0 .34em}
     .city-sep i{display:block;width:100px;height:1px;background:var(--gold);margin:12px auto 0}
-    .city-sep+.detail-row{border-top:0}
-    .details-card.alt{background:linear-gradient(160deg,#17475A,#0B2230);border-color:rgba(201,155,124,.55);color:#F4D7C4}
-    .details-card.alt .city-sep span{color:#F4D7C4}
-    .details-card.alt .detail-row{border-top-color:rgba(244,215,196,.22)}
-    .details-card.alt .detail-label,.details-card.alt .detail-value{color:#FBF4EF}
-    .details-card.alt .day{color:#9FB4BB}
-    .details-card.alt .time{color:#F4D7C4}
-    .details-card.alt .time small{color:#9FB4BB}
-    .details-card.alt .dbx div{background:#0B2230;border-color:rgba(201,155,124,.7)}
-    .details-card.alt .dbx b{color:#F4D7C4}
-    .details-card.alt .pill-btn{background:transparent;color:#F4D7C4;border-color:rgba(244,215,196,.55)}
-    .details-card.alt .cal-opts a{background:#0B2230;color:#F4D7C4}
-    .details-card.alt .map-prev{border-color:rgba(244,215,196,.45)}
+    .city-sep+.detail-row,.city-art+.detail-row{border-top:0}
     .city-art{display:block;width:100%;max-width:430px;height:auto;margin:14px auto 6px;mix-blend-mode:multiply;opacity:.85}
-    .city-art.alt-art{mix-blend-mode:normal;opacity:1;max-width:270px;border-radius:14px;border:1px solid rgba(244,215,196,.45)}
     .detail-row{padding:19px 5px;border-top:1px solid rgba(23,44,71,.18)}
     .detail-label{font:500 10px "Tenor Sans",sans-serif;letter-spacing:.3em;color:#76878C;margin-bottom:10px}
     .detail-value{font-size:clamp(24px,6vw,32px);line-height:1.15;color:#1B4152}
@@ -180,7 +167,9 @@
     .seal-button svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 10px 18px rgba(0,0,0,.5))}
     .paper-section>.art,.details-section>.art,.closing>.art,.paper-section>.art-stars,.details-section>.art-stars,.closing>.art-stars{z-index:0}
     .paper-section .paper-card,.details-section>*:not(.art):not(.art-stars),.closing-content{z-index:2}
-    .closing{min-height:70svh;background:radial-gradient(ellipse at 50% 100%,#17475A,#0B2230 70%)}
+    .section.closing{min-height:0;padding:36px 18px 56px}
+    .section.details-section{padding-bottom:36px}
+    .closing{background:radial-gradient(ellipse at 50% 100%,#17475A,#0B2230 70%)}
     .closing::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,17,35,.35),rgba(4,17,35,.6))}
     .closing-content{position:relative;z-index:2;text-align:center;width:min(100%,500px);color:#fff}
     .closing-content .ar{font-family:'Amiri',serif;direction:rtl;font-size:clamp(24px,6.4vw,32px);line-height:1.9;color:#F4D7C4}
@@ -407,9 +396,9 @@
         </div>
       </div>
 
-      <div class="details-card alt reveal">
+      <div class="details-card reveal">
         <div class="city-sep first"><span>HASSAN</span><i></i></div>
-        <img class="city-art alt-art" src="hassan-belur.jpg" alt="Sketch of the Chennakeshava temple complex, Belur, Hassan" width="860" height="573" loading="lazy">
+        <img class="city-art" src="hassan-belur.jpg" alt="Chennakeshava temple, Belur, Hassan" width="860" height="202" loading="lazy">
         <div class="detail-row">
           <div class="detail-label">BEEGARA OOTA</div>
           <div class="dbx"><div><b>29</b></div><div><b>NOV</b></div><div class="y"><b>2026</b></div></div>
@@ -421,6 +410,7 @@
         <div class="detail-row">
           <div class="detail-label">VENUE</div>
           <div class="detail-value">HG CONVENTION HALL</div>
+          <div class="detail-small">Belur Road, next to Brigade College,<br>Hassan</div>
           <div class="map-prev"><iframe src="https://www.google.com/maps?q=13.0139631,76.0682333&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="HG Convention Hall on Google Maps"></iframe></div>
           <a class="pill-btn" href="https://maps.app.goo.gl/QJTSMYvziXaQz4iY7" target="_blank" rel="noopener">⌖ &nbsp; VIEW ON MAP</a>
         </div>
@@ -476,6 +466,10 @@ const Music = (() => {
   // Opened straight from disk (file://), browsers block fetch(); fall back to a plain looping <audio>.
   function startEl() {
     el = new Audio('audio.mp3'); el.loop = true; el.setAttribute('playsinline', '');
+    el.addEventListener('timeupdate', () => {
+      const d = el.duration; if (!d) return;
+      el.volume = Math.max(0, Math.min(1, el.currentTime / 2.5, (d - el.currentTime) / 3));
+    });
     el.play().catch(() => {}); playing = true;
   }
   function start() {
@@ -498,12 +492,21 @@ const Music = (() => {
     (file = file || load()).then(decode).then(buf => {
       buffer = buf;
       const [s, e] = edges(buf);
-      src = ctx.createBufferSource(); src.buffer = buf;
-      src.loop = true; src.loopStart = s; src.loopEnd = e;
-      src.connect(master); src.start(0, s);
-      const t = ctx.currentTime;
-      master.gain.setValueAtTime(0, t);
-      master.gain.linearRampToValueAtTime(0.9, t + 2.5); // gentle fade-in
+      // Each pass fades in, plays, fades out, then the next pass starts (no hard loop cut).
+      const FADE_IN = 2.5, FADE_OUT = 3, len = e - s;
+      const cycle = () => {
+        if (!ctx) return;
+        const t = ctx.currentTime;
+        src = ctx.createBufferSource(); src.buffer = buf; src.connect(master);
+        master.gain.cancelScheduledValues(t);
+        master.gain.setValueAtTime(0, t);
+        master.gain.linearRampToValueAtTime(0.9, t + FADE_IN);
+        master.gain.setValueAtTime(0.9, t + len - FADE_OUT);
+        master.gain.linearRampToValueAtTime(0, t + len);
+        src.onended = cycle;
+        src.start(t, s, len);
+      };
+      cycle();
     }).catch(() => {});
   }
   function resume() { if (el) el.play().catch(() => {}); else ctx.resume(); playing = true; }
@@ -715,7 +718,7 @@ window.scrollTo(0,0);
   const EVENTS={
     reception:{title:"Jeevan & Bhumika - Reception",dates:"20261126T133000Z/20261126T170000Z"},
     muhurtham:{title:"Jeevan & Bhumika - Muhurtham",dates:"20261127T044000Z/20261127T045500Z"},
-    beegara:{title:"Jeevan & Bhumika - Beegara Oota",dates:"20261129T070000Z/20261129T093000Z",loc:"HG Convention Hall"}
+    beegara:{title:"Jeevan & Bhumika - Beegara Oota",dates:"20261129T070000Z/20261129T093000Z",loc:"HG Convention Hall, Belur Road, next to Brigade College, Hassan"}
   };
   const LOC="SAR Convention Hall, Magadi Main Road, Sunkadakatte, Bengaluru 560091";
   document.querySelectorAll('.cal-g').forEach(a=>{const e=EVENTS[a.dataset.event];
