@@ -89,7 +89,7 @@
     /* date: three hearts opened one after another */
     #date.bgon{background:linear-gradient(180deg,rgba(251,242,223,.5),rgba(251,242,223,.38)),url(bg-3.webp) 33% center/cover no-repeat}
     .hearts-wrap{position:relative;width:100%}
-    .hearts{display:flex;gap:6px;justify-content:center}
+    .hearts{display:flex;gap:6px;justify-content:center;touch-action:pan-y;user-select:none;-webkit-user-select:none}
     .heart{position:relative;width:calc((100% - 12px)/3);aspect-ratio:100/90;background:none;border:0;padding:0;cursor:pointer;filter:drop-shadow(0 10px 14px rgba(58,29,12,.34));-webkit-tap-highlight-color:transparent;transition:opacity .5s}
     .heart svg{display:block;width:100%;height:100%;overflow:visible}
     .heart .closed,.heart .opened{transition:opacity .5s ease}
@@ -99,14 +99,14 @@
     .heart .face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:9%}
     .heart .face svg{width:38%;height:auto;opacity:.8;transition:opacity .3s}
     .heart.open .face svg{opacity:0;position:absolute}
-    .heart .val{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:9%;font-family:"Bodoni Moda",serif;color:#3a1d0c;line-height:1;opacity:0;transform:scale(.6);transition:opacity .5s ease .1s,transform .6s cubic-bezier(.2,1.4,.4,1) .1s}
+    .heart .val{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:9%;font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-variant-numeric:lining-nums;color:#3a1d0c;line-height:1;opacity:0;transform:scale(.6);transition:opacity .5s ease .1s,transform .6s cubic-bezier(.2,1.4,.4,1) .1s}
     .heart.open .val{opacity:1;transform:none}
     .heart.open{animation:heartPop .7s cubic-bezier(.2,1.3,.4,1)}
     .heart.next{animation:heartBeat 1.6s ease-in-out infinite}
     .heart.locked{opacity:.55;cursor:default}
-    .heart:nth-child(1) .val{font-size:clamp(34px,10.5vw,42px)}
-    .heart:nth-child(2) .val{font-size:clamp(26px,8vw,32px);letter-spacing:.06em}
-    .heart:nth-child(3) .val{font-size:clamp(24px,7.2vw,29px);letter-spacing:.02em}
+    .heart:nth-child(1) .val{font-size:clamp(42px,12.5vw,52px)}
+    .heart:nth-child(2) .val{font-size:clamp(32px,9.6vw,40px);letter-spacing:.06em}
+    .heart:nth-child(3) .val{font-size:clamp(29px,8.6vw,36px);letter-spacing:.03em}
     @keyframes heartBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
     @keyframes heartPop{0%{transform:scale(.8) rotate(-6deg)}60%{transform:scale(1.14) rotate(2deg)}100%{transform:scale(1)}}
     .reveal-status{height:20px;margin-top:20px;font-family:Montserrat,sans-serif;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(251,242,223,.6)}
@@ -409,11 +409,27 @@
     document.getElementById('date').classList.add('revealed');
     setTimeout(shower,350);
   }
-  hearts.forEach(function(h,i){h.addEventListener('click',function(){
-    if(i!==step)return;
-    step++;sync();
+  /* tap a heart, or swipe across it, to open it; hearts open strictly in order */
+  var lockUntil=0,swiped=false,downX=0,downY=0,down=false;
+  function openNext(i){
+    if(i!==step||Date.now()<lockUntil)return false;
+    step++;lockUntil=Date.now()+350;sync();
     if(step===hearts.length)finish();
+    return true;
+  }
+  hearts.forEach(function(h,i){h.addEventListener('click',function(){
+    if(swiped){swiped=false;return}
+    openNext(i);
   })});
+  var wrap=document.getElementById('hearts');
+  wrap.addEventListener('pointerdown',function(e){down=true;swiped=false;downX=e.clientX;downY=e.clientY});
+  wrap.addEventListener('pointermove',function(e){
+    if(!down)return;
+    if(Math.hypot(e.clientX-downX,e.clientY-downY)<10)return;
+    var el=document.elementFromPoint(e.clientX,e.clientY),h=el&&el.closest&&el.closest('.heart');
+    if(h&&openNext(hearts.indexOf(h)))swiped=true;
+  });
+  ['pointerup','pointercancel','pointerleave'].forEach(function(n){wrap.addEventListener(n,function(){down=false})});
   sync();
 
   /* countdown to the muhurtha: 6 Dec 2026, 9:00 AM IST */
