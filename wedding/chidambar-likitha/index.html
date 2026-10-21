@@ -337,9 +337,10 @@
 <script>
 (function(){
   var cover=document.getElementById('cover'),doors=document.getElementById('doors'),musicBtn=document.getElementById('music');
-  var audio=new Audio('music.mp3');audio.loop=true;audio.preload='none';audio.setAttribute('playsinline','');
+  var audio=new Audio();audio.loop=true;audio.preload='auto';audio.setAttribute('playsinline','');
+  function ensureSrc(){if(!audio.getAttribute('src'))audio.src='music.mp3'}
   /* music is fetched only after the cover has loaded, so it never competes with the first screen */
-  window.addEventListener('load',function(){setTimeout(function(){audio.preload='auto';audio.load()},1200)});
+  window.addEventListener('load',function(){setTimeout(ensureSrc,1200)});
   /* photo backgrounds load when their section is near the screen */
   var bgIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('bgon');bgIO.unobserve(e.target)}})},{rootMargin:'500px 0px'});
   ['hero','families','date','timeline','venue'].forEach(function(id){bgIO.observe(document.getElementById(id))});
@@ -348,11 +349,13 @@
   document.addEventListener('click',function(e){if(!wmEl.contains(e.target))wmEl.classList.remove('open')});
   function setPlaying(p){musicBtn.classList.toggle('playing',p)}
   musicBtn.addEventListener('click',function(){
+    ensureSrc();
     if(audio.paused){audio.play().then(function(){setPlaying(true)}).catch(function(){})}else{audio.pause();setPlaying(false)}
   });
   document.addEventListener('visibilitychange',function(){if(document.hidden&&!audio.paused){audio.pause();setPlaying(false);audio._auto=true}else if(!document.hidden&&audio._auto){audio._auto=false;audio.play().then(function(){setPlaying(true)}).catch(function(){})}});
 
   document.getElementById('open').addEventListener('click',function(){
+    ensureSrc();
     audio.play().then(function(){setPlaying(true)}).catch(function(){});
     musicBtn.classList.add('visible');
     wmEl.classList.add('show');
