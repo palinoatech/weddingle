@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Chidambar and Likitha//EN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:reception-chidambar-likitha-2026@invitashion.online
+DTSTAMP:20261021T000000Z
+DTSTART:20261205T133000Z
+DTEND:20261205T163000Z
+SUMMARY:Chidambar & Likitha - Reception
+LOCATION:S.B. Convention Hall (Pushpraj Palace)\, Kannalli\, Kodigehalli\, Bengaluru 560112
+END:VEVENT
+END:VCALENDAR
