@@ -82,9 +82,10 @@
 
     /* families */
     #families.bgon{background:linear-gradient(180deg,rgba(251,242,223,.5),rgba(251,242,223,.4)),url(bg-2.webp) 47% center/cover no-repeat}
-    #families .couple{font-family:"Great Vibes",cursive;font-size:38px;white-space:nowrap;line-height:1.1;color:var(--gold2);margin:0}
-    #families .aka{font-size:19px;font-style:italic;color:rgba(251,242,223,.75);margin:2px 0 0}
-    #families .with{font-family:"Bodoni Moda",serif;font-size:16px;letter-spacing:.3em;text-transform:uppercase;color:var(--cream);margin:20px 0}
+    #families .couple{font-family:"Great Vibes",cursive;font-size:min(40px,calc((100vw - 84px)/8.4));-webkit-text-stroke:.35px currentColor;white-space:nowrap;line-height:1.1;color:var(--gold2);margin:0}
+    #families.light .text.it{font-weight:500;font-size:21px;color:#4a2d1c}
+    #families .aka{font-size:19px;font-weight:600;font-style:italic;color:rgba(251,242,223,.75);margin:2px 0 0}
+    #families .with{font-family:"Bodoni Moda",serif;font-size:24px;letter-spacing:.3em;text-transform:uppercase;color:var(--cream);margin:20px 0}
 
     /* date: three hearts opened one after another */
     #date.bgon{background:linear-gradient(180deg,rgba(251,242,223,.5),rgba(251,242,223,.38)),url(bg-3.webp) 33% center/cover no-repeat}
@@ -99,14 +100,14 @@
     .heart .face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:9%}
     .heart .face svg{width:38%;height:auto;opacity:.8;transition:opacity .3s}
     .heart.open .face svg{opacity:0;position:absolute}
-    .heart .val{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:9%;font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-variant-numeric:lining-nums;color:#3a1d0c;line-height:1;opacity:0;transform:scale(.6);transition:opacity .5s ease .1s,transform .6s cubic-bezier(.2,1.4,.4,1) .1s}
+    .heart .val{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:9%;font-family:Montserrat,sans-serif;font-weight:500;color:#3a1d0c;line-height:1;opacity:0;transform:scale(.6);transition:opacity .5s ease .1s,transform .6s cubic-bezier(.2,1.4,.4,1) .1s}
     .heart.open .val{opacity:1;transform:none}
     .heart.open{animation:heartPop .7s cubic-bezier(.2,1.3,.4,1)}
     .heart.next{animation:heartBeat 1.6s ease-in-out infinite}
     .heart.locked{opacity:.55;cursor:default}
-    .heart:nth-child(1) .val{font-size:clamp(42px,12.5vw,52px)}
-    .heart:nth-child(2) .val{font-size:clamp(32px,9.6vw,40px);letter-spacing:.06em}
-    .heart:nth-child(3) .val{font-size:clamp(29px,8.6vw,36px);letter-spacing:.03em}
+    .heart:nth-child(1) .val{font-size:clamp(18px,5.4vw,22px);letter-spacing:.08em;padding-left:.08em}
+    .heart:nth-child(2) .val{font-size:clamp(19px,5.8vw,23px);letter-spacing:.14em;padding-left:.14em}
+    .heart:nth-child(3) .val{font-size:clamp(18px,5.4vw,22px);letter-spacing:.08em;padding-left:.08em}
     @keyframes heartBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
     @keyframes heartPop{0%{transform:scale(.8) rotate(-6deg)}60%{transform:scale(1.14) rotate(2deg)}100%{transform:scale(1)}}
     .reveal-status{height:20px;margin-top:20px;font-family:Montserrat,sans-serif;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(251,242,223,.6)}
@@ -242,7 +243,7 @@
       <p class="text it rv">With joy in our hearts, we invite you to the wedding of</p>
       <p class="couple rv" style="margin-top:26px">Chidambar Patel G.S.</p>
       <p class="aka rv">(Sagar Patel)</p>
-      <p class="with rv">and</p>
+      <p class="with rv">&amp;</p>
       <p class="couple rv">Likitha M.</p>
     </div>
   </section>
