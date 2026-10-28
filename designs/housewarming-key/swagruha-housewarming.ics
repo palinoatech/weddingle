@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Swagruha Housewarming//EN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:housewarming-supreeth-pooja-2026@invitashion.online
+DTSTAMP:20261028T000000Z
+DTSTART:20261129T054500Z
+DTEND:20261129T084500Z
+SUMMARY:Supreeth & Pooja - Housewarming (Swagruha)
+DESCRIPTION:Supreeth and Pooja invite you to their new home. Lunch follows.
+LOCATION:Swagruha\, C-201\, Samrrudhi Apartment\, Main Road\, Uttarahalli\, Bengaluru
+END:VEVENT
+END:VCALENDAR

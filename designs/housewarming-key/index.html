@@ -108,7 +108,7 @@ section{position:relative;padding:72px 20px;overflow:hidden}
 .no-js .s2{display:flex}
 .opened-all .after{display:block}
 .s3{background:#fff;padding-top:0;padding-bottom:64px}
-.toran{height:74px;width:100%;position:relative;margin-bottom:12px;
+.toran{height:74px;width:100%;position:relative;margin-bottom:48px;
   background:
    radial-gradient(circle at 50% 100%,transparent 0 0,transparent 0) 0 0;}
 .toran svg{width:100%;height:74px;display:block}
@@ -135,6 +135,7 @@ section{position:relative;padding:72px 20px;overflow:hidden}
 .card{background:#FFF6EA;border:2px solid #FBD9B5;color:var(--ink);border-radius:22px;padding:22px 24px;margin:0 auto 16px;text-align:left;box-shadow:0 8px 0 #FBD9B5;position:relative}
 .card .lab{font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--coral)}
 .card .big{font-family:'Fraunces',serif;font-weight:700;font-size:24px;line-height:1.25;color:var(--teal);margin-top:4px}
+.btn.calbtn{border:0;cursor:pointer;font:700 16px 'DM Sans',sans-serif}
 .card .sm{color:var(--muted);font-size:15px;margin-top:4px}
 .flat{position:absolute;right:18px;top:18px;background:var(--teal);color:var(--gold);font-weight:900;font-size:15px;letter-spacing:1px;padding:4px 10px;border-radius:6px;transform:rotate(4deg)}
 .btn{display:inline-block;margin-top:14px;background:var(--saffron);color:#fff;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:999px;box-shadow:0 5px 0 #B85A12}
@@ -161,6 +162,21 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:70;op
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .33 0 0 0 0 .25 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .smi{display:inline-block;animation:pulse 1.8s ease-in-out infinite}
 html.lock,html.lock body{overflow:hidden}
+
+/* add to calendar */
+.cal-opts{display:none;gap:10px;justify-content:flex-start;flex-wrap:wrap;margin-top:12px}
+.cal-opts.show{display:flex}
+.cal-opts a{padding:10px 18px;border-radius:999px;border:1px solid var(--saffron);background:#fff;color:var(--teal);font:700 12px 'DM Sans',sans-serif;text-decoration:none}
+/* made-by watermark */
+.wm{position:fixed;left:18px;bottom:18px;z-index:90;display:none;flex-direction:column;align-items:flex-start;gap:8px}
+.wm.show{display:flex}
+.wm-btn{width:84px;height:54px;border-radius:27px;border:1px solid rgba(255,255,255,.4);background:rgba(82,48,26,.82);cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:.7;transition:opacity .3s;padding:0}
+.wm-btn:hover,.wm.open .wm-btn{opacity:1}
+.wm-btn img{width:56px;height:auto;display:block}
+.wm-pop{order:-1;display:none;padding:10px 16px;border-radius:14px;background:var(--wood-dk);box-shadow:0 8px 24px rgba(0,0,0,.35);color:#fff;font:600 13px 'DM Sans',sans-serif;text-decoration:none;white-space:nowrap}
+.wm.open .wm-pop{display:block}
+.wm-pop b{color:var(--gold)}
+.opened .room{cursor:pointer}
 </style>
 </head>
 <body>
@@ -283,6 +299,8 @@ html.lock,html.lock body{overflow:hidden}
       <div class="lab">When</div>
       <div class="big" id="when">Sunday, 29th November<br>at 11:15 AM</div>
       <div class="sm">Lunch follows</div>
+      <button class="btn calbtn" id="calBtn" type="button">Add to Calendar</button>
+      <div class="cal-opts" id="calOpts"><a id="gcal" target="_blank" rel="noopener">Google Calendar</a><a href="swagruha-housewarming.ics" download>Apple Calendar</a></div>
     </div>
   </div>
 </section>
@@ -294,9 +312,10 @@ html.lock,html.lock body{overflow:hidden}
     <p class="hand reveal">Walls make a house.<br>Your presence makes it a home.</p>
     <p class="disp sign reveal">See you at Swagruha!</p>
     <p class="reveal" style="margin-top:6px;color:var(--muted)">Supreeth &amp; Pooja</p>
-    <small>Made with <a href="https://invitashion.online/" target="_blank" rel="noopener">Invitashion</a></small>
   </div>
 </section>
+
+<div class="wm" id="wm"><a class="wm-pop" href="https://www.instagram.com/invitashion.online/" target="_blank" rel="noopener">Made by <b>Invitashion</b> &#8599;</a><button class="wm-btn" id="wmBtn" type="button" aria-label="Made by Invitashion"><img src="invitashion-logo.png" alt="Invitashion"></button></div>
 
 <script>
 /* toran: marigold garland across the top */
@@ -328,7 +347,9 @@ function confetti(){
 function openDoor(){
   door.classList.add('opened'); door.parentNode.classList.add('opened');
   confetti();
-  document.body.classList.add('opened-all'); observe();
+  document.body.classList.add('opened-all'); wmEl.classList.add('show'); observe();
+  var room=door.querySelector('.room');
+  room.setAttribute('role','button'); room.setAttribute('tabindex','0'); room.setAttribute('aria-label','Come on in');
 }
 /* touch the key: it jingles, then drifts down with a smooth scroll, stands beside the heading, and flies into the lock */
 function touchKey(){
@@ -362,12 +383,12 @@ function touchKey(){
       if(!fly.animate){fly.remove();openDoor();return}
       var an=fly.animate([
         {transform:T(sx,sy,0,'.5,.5'),offset:0,easing:E},
-        {transform:T(sx,sy-6,2,'.5,.5'),offset:.2,easing:E},
-        {transform:T(sx,sy,-2,'.5,.5'),offset:.4,easing:E},
-        {transform:T(sx,sy-6,2,'.5,.5'),offset:.6,easing:E},
-        {transform:T(sx,sy,0,'.5,.5'),offset:.68,easing:E},
+        {transform:T(sx,sy-6,2,'.5,.5'),offset:.14,easing:E},
+        {transform:T(sx,sy,-2,'.5,.5'),offset:.28,easing:E},
+        {transform:T(sx,sy-6,2,'.5,.5'),offset:.42,easing:E},
+        {transform:T(sx,sy,0,'.5,.5'),offset:.52,easing:E},
         {transform:T(dx,dy,-90,'-.4,.4'),offset:1}
-      ],{duration:4200,fill:'forwards'});
+      ],{duration:3600,fill:'forwards'});
       an.onfinish=function(){
         fly.animate([{opacity:1},{opacity:0}],{duration:300,fill:'forwards'}).onfinish=function(){fly.remove()};
         setTimeout(openDoor,150);
@@ -378,6 +399,21 @@ function touchKey(){
 }
 swing.addEventListener('click',touchKey);
 swing.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();touchKey()}});
+
+
+/* add to calendar: Google / Apple choices */
+document.getElementById('gcal').href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent("Supreeth & Pooja's Housewarming (Swagruha)")+'&dates=20261129T054500Z/20261129T084500Z&details='+encodeURIComponent('Supreeth and Pooja invite you to their new home. Lunch follows.')+'&location='+encodeURIComponent('Swagruha, C-201, Samrrudhi Apartment, Main Road, Uttarahalli, Bengaluru');
+document.getElementById('calBtn').addEventListener('click',function(){document.getElementById('calOpts').classList.toggle('show')});
+/* made-by watermark */
+var wmEl=document.getElementById('wm');
+document.getElementById('wmBtn').addEventListener('click',function(e){e.stopPropagation();wmEl.classList.toggle('open')});
+document.addEventListener('click',function(){wmEl.classList.remove('open')});
+
+
+/* once the door is open, touching anything inside it is the same as scrolling down to the invitation */
+function goIn(){document.getElementById('s3').scrollIntoView({behavior:'smooth'})}
+door.addEventListener('click',function(){if(door.classList.contains('opened'))goIn()});
+door.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&door.classList.contains('opened')){e.preventDefault();goIn()}});
 
 function observe(){
   var els=document.querySelectorAll('.reveal');
