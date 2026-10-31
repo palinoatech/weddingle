@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Boarding Pass//EN
+BEGIN:VEVENT
+UID:boarding-pass-ceremony@invitashion.online
+DTSTAMP:20261031T000000Z
+DTSTART:20261220T160000
+DTEND:20261220T230000
+SUMMARY:Mira & Kabir's Wedding (Flight LJ 0503)
+LOCATION:The Leela Palace Udaipur\, Udaipur
+DESCRIPTION:Boarding at 4:00 PM. Lakeside Lawn.
+END:VEVENT
+END:VCALENDAR
