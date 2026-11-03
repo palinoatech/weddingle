@@ -1,0 +1,31 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//2 States//EN
+BEGIN:VEVENT
+UID:ts1@invitashion.online
+DTSTAMP:20261103T000000Z
+DTSTART:20270212T133000Z
+DTEND:20270212T173000Z
+SUMMARY:Arjun & Meenakshi: Sangeet
+DESCRIPTION:Bhangra vs. Bharatanatyam. The finals.
+LOCATION:The Orchid Lawns\, Whitefield\, Bengaluru
+END:VEVENT
+BEGIN:VEVENT
+UID:ts2@invitashion.online
+DTSTAMP:20261103T000000Z
+DTSTART:20270213T020000Z
+DTEND:20270213T083000Z
+SUMMARY:Arjun & Meenakshi: Muhurtham
+DESCRIPTION:Tamil wedding ceremony followed by sadya.
+LOCATION:The Orchid Lawns\, Whitefield\, Bengaluru
+END:VEVENT
+BEGIN:VEVENT
+UID:ts3@invitashion.online
+DTSTAMP:20261103T000000Z
+DTSTART:20270214T043000Z
+DTEND:20270214T083000Z
+SUMMARY:Arjun & Meenakshi: Anand Karaj
+DESCRIPTION:Punjabi wedding ceremony followed by langar.
+LOCATION:The Orchid Lawns\, Whitefield\, Bengaluru
+END:VEVENT
+END:VCALENDAR
