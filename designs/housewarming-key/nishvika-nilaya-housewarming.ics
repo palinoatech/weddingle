@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Invitashion//Nishvika Nilaya Housewarming//EN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:housewarming-supreeth-pooja-2026@invitashion.online
+SEQUENCE:1
+DTSTAMP:20261116T000000Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261130
+SUMMARY:Supreeth & Pooja - Housewarming (Nishvika Nilaya)
+DESCRIPTION:Griha Pravesha & Satyanarayana Pooja\, Sat 28 & Sun 29 Nov. Satyanarayana Pooja 10:30 AM\, lunch 12:30 PM.
+LOCATION:Nishvika Nilaya\, 204\, Siri Laharika Enclave\, Archalli Main Road\, Arehalli\, Uttarahalli Hobli\, Bengaluru 560061
+END:VEVENT
+END:VCALENDAR
